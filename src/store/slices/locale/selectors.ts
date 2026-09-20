@@ -1,5 +1,10 @@
 import { localeSlice } from './localeSlice';
+import type { LocaleState } from './types';
 
 const { name } = localeSlice;
 
-export const selectLanguage = state => state[name].language;
+interface State {
+  [name]: LocaleState;
+}
+
+export const selectLanguage = (state: State) => state[name].language;
