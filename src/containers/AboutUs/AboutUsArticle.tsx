@@ -1,6 +1,7 @@
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
+import PageSubtitle from 'components/PageSubtitle';
 
 const articleTags = ['数字化设计', '柔性制造', '全球供应链', '本地化交付'];
 
@@ -14,7 +15,7 @@ const AboutUsArticle: React.FC = () => {
         justifyContent: 'center',
       }}
     >
-      <Typography variant='h1'>About Us</Typography>
+      <PageSubtitle number='01' title='我们是谁' />
       <Box>
         <Grid container sx={{ width: 1 }}>
           <Grid size='grow'>
@@ -24,10 +25,10 @@ const AboutUsArticle: React.FC = () => {
                 fontWeight: 'bold',
               }}
             >
-              全球能力
+              全球能力，
             </Typography>
             <Typography variant='h1' sx={{ color: '#E87722', fontWeight: 'bold' }}>
-              本地落地
+              本地落地。
             </Typography>
             <Typography variant='body1' sx={{ my: 4, color: '#555555', fontSize: '24px' }}>
               ezBuild

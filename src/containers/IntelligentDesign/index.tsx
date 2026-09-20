@@ -20,7 +20,9 @@ const IntelligentDesign: React.FC = () => {
   };
   return (
     <Box
+      id='intelligence_design'
       sx={{
+        scrollMarginTop: '64px',
         minHeight: '100vh',
         backgroundSize: 'cover',
         backgroundPosition: 'center',
@@ -32,7 +34,46 @@ const IntelligentDesign: React.FC = () => {
         <Grid size={3} />
         <Grid size={6}>
           <IntelligentDesignTitle />
-          <QuestionSelector onModelChange={handleModelChange} />
+          <Grid container sx={{ alignItems: 'stretch', minHeight: 0, height: 600 }}>
+            <Grid size={4} sx={{ py: 3, display: 'flex', alignItems: 'center' }}>
+              <QuestionSelector onModelChange={handleModelChange} />
+            </Grid>
+            <Grid size={8} sx={{ py: 3, display: 'flex', flexDirection: 'column', minHeight: 0 }}>
+              <Box
+                className='design-right'
+                sx={{
+                  flexGrow: 1,
+                  width: '100%',
+                  minHeight: 0,
+                  display: 'flex',
+                  flexDirection: 'column',
+                  mx: 2,
+                }}
+              >
+                {renderedModelSrc ? (
+                  <Suspense
+                    fallback={
+                      <Box sx={{ display: 'grid', placeItems: 'center', width: '100%' }}>
+                        <CircularProgress aria-label='Loading model' />
+                      </Box>
+                    }
+                  >
+                    <ModelRenderer
+                      key={renderedModelSrc}
+                      src={renderedModelSrc}
+                      height='100%'
+                      background='#fff'
+                    />
+                  </Suspense>
+                ) : (
+                  <>
+                    {/* <img src={DESIGN_BG.src} alt={DESIGN_BG.alt} className='design-bg-img' /> */}
+                    <Box className='design-overlay' />
+                  </>
+                )}
+              </Box>
+            </Grid>
+          </Grid>
           <Button
             className='design-btn'
             disableElevation
@@ -45,29 +86,6 @@ const IntelligentDesign: React.FC = () => {
         </Grid>
         <Grid size={3} />
       </Grid>
-      <Box className='design-right'>
-        {renderedModelSrc ? (
-          <Suspense
-            fallback={
-              <Box sx={{ display: 'grid', placeItems: 'center', width: '100%' }}>
-                <CircularProgress aria-label='Loading model' />
-              </Box>
-            }
-          >
-            <ModelRenderer
-              key={renderedModelSrc}
-              src={renderedModelSrc}
-              height='300px'
-              background='#fff'
-            />
-          </Suspense>
-        ) : (
-          <>
-            {/* <img src={DESIGN_BG.src} alt={DESIGN_BG.alt} className='design-bg-img' /> */}
-            <Box className='design-overlay' />
-          </>
-        )}
-      </Box>
     </Box>
   );
 };

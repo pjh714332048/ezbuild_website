@@ -8,7 +8,9 @@ const AboutUs: React.FC = () => {
   return (
     <>
       <Box
+        id='about'
         sx={{
+          scrollMarginTop: '64px',
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           backgroundRepeat: 'no-repeat',
@@ -23,13 +25,13 @@ const AboutUs: React.FC = () => {
           <Grid size={3} sx={{ border: '1px solid #3f3f3f44' }} />
         </Grid>
       </Box>
-      <Box>
-        <Grid container sx={{ background: '#FFFFFF', height: '80vh', width: 1 }}>
-          <Grid size={3} sx={{}} />
+      <Box sx={{ display: 'flex', alignItems: 'center' }}>
+        <Grid container sx={{ background: '#FFFFFF', height: '70vh', width: 1 }}>
+          <Grid size={3} />
           <Grid size={6} sx={{ height: 1 }}>
             <AboutUsArticle />
           </Grid>
-          <Grid size={3} sx={{}} />
+          <Grid size={3} />
         </Grid>
       </Box>
     </>

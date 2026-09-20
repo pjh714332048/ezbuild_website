@@ -11,6 +11,15 @@ import { RESULT_PREFIX } from 'models/question/RESULT_PREFIX';
 import { useAppSelector } from 'store/hooks';
 import { selectLanguage } from 'store/slices/locale/selectors';
 
+const getMaxDepth = (nodeId: string): number => {
+  const node = QUESTION_NODES[nodeId];
+  if (!node) return 1;
+  const childDepths = node.options
+    .filter(option => !option.next.startsWith(RESULT_PREFIX))
+    .map(option => getMaxDepth(option.next));
+  return childDepths.length > 0 ? 1 + Math.max(...childDepths) : 1;
+};
+
 const resultModels: Readonly<Record<string, string>> = {
   bnb2008: '/architectural_models/homestay_8.obj',
   bnb20012: '/architectural_models/homestay_12.obj',
@@ -29,6 +38,8 @@ const QuestionSelector: React.FC<QuestionProps> = ({ onModelChange }) => {
   const [history, setHistory] = useState<readonly string[]>([QUESTION_ROOT_ID]);
   const currentId = history[history.length - 1];
   const currentNode = QUESTION_NODES[currentId];
+  const currentStep = history.length;
+  const totalSteps = getMaxDepth(currentId);
 
   const handleSelect = (option: QuestionOption) => {
     if (option.next.startsWith(RESULT_PREFIX)) {
@@ -51,9 +62,34 @@ const QuestionSelector: React.FC<QuestionProps> = ({ onModelChange }) => {
   };
 
   return (
-    <Box>
-      <Typography component='h3' variant='h6' sx={{ fontWeight: 700, mb: 2 }}>
-        {language === 'en' ? (currentNode.enTitle ?? currentNode.title) : currentNode.title}
+    <Box sx={{ width: '100%' }}>
+      <Box sx={{ mb: 3 }}>
+        <Box sx={{ display: 'flex', gap: 1, mb: 1 }}>
+          {Array.from({ length: totalSteps }, (_, i) => (
+            <Box
+              key={i}
+              sx={{
+                flex: 1,
+                height: 3,
+                borderRadius: 1,
+                bgcolor: i < currentStep ? '#FF6B1A' : '#4A5568',
+              }}
+            />
+          ))}
+        </Box>
+        <Typography
+          sx={{
+            color: '#FF6B1A',
+            fontSize: 14,
+            fontWeight: 700,
+            fontVariantNumeric: 'tabular-nums',
+          }}
+        >
+          {String(currentStep).padStart(2, '0')} / {String(totalSteps).padStart(2, '0')}
+        </Typography>
+      </Box>
+      <Typography variant='h3' sx={{ fontWeight: 700, mb: 2, color: '#FFFFFF' }}>
+        {currentNode.title}
       </Typography>
       <Stack spacing={1.5}>
         {currentNode.options.map(option => (
@@ -61,15 +97,15 @@ const QuestionSelector: React.FC<QuestionProps> = ({ onModelChange }) => {
             key={option.label}
             variant='outlined'
             onClick={() => handleSelect(option)}
-            sx={{ py: 1.25, textTransform: 'none' }}
+            sx={{ py: 1.25, width: '100%', textTransform: 'none' }}
           >
-            {language === 'en' ? option.enLabel : option.label}
+            {option.label}
           </Button>
         ))}
       </Stack>
       <Stack direction='row' spacing={1} sx={{ mt: 2 }}>
         <Button onClick={handleBack} disabled={history.length === 1}>
-          {language === 'en' ? 'Back' : '上一步'}
+          {'Back'}
         </Button>
         <Button onClick={handleReset}>{language === 'en' ? 'Start over' : '重新选择'}</Button>
       </Stack>

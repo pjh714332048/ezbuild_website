@@ -31,7 +31,7 @@ export const QUESTION_NODES: Readonly<Record<string, QuestionNode>> = {
     enTitle: 'What is the desired building area?',
     options: [
       { label: '<100㎡', enLabel: '<100 m²', next: 'houseSmallPeople' },
-      { label: '100㎡~200㎡', enLabel: '100–200 m²', next: 'houseMidPeople' },
+      { label: '100㎡~200㎡', enLabel: '100~200 m²', next: 'houseMidPeople' },
     ],
   },
   ['houseSmallPeople']: {
@@ -39,8 +39,8 @@ export const QUESTION_NODES: Readonly<Record<string, QuestionNode>> = {
     title: '请问使用人数是？',
     enTitle: 'How many people will be using it?',
     options: [
-      { label: '1~2人', enLabel: '1–2 people', next: 'result:houseSmall12' },
-      { label: '3~4人', enLabel: '3–4 people', next: 'result:houseSmall34' },
+      { label: '1~2人', enLabel: '1~2 people', next: 'result:houseSmall12' },
+      { label: '3~4人', enLabel: '3~4 people', next: 'result:houseSmall34' },
     ],
   },
   ['houseMidPeople']: {
@@ -48,8 +48,8 @@ export const QUESTION_NODES: Readonly<Record<string, QuestionNode>> = {
     title: '居住人数',
     enTitle: 'How many people will be living there?',
     options: [
-      { label: '1~2人', enLabel: '1–2 people', next: 'result:houseMid12' },
-      { label: '3~4人', enLabel: '3–4 people', next: 'result:houseMid34' },
+      { label: '1~2人', enLabel: '1~2 people', next: 'result:houseMid12' },
+      { label: '3~4人', enLabel: '3~4 people', next: 'result:houseMid34' },
     ],
   },
 };
