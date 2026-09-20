@@ -1,7 +1,8 @@
 import js from '@eslint/js';
-import tseslint from 'typescript-eslint';
+import eslintConfigPrettier from 'eslint-config-prettier';
 import reactHooks from 'eslint-plugin-react-hooks';
 import reactRefresh from 'eslint-plugin-react-refresh';
+import tseslint from 'typescript-eslint';
 
 export default [
   // 全局忽略
@@ -22,10 +23,70 @@ export default [
     },
     rules: {
       ...reactHooks.configs.recommended.rules,
-      'react-refresh/only-export-components': [
-        'warn',
-        { allowConstantExport: true },
+      'react-refresh/only-export-components': ['warn', { allowConstantExport: true }],
+      '@typescript-eslint/naming-convention': [
+        'error',
+        {
+          selector: 'objectLiteralProperty',
+          format: ['camelCase'],
+        },
+        // 导出的 interface / type 必须 PascalCase
+        {
+          selector: ['interface', 'typeAlias'],
+          format: ['PascalCase'],
+          modifiers: ['exported'],
+        },
+        // 导出的常量：如果是 SCREAMING_SNAKE_CASE 格式则校验正确性
+        {
+          selector: 'variable',
+          modifiers: ['exported', 'const'],
+          format: ['UPPER_CASE'],
+          filter: {
+            regex: '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$',
+            match: true,
+          },
+        },
+        // 导出的常量：允许 camelCase 和 PascalCase（运行时实例、组件等）
+        {
+          selector: 'variable',
+          modifiers: ['exported', 'const'],
+          format: ['camelCase', 'PascalCase'],
+          filter: {
+            regex: '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$',
+            match: false,
+          },
+        },
+        // 未导出的常量用 camelCase
+        {
+          selector: 'variable',
+          modifiers: ['const'],
+          format: ['camelCase', 'PascalCase'],
+        },
+      ],
+      'no-restricted-imports': [
+        'error',
+        {
+          paths: [
+            {
+              name: '@mui/material',
+              message: '请使用路径导入，例如: import Button from "@mui/material/Button"',
+            },
+            {
+              name: '@mui/icons-material',
+              message: '请使用路径导入，例如: import Add from "@mui/icons-material/Add"',
+            },
+          ],
+          patterns: [
+            {
+              group: ['../**', '**/../*'],
+              message: '禁止使用 .. 相对路径导入，请使用 api/components/models/store 别名',
+            },
+          ],
+        },
       ],
     },
   },
+
+  // Prettier 规则（必须放在最后，覆盖上方冲突规则）
+  eslintConfigPrettier,
 ];

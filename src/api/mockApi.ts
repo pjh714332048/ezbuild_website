@@ -19,13 +19,13 @@ let todos: Todo[] = [
 
 /** 模拟网络延迟 */
 function delay(ms: number): Promise<void> {
-  return new Promise((resolve) => setTimeout(resolve, ms));
+  return new Promise(resolve => setTimeout(resolve, ms));
 }
 
 /** 获取待办列表 */
 export async function fetchTodos(): Promise<Todo[]> {
   await delay(500);
-  return todos.map((t) => ({ ...t }));
+  return todos.map(t => ({ ...t }));
 }
 
 /** 添加待办 */
@@ -43,10 +43,8 @@ export async function addTodo(text: string): Promise<Todo> {
 /** 切换完成状态 */
 export async function toggleTodo(id: string): Promise<Todo> {
   await delay(200);
-  todos = todos.map((t) =>
-    t.id === id ? { ...t, completed: !t.completed } : t
-  );
-  const target = todos.find((t) => t.id === id);
+  todos = todos.map(t => (t.id === id ? { ...t, completed: !t.completed } : t));
+  const target = todos.find(t => t.id === id);
   if (!target) throw new Error('未找到该待办事项');
   return { ...target };
 }
@@ -54,5 +52,5 @@ export async function toggleTodo(id: string): Promise<Todo> {
 /** 删除待办 */
 export async function deleteTodo(id: string): Promise<void> {
   await delay(200);
-  todos = todos.filter((t) => t.id !== id);
+  todos = todos.filter(t => t.id !== id);
 }
