@@ -1,0 +1,39 @@
+import Box from '@mui/material/Box';
+import Grid from '@mui/material/Grid';
+
+import AboutUsArticle from './AboutUsArticle';
+import DeliveryItems from './DeliveryItems';
+
+const AboutUs: React.FC = () => {
+  return (
+    <>
+      <Box
+        sx={{
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
+          display: 'flex',
+        }}
+      >
+        <Grid container sx={{ background: '#F1EEE6', height: '10vh', width: 1 }}>
+          <Grid size={3} sx={{ border: '1px solid #3f3f3f44' }} />
+          <Grid size={6}>
+            <DeliveryItems />
+          </Grid>
+          <Grid size={3} sx={{ border: '1px solid #3f3f3f44' }} />
+        </Grid>
+      </Box>
+      <Box>
+        <Grid container sx={{ background: '#FFFFFF', height: '80vh', width: 1 }}>
+          <Grid size={3} sx={{}} />
+          <Grid size={6} sx={{ height: 1 }}>
+            <AboutUsArticle />
+          </Grid>
+          <Grid size={3} sx={{}} />
+        </Grid>
+      </Box>
+    </>
+  );
+};
+
+export default AboutUs;
