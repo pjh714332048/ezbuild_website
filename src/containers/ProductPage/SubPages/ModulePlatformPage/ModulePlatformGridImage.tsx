@@ -11,7 +11,7 @@ const ModulePlatformGridImage: React.FC<ModulePlatformGridImageProps> = ({ image
       sx={{
         position: 'relative',
         width: '100%',
-        height: 440,
+        height: '70%',
         flexShrink: 0,
         my: 2,
       }}

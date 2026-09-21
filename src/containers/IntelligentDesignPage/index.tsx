@@ -1,12 +1,24 @@
+import Box from '@mui/material/Box';
+
 import BusinessCapability from './BusinessCapability';
 import IntelligentDesign from './IntelligentDesign';
 
 const IntelligentDesignPage: React.FC = () => {
   return (
-    <>
+    <Box
+      id='intelligence_design'
+      sx={{
+        scrollMarginTop: '64px',
+        minHeight: '100vh',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
+        background: '#0b1c31',
+      }}
+    >
       <IntelligentDesign />
       <BusinessCapability />
-    </>
+    </Box>
   );
 };
 export default IntelligentDesignPage;

@@ -6,7 +6,7 @@ import tseslint from 'typescript-eslint';
 
 export default [
   // 全局忽略
-  { ignores: ['dist'] },
+  { ignores: ['dist', 'scripts'] },
 
   // 基础推荐规则
   js.configs.recommended,
@@ -63,6 +63,7 @@ export default [
           format: ['camelCase', 'PascalCase'],
         },
       ],
+      'no-console': ['warn', { allow: ['warn', 'error', 'info'] }],
       'no-restricted-imports': [
         'error',
         {

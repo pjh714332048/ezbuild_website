@@ -18,21 +18,9 @@ const IntelligentDesign: React.FC = () => {
     setSelectedModelSrc(modelSrc);
     setRenderedModelSrc(null);
   };
-
   return (
-    <Box
-      id='intelligence_design'
-      sx={{
-        scrollMarginTop: '64px',
-        minHeight: '100vh',
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        backgroundRepeat: 'no-repeat',
-        display: 'flex',
-        background: '#0b1c31',
-      }}
-    >
-      <Grid container sx={{ height: '100vh', width: '100vw', mt: 12 }}>
+    <Box>
+      <Grid container sx={{ height: '100vh', width: '100%', pt: 12 }}>
         <Grid size={3} />
         <Grid size={6}>
           <IntelligentDesignTitle />

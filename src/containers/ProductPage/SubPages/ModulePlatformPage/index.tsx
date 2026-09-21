@@ -8,7 +8,7 @@ const ModulePlatformPage: React.FC = () => {
   return (
     <>
       <ModulePlatformPageTitle />
-      <Grid container spacing={2} sx={{ width: '100%', my: 2 }}>
+      <Grid container spacing={2} sx={{ width: '100%', mt: 5 }}>
         <Grid size='grow' sx={{ p: 2, background: '#FFFFFF' }}>
           <ModulePlatformGridImage badge='01' imageSrc='/module_platform_images/1.webp' />
           <ModulePlatformGridContent

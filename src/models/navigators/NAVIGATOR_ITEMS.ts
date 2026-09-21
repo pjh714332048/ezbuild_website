@@ -1,12 +1,11 @@
-type navigatorKeys =
-  'about' | 'intelligence_design' | 'business_capability' | 'project_examples' | 'contact_us';
+import type { NavigatorKeys } from './NavigatorKeys';
 
 interface NavigatorItem {
   enLabel: string;
   cnLabel: string;
 }
 
-export const NAVIGATOR_ITEMS: Record<navigatorKeys, NavigatorItem> = {
+export const NAVIGATOR_ITEMS: Record<NavigatorKeys, NavigatorItem> = {
   about: { enLabel: 'About', cnLabel: '关于我们' },
   ['intelligence_design']: { enLabel: 'Intelligence Design', cnLabel: '智能设计' },
   ['business_capability']: { enLabel: 'Business Capability', cnLabel: '自研产品' },

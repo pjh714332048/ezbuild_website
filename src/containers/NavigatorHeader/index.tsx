@@ -10,7 +10,6 @@ import LocaleButton from './LocaleButton';
 
 const NavigatorHeader: React.FC = () => {
   const handleClick = (key: string) => {
-    console.log(key);
     const el = document.getElementById(key);
     el?.scrollIntoView({ behavior: 'smooth' });
   };
@@ -28,13 +27,9 @@ const NavigatorHeader: React.FC = () => {
           sx={{
             alignItems: 'center',
             width: 1,
-            ['&:hover']: {
-              cursor: 'pointer',
-            },
           }}
-          onClick={() => handleClick(HOME_PAGE_KEY)}
         >
-          <Grid size='grow'>
+          <Grid size='grow' sx={{ cursor: 'pointer' }} onClick={() => handleClick(HOME_PAGE_KEY)}>
             <Typography variant='h6' noWrap component='div' sx={{ m: 2, color: '' }}>
               <span style={{ color: '#000000' }}>ez</span>
               <span style={{ color: '#FF6B1A' }}>B</span>
@@ -51,7 +46,7 @@ const NavigatorHeader: React.FC = () => {
                     mr: 4,
                     position: 'relative',
                     color: '#000000',
-                     
+
                     ['&::after']: {
                       content: '""',
                       position: 'absolute',
@@ -63,7 +58,7 @@ const NavigatorHeader: React.FC = () => {
                       transform: 'scaleX(0)',
                       transition: 'transform 0.3s ease',
                     },
-                     
+
                     ['&:hover::after']: {
                       transform: 'scaleX(1)',
                     },

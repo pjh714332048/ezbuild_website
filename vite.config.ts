@@ -2,9 +2,11 @@ import react from '@vitejs/plugin-react';
 import path from 'path';
 import { defineConfig } from 'vite';
 
+import eslintPlugin from './scripts/vite-eslint-plugin.ts';
+
 // https://vite.dev/config/
 export default defineConfig({
-  plugins: [react()],
+  plugins: [react(), eslintPlugin()],
   resolve: {
     alias: {
       api: path.resolve(import.meta.dirname, 'src/api'),
