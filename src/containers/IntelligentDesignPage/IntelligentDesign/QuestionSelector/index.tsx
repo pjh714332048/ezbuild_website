@@ -1,5 +1,6 @@
 import { useState } from 'react';
 
+import ChevronRight from '@mui/icons-material/ChevronRight';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Stack from '@mui/material/Stack';
@@ -39,7 +40,7 @@ const QuestionSelector: React.FC<QuestionProps> = ({ onModelChange }) => {
   const currentId = history[history.length - 1];
   const currentNode = QUESTION_NODES[currentId];
   const currentStep = history.length;
-  const totalSteps = getMaxDepth(currentId);
+  const totalSteps = getMaxDepth(QUESTION_ROOT_ID);
 
   const handleSelect = (option: QuestionOption) => {
     if (option.next.startsWith(RESULT_PREFIX)) {
@@ -91,23 +92,52 @@ const QuestionSelector: React.FC<QuestionProps> = ({ onModelChange }) => {
       <Typography variant='h3' sx={{ fontWeight: 700, mb: 2, color: '#FFFFFF' }}>
         {currentNode.title}
       </Typography>
-      <Stack spacing={1.5}>
+      <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1.5, width: '100%' }}>
         {currentNode.options.map(option => (
-          <Button
+          <Box
             key={option.label}
-            variant='outlined'
             onClick={() => handleSelect(option)}
-            sx={{ py: 1.25, width: '100%', textTransform: 'none' }}
+            sx={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+              py: 1.25,
+              px: 2,
+              width: '100%',
+              border: '1px solid',
+              borderColor: 'white',
+              borderRadius: 1,
+              bgcolor: 'transparent',
+              color: 'white',
+              cursor: 'pointer',
+              fontFamily: 'inherit',
+              fontSize: 'inherit',
+              ['&:hover']: { borderColor: 'white', bgcolor: 'rgba(255, 255, 255, 0.08)' },
+            }}
           >
-            {option.label}
-          </Button>
+            <Typography sx={{ color: 'white' }}>{option.label}</Typography>
+            <ChevronRight sx={{ color: 'white' }} />
+          </Box>
         ))}
-      </Stack>
+      </Box>
       <Stack direction='row' spacing={1} sx={{ mt: 2 }}>
-        <Button onClick={handleBack} disabled={history.length === 1}>
-          {'Back'}
+        <Button
+          onClick={handleBack}
+          disabled={history.length === 1}
+          sx={{
+            color: 'white',
+            ['&:disabled']: {
+              color: '#3F3F3F',
+              pointerEvents: 'auto',
+              ['&:hover']: { cursor: 'not-allowed' },
+            },
+          }}
+        >
+          {language === 'en' ? 'Back' : '返回'}
         </Button>
-        <Button onClick={handleReset}>{language === 'en' ? 'Start over' : '重新选择'}</Button>
+        <Button onClick={handleReset} sx={{ color: 'white' }}>
+          {language === 'en' ? 'Start over' : '重新选择'}
+        </Button>
       </Stack>
     </Box>
   );

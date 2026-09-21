@@ -1,10 +1,12 @@
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
+import { HOME_PAGE_KEY } from 'models/navigators/HOME_PAGE_KEY';
 
 import HeadTitle from './HeadTitle';
 
 const HomePage: React.FC = () => (
   <Box
+    id={HOME_PAGE_KEY}
     sx={{
       backgroundImage: 'url(/home/home_background.png)',
       backgroundSize: 'cover',

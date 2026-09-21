@@ -5,7 +5,7 @@ import PageSubtitle from 'components/PageSubtitle';
 const IntelligentDesignTitle: React.FC = () => (
   <>
     <PageSubtitle number='02' title='智能设计' />
-    <Grid container sx={{ width: '100%' }}>
+    <Grid container sx={{ width: '100%', mt: 3 }}>
       <Grid size={6}>
         <Typography variant='h2' sx={{ color: '#FFFFFF', fontWeight: 'bold' }}>
           先选择需求，

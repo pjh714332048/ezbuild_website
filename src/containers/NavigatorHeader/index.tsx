@@ -3,6 +3,7 @@ import Button from '@mui/material/Button';
 import Grid from '@mui/material/Grid';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
+import { HOME_PAGE_KEY } from 'models/navigators/HOME_PAGE_KEY';
 import { NAVIGATOR_ITEMS } from 'models/navigators/NAVIGATOR_ITEMS';
 
 import LocaleButton from './LocaleButton';
@@ -22,7 +23,17 @@ const NavigatorHeader: React.FC = () => {
       }}
     >
       <Toolbar>
-        <Grid container sx={{ alignItems: 'center', width: 1 }}>
+        <Grid
+          container
+          sx={{
+            alignItems: 'center',
+            width: 1,
+            ['&:hover']: {
+              cursor: 'pointer',
+            },
+          }}
+          onClick={() => handleClick(HOME_PAGE_KEY)}
+        >
           <Grid size='grow'>
             <Typography variant='h6' noWrap component='div' sx={{ m: 2, color: '' }}>
               <span style={{ color: '#000000' }}>ez</span>
@@ -31,8 +42,7 @@ const NavigatorHeader: React.FC = () => {
             </Typography>
           </Grid>
           <Grid>
-            {Object.keys(NAVIGATOR_ITEMS).map(key => {
-              const item = NAVIGATOR_ITEMS[key];
+            {Object.entries(NAVIGATOR_ITEMS).map(([key, item]) => {
               return (
                 <Button
                   key={item.enLabel}
@@ -41,8 +51,8 @@ const NavigatorHeader: React.FC = () => {
                     mr: 4,
                     position: 'relative',
                     color: '#000000',
-                    // eslint-disable-next-line @typescript-eslint/naming-convention
-                    '&::after': {
+                     
+                    ['&::after']: {
                       content: '""',
                       position: 'absolute',
                       bottom: 0,
@@ -53,8 +63,8 @@ const NavigatorHeader: React.FC = () => {
                       transform: 'scaleX(0)',
                       transition: 'transform 0.3s ease',
                     },
-                    // eslint-disable-next-line @typescript-eslint/naming-convention
-                    '&:hover::after': {
+                     
+                    ['&:hover::after']: {
                       transform: 'scaleX(1)',
                     },
                   }}

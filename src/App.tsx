@@ -1,11 +1,11 @@
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 
 import './App.css';
-import AboutUs from './containers/AboutUs';
-import BusinessCapability from './containers/BusinessCapability';
+import AboutUsPage from './containers/AboutUsPage';
 import HomePage from './containers/HomePage';
-import IntelligentDesign from './containers/IntelligentDesign';
+import IntelligentDesignPage from './containers/IntelligentDesignPage';
 import NavigatorHeader from './containers/NavigatorHeader';
+import ProductPage from './containers/ProductPage';
 
 const theme = createTheme();
 
@@ -14,9 +14,9 @@ const App: React.FC = () => (
   <ThemeProvider theme={theme}>
     <NavigatorHeader />
     <HomePage />
-    <AboutUs />
-    <IntelligentDesign />
-    <BusinessCapability />
+    <AboutUsPage />
+    <IntelligentDesignPage />
+    <ProductPage />
   </ThemeProvider>
 );
 

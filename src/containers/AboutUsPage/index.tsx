@@ -4,7 +4,7 @@ import Grid from '@mui/material/Grid';
 import AboutUsArticle from './AboutUsArticle';
 import DeliveryItems from './DeliveryItems';
 
-const AboutUs: React.FC = () => {
+const AboutUsPage: React.FC = () => {
   return (
     <>
       <Box
@@ -38,4 +38,4 @@ const AboutUs: React.FC = () => {
   );
 };
 
-export default AboutUs;
+export default AboutUsPage;

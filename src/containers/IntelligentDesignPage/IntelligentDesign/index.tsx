@@ -18,6 +18,7 @@ const IntelligentDesign: React.FC = () => {
     setSelectedModelSrc(modelSrc);
     setRenderedModelSrc(null);
   };
+
   return (
     <Box
       id='intelligence_design'
@@ -28,15 +29,41 @@ const IntelligentDesign: React.FC = () => {
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat',
         display: 'flex',
+        background: '#0b1c31',
       }}
     >
-      <Grid container sx={{ background: '#0b1c31', height: '100vh', width: '100vw' }}>
+      <Grid container sx={{ height: '100vh', width: '100vw', mt: 12 }}>
         <Grid size={3} />
         <Grid size={6}>
           <IntelligentDesignTitle />
           <Grid container sx={{ alignItems: 'stretch', minHeight: 0, height: 600 }}>
             <Grid size={4} sx={{ py: 3, display: 'flex', alignItems: 'center' }}>
-              <QuestionSelector onModelChange={handleModelChange} />
+              <Box
+                sx={{
+                  display: 'flex',
+                  flexDirection: 'column',
+                  width: '100%',
+                  gap: 2,
+                }}
+              >
+                <QuestionSelector onModelChange={handleModelChange} />
+                <Button
+                  className='design-btn'
+                  disableElevation
+                  variant='contained'
+                  disabled={!selectedModelSrc}
+                  onClick={() => setRenderedModelSrc(selectedModelSrc)}
+                  sx={{
+                    color: 'white',
+                    backgroundColor: '#007bff',
+                    ['&:disabled']: {
+                      backgroundColor: '#c0c0c',
+                    },
+                  }}
+                >
+                  开始设计
+                </Button>
+              </Box>
             </Grid>
             <Grid size={8} sx={{ py: 3, display: 'flex', flexDirection: 'column', minHeight: 0 }}>
               <Box
@@ -74,15 +101,6 @@ const IntelligentDesign: React.FC = () => {
               </Box>
             </Grid>
           </Grid>
-          <Button
-            className='design-btn'
-            disableElevation
-            variant='contained'
-            disabled={!selectedModelSrc}
-            onClick={() => setRenderedModelSrc(selectedModelSrc)}
-          >
-            开始设计
-          </Button>
         </Grid>
         <Grid size={3} />
       </Grid>
