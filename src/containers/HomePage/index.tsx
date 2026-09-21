@@ -10,7 +10,7 @@ const HomePage: React.FC = () => (
   <Box
     id={HOME_PAGE_KEY}
     sx={{
-      backgroundImage: 'url(/home/hero-modular.jpeg)',
+      backgroundImage: 'url(/home/hero-modular.png)',
       backgroundSize: 'cover',
       backgroundPosition: 'center',
       backgroundRepeat: 'no-repeat',
@@ -30,7 +30,7 @@ const HomePage: React.FC = () => (
             variant='contained'
             endIcon={<ArrowForward />}
             onClick={() => {
-              const el = document.getElementById('intelligent-design');
+              const el = document.getElementById('intelligence_design');
               el?.scrollIntoView({ behavior: 'smooth' });
             }}
             sx={{

@@ -11,6 +11,7 @@ export default defineConfig({
     alias: {
       api: path.resolve(import.meta.dirname, 'src/api'),
       components: path.resolve(import.meta.dirname, 'src/components'),
+      containers: path.resolve(import.meta.dirname, 'src/containers'),
       models: path.resolve(import.meta.dirname, 'src/models'),
       store: path.resolve(import.meta.dirname, 'src/store'),
     },

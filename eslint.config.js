@@ -80,7 +80,8 @@ export default [
           patterns: [
             {
               group: ['../**', '**/../*'],
-              message: '禁止使用 .. 相对路径导入，请使用 api/components/models/store 别名',
+              message:
+                '禁止使用 .. 相对路径导入，请使用 api/components/containers/models/store 别名',
             },
           ],
         },
