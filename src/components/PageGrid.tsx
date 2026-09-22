@@ -11,9 +11,9 @@ const PageGrid: React.FC<PageGridProps> = ({ content, pageBackground }) => (
     spacing={2}
     sx={{ py: { md: 4, lg: 7 }, background: pageBackground || 'FFFFFF94' }}
   >
-    <Grid size={{ md: 2, lg: 2.5 }} />
-    <Grid size={{ md: 8, lg: 7 }}>{content}</Grid>
-    <Grid size={{ md: 2, lg: 2.5 }} />
+    <Grid size={{ md: 2, lg: 2.5 }} sx={{ display: { xs: 'none', sm: 'none', md: 'block' } }} />
+    <Grid size={{ xs: 12, sm: 12, md: 8, lg: 7 }}>{content}</Grid>
+    <Grid size={{ md: 2, lg: 2.5 }} sx={{ display: { xs: 'none', sm: 'none', md: 'block' } }} />
   </Grid>
 );
 

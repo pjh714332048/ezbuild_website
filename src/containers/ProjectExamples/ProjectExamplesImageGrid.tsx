@@ -36,7 +36,7 @@ const ProjectExamplesImageGrid: React.FC<ProjectExamplesImageGridProps> = ({
       <Box
         sx={{
           display: 'grid',
-          gridTemplateColumns: '1fr 1fr',
+          gridTemplateColumns: { xs: '1fr', sm: '1fr 1fr' },
           gap: 1,
           width: '100%',
         }}
@@ -48,7 +48,7 @@ const ProjectExamplesImageGrid: React.FC<ProjectExamplesImageGridProps> = ({
             sx={{
               width: '100%',
               aspectRatio: '16/9',
-              objectFit: 'fill',
+              objectFit: 'cover',
               borderRadius: 1,
               display: 'block',
             }}
@@ -73,7 +73,7 @@ const ProjectExamplesImageGrid: React.FC<ProjectExamplesImageGridProps> = ({
                     sx={{
                       width: '100%',
                       aspectRatio: '16/9',
-                      objectFit: 'fill',
+                      objectFit: 'cover',
                       borderRadius: 1,
                       display: 'block',
                     }}
@@ -89,7 +89,7 @@ const ProjectExamplesImageGrid: React.FC<ProjectExamplesImageGridProps> = ({
       <Box
         sx={{
           display: 'grid',
-          gridTemplateColumns: { md: 'repeat(2, 1fr)', lg: 'repeat(4, 1fr)' },
+          gridTemplateColumns: { xs: 'repeat(2, 1fr)', md: 'repeat(2, 1fr)', lg: 'repeat(4, 1fr)' },
           gap: 1,
           width: '100%',
         }}
@@ -102,7 +102,7 @@ const ProjectExamplesImageGrid: React.FC<ProjectExamplesImageGridProps> = ({
               sx={{
                 width: '100%',
                 aspectRatio: '16/9',
-                objectFit: 'fill',
+                objectFit: 'cover',
                 borderRadius: 1,
                 display: 'block',
               }}

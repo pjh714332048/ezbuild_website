@@ -18,6 +18,8 @@ const theme = createTheme({
     h4: { fontSize: 'clamp(1.25rem, 2vw, 2.125rem)' },
     h5: { fontSize: 'clamp(1.125rem, 1.6vw, 1.5rem)' },
     h6: { fontSize: 'clamp(1rem, 1.2vw, 1.25rem)' },
+    body1: { fontSize: 'clamp(0.875rem, 2.5vw, 1rem)' },
+    body2: { fontSize: 'clamp(0.8125rem, 2vw, 0.875rem)' },
   },
 });
 

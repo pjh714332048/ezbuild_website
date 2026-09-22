@@ -20,7 +20,7 @@ const DeliveryItems: React.FC = () => {
       {deliveryItems.map(item => (
         <Grid
           key={item.value}
-          size='grow'
+          size={{ xs: 6, sm: 3, lg: 'grow' }}
           sx={{
             height: 1,
             justifyContent: 'center',

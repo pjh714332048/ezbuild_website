@@ -18,7 +18,7 @@ const AboutUsArticle: React.FC = () => {
       <PageSubtitle number='01' title='我们是谁' />
       <Box>
         <Grid container sx={{ width: 1 }}>
-          <Grid size='grow'>
+          <Grid size={{ xs: 12, lg: 'grow' }}>
             <Typography
               variant='h1'
               sx={{
@@ -32,7 +32,11 @@ const AboutUsArticle: React.FC = () => {
             </Typography>
             <Typography
               variant='body1'
-              sx={{ my: 4, color: '#555555', fontSize: 'clamp(1.125rem, 1.6vw, 1.5rem)' }}
+              sx={{
+                my: { xs: 2, md: 4 },
+                color: '#555555',
+                fontSize: 'clamp(1.125rem, 1.6vw, 1.5rem)',
+              }}
             >
               ezBuild
               是由清华大学背景团队创立的智能建造企业。我们以模块化设计为核心，整合标准化产品、先进制造、供应链与项目交付能力。
@@ -40,9 +44,9 @@ const AboutUsArticle: React.FC = () => {
             <Typography sx={{ color: '#637080', fontSize: 'clamp(0.95rem, 1.1vw, 1.125rem)' }}>
               我们不只提供建筑产品，更从前期规划一路参与到工厂预制、跨境物流、现场装配与后期运维，让每个环节更透明、更高效、更可控。
             </Typography>
-            <Grid container spacing={2} sx={{ mt: 2 }}>
+            <Grid container spacing={2} sx={{ mt: { xs: 1, md: 2 } }}>
               {articleTags.map(tag => (
-                <Grid key={tag} size={2}>
+                <Grid key={tag} size={{ xs: 6, sm: 3, lg: 2 }}>
                   <Box
                     sx={{
                       border: '1px solid #3f3f3f44',
@@ -58,7 +62,7 @@ const AboutUsArticle: React.FC = () => {
               ))}
             </Grid>
           </Grid>
-          <Grid size='grow'></Grid>
+          <Grid size={{ lg: 'grow' }} sx={{ display: { xs: 'none', lg: 'block' } }}></Grid>
         </Grid>
       </Box>
     </Box>
