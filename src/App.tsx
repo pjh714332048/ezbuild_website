@@ -1,5 +1,6 @@
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import ContactUsPage from 'containers/ContactUsPage';
+import Footer from 'containers/Footer';
 
 import './App.css';
 import AboutUsPage from './containers/AboutUsPage';
@@ -20,6 +21,7 @@ const App: React.FC = () => (
     <ProductPage />
     <ProjectExamples />
     <ContactUsPage />
+    <Footer />
   </ThemeProvider>
 );
 
