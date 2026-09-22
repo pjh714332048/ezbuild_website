@@ -39,7 +39,7 @@ const ContactGrid: React.FC = () => {
       >
         发送项目需求
       </Button>
-      <Typography variant='body1' sx={{ fontSize: 8, color: '#3f3f3f' }}>
+      <Typography variant='body1' sx={{ fontSize: 12, color: '#3f3f3f' }}>
         全球项目合作 · 模块化方案咨询
       </Typography>
     </>

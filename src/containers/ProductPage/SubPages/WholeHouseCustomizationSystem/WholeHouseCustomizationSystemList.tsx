@@ -55,7 +55,7 @@ const WholeHouseCustomizationSystemList: React.FC = () => {
                       borderRight: colOffset === 0 ? '1px solid #FFFFFF1F' : 'none',
                       display: 'flex',
                       alignItems: 'center',
-                      padding: '24px 32px',
+                      padding: 'clamp(12px, 2vw, 24px) clamp(16px, 2.5vw, 32px)',
                       minHeight: 80,
                     }}
                   >
@@ -84,7 +84,7 @@ const WholeHouseCustomizationSystemList: React.FC = () => {
                     <Typography
                       sx={{
                         color: '#FFFFFF59',
-                        fontSize: 22,
+                        fontSize: 'clamp(1rem, 1.4vw, 1.375rem)',
                         fontWeight: 300,
                         ml: 2,
                       }}

@@ -8,7 +8,7 @@ const ContactUsContent: React.FC = () => (
   <>
     <PageSubtitle number='10' title='开启对话' numberColor='#FFFFFF' titleColor='#FFFFFF' />
     <Grid container sx={{ my: 4 }}>
-      <Grid size='grow'>
+      <Grid size={{ md: 5, lg: 'grow' }}>
         <Typography variant='h1' sx={{ color: '#FFFFFF', fontWeight: 'bold' }}>
           下一座建筑，
         </Typography>
@@ -18,8 +18,8 @@ const ContactUsContent: React.FC = () => (
           <span>开始</span>
         </Typography>
       </Grid>
-      <Grid size={2} />
-      <Grid size={4}>
+      <Grid size={{ md: 0.5, lg: 2 }} />
+      <Grid size={{ md: 5.5, lg: 4 }}>
         <ContactGrid />
       </Grid>
     </Grid>

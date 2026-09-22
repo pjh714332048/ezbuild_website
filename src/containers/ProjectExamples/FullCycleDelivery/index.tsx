@@ -32,7 +32,7 @@ const FullCycleDelivery: React.FC = () => (
             <Grid size={7}>
               <Typography
                 sx={{
-                  fontSize: 72,
+                  fontSize: 'clamp(2.25rem, 4.5vw, 4.5rem)',
                   fontWeight: 700,
                   color: '#1A1A2E',
                   lineHeight: 1.15,
@@ -60,7 +60,7 @@ const FullCycleDelivery: React.FC = () => (
             activeStep={timelineSteps.length}
             alternativeLabel
             sx={{
-              mt: 8,
+              mt: { md: 5, lg: 8 },
               px: '5%',
               '& .MuiStepConnector-line': {
                 borderColor: '#C8CDD3',
@@ -132,7 +132,7 @@ const FullCycleDelivery: React.FC = () => (
           {/* Content Card */}
           <Box
             sx={{
-              mt: 8,
+              mt: { md: 5, lg: 8 },
               display: 'flex',
               borderRadius: 2,
               overflow: 'hidden',
@@ -149,7 +149,7 @@ const FullCycleDelivery: React.FC = () => (
               sx={{
                 flex: '0 0 40%',
                 bgcolor: '#0A1628',
-                p: 5,
+                p: { md: 3, lg: 5 },
                 display: 'flex',
                 flexDirection: 'column',
                 justifyContent: 'center',
@@ -167,7 +167,7 @@ const FullCycleDelivery: React.FC = () => (
               </Typography>
               <Typography
                 sx={{
-                  fontSize: 28,
+                  fontSize: 'clamp(1.25rem, 1.8vw, 1.75rem)',
                   fontWeight: 700,
                   color: '#FFFFFF',
                   lineHeight: 1.4,

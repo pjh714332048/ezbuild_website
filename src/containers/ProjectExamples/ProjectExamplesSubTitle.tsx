@@ -17,7 +17,10 @@ const ProjectExamplesSubTitle: React.FC<ProjectExamplesSubTitleProps> = ({
   description,
   imageCount,
 }) => (
-  <Grid container sx={{ flex: 1, minWidth: 0, display: 'flex', alignItems: 'center', py: 4 }}>
+  <Grid
+    container
+    sx={{ flex: 1, minWidth: 0, display: 'flex', alignItems: 'center', py: { md: 2, lg: 4 } }}
+  >
     <Grid size={0.5}>
       <Typography
         variant='h4'
@@ -41,7 +44,12 @@ const ProjectExamplesSubTitle: React.FC<ProjectExamplesSubTitleProps> = ({
         </Typography>
         <Typography
           variant='h2'
-          sx={{ color: '#000', fontSize: 36, fontWeight: 400, flexShrink: 0 }}
+          sx={{
+            color: '#000',
+            fontSize: 'clamp(1.5rem, 2.2vw, 2.25rem)',
+            fontWeight: 400,
+            flexShrink: 0,
+          }}
         >
           {title}
         </Typography>

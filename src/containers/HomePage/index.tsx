@@ -22,10 +22,10 @@ const HomePage: React.FC = () => (
     }}
   >
     <Grid container spacing={2} sx={{ width: '100%' }}>
-      <Grid size={3} />
-      <Grid size={6}>
+      <Grid size={{ md: 2, lg: 3 }} />
+      <Grid size={{ md: 8, lg: 6 }}>
         <HeadTitle />
-        <Box sx={{ display: 'flex', gap: 3, mt: 4, alignItems: 'center' }}>
+        <Box sx={{ display: 'flex', gap: 3, mt: 4, alignItems: 'center', flexWrap: 'wrap' }}>
           <Button
             variant='contained'
             endIcon={<ArrowForward />}
@@ -68,7 +68,7 @@ const HomePage: React.FC = () => (
           </Box>
         </Box>
       </Grid>
-      <Grid size={3} />
+      <Grid size={{ md: 2, lg: 3 }} />
     </Grid>
   </Box>
 );

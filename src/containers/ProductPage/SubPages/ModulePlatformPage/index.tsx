@@ -9,7 +9,7 @@ const ModulePlatformPage: React.FC = () => {
     <>
       <ModulePlatformPageTitle />
       <Grid container spacing={2} sx={{ width: '100%', mt: 5 }}>
-        <Grid size='grow' sx={{ p: 2, background: '#FFFFFF' }}>
+        <Grid size={{ md: 4, lg: 'grow' }} sx={{ p: 2, background: '#FFFFFF' }}>
           <ModulePlatformGridImage badge='01' imageSrc='/module_platform_images/1.webp' />
           <ModulePlatformGridContent
             smallTitle='NOAH'
@@ -19,7 +19,7 @@ const ModulePlatformPage: React.FC = () => {
             numberDescription='目标工期较永久建筑缩短'
           />
         </Grid>
-        <Grid size='grow' sx={{ p: 2, background: '#FFFFFF' }}>
+        <Grid size={{ md: 4, lg: 'grow' }} sx={{ p: 2, background: '#FFFFFF' }}>
           <ModulePlatformGridImage badge='02' imageSrc='/module_platform_images/2.webp' />
           <ModulePlatformGridContent
             smallTitle='HEMUDU'
@@ -29,7 +29,7 @@ const ModulePlatformPage: React.FC = () => {
             numberDescription='天现场装配周期'
           />
         </Grid>
-        <Grid size='grow' sx={{ p: 2, background: '#FFFFFF' }}>
+        <Grid size={{ md: 4, lg: 'grow' }} sx={{ p: 2, background: '#FFFFFF' }}>
           <ModulePlatformGridImage badge='03' imageSrc='/module_platform_images/3.webp' />
           <ModulePlatformGridContent
             smallTitle='PANDORA'

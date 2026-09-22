@@ -30,11 +30,14 @@ const AboutUsArticle: React.FC = () => {
             <Typography variant='h1' sx={{ color: '#E87722', fontWeight: 'bold' }}>
               本地落地。
             </Typography>
-            <Typography variant='body1' sx={{ my: 4, color: '#555555', fontSize: '24px' }}>
+            <Typography
+              variant='body1'
+              sx={{ my: 4, color: '#555555', fontSize: 'clamp(1.125rem, 1.6vw, 1.5rem)' }}
+            >
               ezBuild
               是由清华大学背景团队创立的智能建造企业。我们以模块化设计为核心，整合标准化产品、先进制造、供应链与项目交付能力。
             </Typography>
-            <Typography sx={{ color: '#637080', fontSize: '18px' }}>
+            <Typography sx={{ color: '#637080', fontSize: 'clamp(0.95rem, 1.1vw, 1.125rem)' }}>
               我们不只提供建筑产品，更从前期规划一路参与到工厂预制、跨境物流、现场装配与后期运维，让每个环节更透明、更高效、更可控。
             </Typography>
             <Grid container spacing={2} sx={{ mt: 2 }}>

@@ -20,12 +20,15 @@ const IntelligentDesign: React.FC = () => {
   };
   return (
     <Box>
-      <Grid container sx={{ height: '100vh', width: '100%', pt: 12 }}>
-        <Grid size={3} />
-        <Grid size={6}>
+      <Grid container sx={{ minHeight: '100vh', width: '100%', pt: { md: 8, lg: 12 } }}>
+        <Grid size={{ md: 2, lg: 3 }} />
+        <Grid size={{ md: 8, lg: 6 }}>
           <IntelligentDesignTitle />
-          <Grid container sx={{ alignItems: 'stretch', minHeight: 0, height: 600 }}>
-            <Grid size={4} sx={{ py: 3, display: 'flex', alignItems: 'center' }}>
+          <Grid
+            container
+            sx={{ alignItems: 'stretch', minHeight: 0, height: 'clamp(420px, 42vw, 600px)' }}
+          >
+            <Grid size={{ md: 5, lg: 4 }} sx={{ py: 3, display: 'flex', alignItems: 'center' }}>
               <Box
                 sx={{
                   display: 'flex',
@@ -56,7 +59,10 @@ const IntelligentDesign: React.FC = () => {
                 </Button>
               </Box>
             </Grid>
-            <Grid size={8} sx={{ py: 3, display: 'flex', flexDirection: 'column', minHeight: 0 }}>
+            <Grid
+              size={{ md: 7, lg: 8 }}
+              sx={{ py: 3, display: 'flex', flexDirection: 'column', minHeight: 0 }}
+            >
               <Box
                 className='design-right'
                 sx={{
@@ -106,7 +112,7 @@ const IntelligentDesign: React.FC = () => {
             </Grid>
           </Grid>
         </Grid>
-        <Grid size={3} />
+        <Grid size={{ md: 2, lg: 3 }} />
       </Grid>
     </Box>
   );

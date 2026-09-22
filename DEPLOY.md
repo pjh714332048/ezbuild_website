@@ -2,11 +2,11 @@
 
 ## 服务器信息
 
-| 项目     | 值                     |
-| -------- | ---------------------- |
-| 服务器   | `root@119.45.31.214`   |
-| 部署目录 | `/var/www/website/`    |
-| 访问地址 | `http://119.45.31.214` |
+| 项目     | 值                          |
+| -------- | --------------------------- |
+| 服务器   | `root@119.45.31.214`        |
+| 部署目录 | `/var/www/website/`         |
+| 访问地址 | `http://119.45.31.214:3000` |
 
 ---
 
@@ -55,22 +55,13 @@ apt update && apt install -y nginx
 
 ### 2.3 配置 Nginx
 
-创建 `/etc/nginx/conf.d/website.conf`：
+项目中已包含 Nginx 配置文件 `nginx.conf`，将其上传到服务器：
 
-```nginx
-server {
-    listen 80;
-    server_name _;
-    root /var/www/website;
-    index index.html;
-
-    location / {
-        try_files $uri $uri/ /index.html;
-    }
-}
+```powershell
+scp nginx.conf root@119.45.31.214:/etc/nginx/conf.d/website.conf
 ```
 
-> 如需绑定域名，将域名 A 记录指向 `119.45.31.214` 即可。
+> 如需绑定域名，修改 `nginx.conf` 中的 `server_name` 为域名，并将域名 A 记录指向 `119.45.31.214`。
 
 ### 2.4 启动 Nginx
 
@@ -108,7 +99,7 @@ rsync -avz --progress dist/ root@119.45.31.214:/var/www/website/
 
 ## 4. 访问方式
 
-部署完成后，浏览器访问 `http://119.45.31.214`。
+部署完成后，浏览器访问 `http://119.45.31.214:3000`。
 
 ---
 

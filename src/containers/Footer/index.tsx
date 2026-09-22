@@ -46,7 +46,7 @@ const Footer: React.FC = () => {
               color: '#8899AABB',
               fontSize: 13,
               lineHeight: 1.7,
-              maxWidth: 320,
+              maxWidth: '100%',
             }}
           >
             智能设计与模块化建造综合解决方案提供商

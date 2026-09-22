@@ -45,7 +45,7 @@ const NavigatorHeader: React.FC = () => {
                   key={item.enLabel}
                   onClick={() => handleClick(key)}
                   sx={{
-                    mr: 4,
+                    mr: { md: 2, lg: 4 },
                     position: 'relative',
                     color: '#000000',
 

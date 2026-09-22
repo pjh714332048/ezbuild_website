@@ -25,14 +25,14 @@ const CapabilityListItem: React.FC<CapabilityListItemProps> = ({
         flexDirection: 'row',
         alignItems: 'center',
         gap: 3,
-        p: 5,
+        p: { md: 3, lg: 5 },
         borderTop: '1px solid #2D2D2D',
         transition: 'padding 0.3s ease',
       },
       isLastItem && { borderBottom: '1px solid #2D2D2D' },
       {
         ['&:hover']: {
-          py: 7,
+          py: { md: 4, lg: 7 },
           background: '#FFFFFF11',
           ['& .capability-icon-btn']: {
             border: '1px solid #FF6B1A',

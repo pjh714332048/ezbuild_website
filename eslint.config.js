@@ -6,7 +6,15 @@ import tseslint from 'typescript-eslint';
 
 export default [
   // 全局忽略
-  { ignores: ['dist', 'scripts'] },
+  {
+    ignores: [
+      'dist',
+      'scripts',
+      // VS Code ESLint 扩展对 css/html 显式执行 lint 时，无匹配配置会报 "File ignored" 警告
+      '**/*.css',
+      '**/*.html',
+    ],
+  },
 
   // 基础推荐规则
   js.configs.recommended,
