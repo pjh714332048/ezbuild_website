@@ -15,18 +15,24 @@ const BusinessCapability: React.FC = () => (
       backgroundPosition: 'center',
       backgroundRepeat: 'no-repeat',
       display: 'flex',
-      py: { md: 6, lg: 10 },
+      py: { xs: 3, md: 6, lg: 10 },
     }}
   >
-    <Grid container sx={{ width: '100%', mt: { md: 8, lg: 12 } }}>
-      <Grid size={{ md: 2, lg: 3 }} />
-      <Grid size={{ md: 8, lg: 6 }}>
+    <Grid container sx={{ width: '100%', mt: { xs: 4, md: 8, lg: 12 } }}>
+      <Grid
+        size={{ xs: 12, md: 2, lg: 3 }}
+        sx={{ display: { xs: 'none', sm: 'none', md: 'block' } }}
+      />
+      <Grid size={{ xs: 12, sm: 12, md: 8, lg: 6 }}>
         <BusinessCapabilityTitle />
         <Divider />
         <CapabilityList />
         <BusinessCapabilityFooter />
       </Grid>
-      <Grid size={{ md: 2, lg: 3 }} />
+      <Grid
+        size={{ xs: 12, md: 2, lg: 3 }}
+        sx={{ display: { xs: 'none', sm: 'none', md: 'block' } }}
+      />
     </Grid>
   </Box>
 );

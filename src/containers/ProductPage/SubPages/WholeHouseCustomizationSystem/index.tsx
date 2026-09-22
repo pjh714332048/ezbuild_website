@@ -11,7 +11,7 @@ const WholeHouseCustomizationSystem = () => {
   return (
     <Box sx={{ py: 10 }}>
       <Grid container sx={{ alignItems: 'stretch' }}>
-        <Grid size='grow'>
+        <Grid size={{ xs: 12, md: 'grow' }}>
           <PageSubtitle number='05' title='全屋选装系统' />
           <Typography variant='h2' sx={{ color: '#FFFFFF', mt: 3 }}>
             从结构到软装，
@@ -45,8 +45,8 @@ const WholeHouseCustomizationSystem = () => {
             </Box>
           </Box>
         </Grid>
-        <Grid size={1} />
-        <Grid size='grow' sx={{ display: 'flex', flexDirection: 'column' }}>
+        <Grid size={{ md: 1 }} sx={{ display: { xs: 'none', md: 'block' } }} />
+        <Grid size={{ xs: 12, md: 'grow' }} sx={{ display: 'flex', flexDirection: 'column' }}>
           <WholeHouseCustomizationSystemList />
         </Grid>
       </Grid>
