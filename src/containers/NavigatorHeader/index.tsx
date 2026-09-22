@@ -162,8 +162,8 @@ const NavigatorHeader: React.FC = () => {
                 primary={item.cnLabel}
                 secondary={item.enLabel}
                 slotProps={{
-                  primary: { fontSize: '1rem', fontWeight: 500, color: '#000000DE' },
-                  secondary: { fontSize: '0.75rem', color: '#00000099' },
+                  primary: { sx: { fontSize: '1rem', fontWeight: 500, color: '#000000DE' } },
+                  secondary: { sx: { fontSize: '0.75rem', color: '#00000099' } },
                 }}
               />
             </ListItemButton>

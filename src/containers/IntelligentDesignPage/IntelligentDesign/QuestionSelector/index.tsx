@@ -135,9 +135,11 @@ const QuestionSelector: React.FC<QuestionProps> = ({ onModelChange }) => {
         >
           {language === 'en' ? 'Back' : '返回'}
         </Button>
-        <Button onClick={handleReset} sx={{ color: 'white' }}>
-          {language === 'en' ? 'Start over' : '重新选择'}
-        </Button>
+        {currentStep > 1 && (
+          <Button onClick={handleReset} sx={{ color: 'white' }}>
+            {language === 'en' ? 'Start over' : '重新选择'}
+          </Button>
+        )}
       </Stack>
     </Box>
   );
