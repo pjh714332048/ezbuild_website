@@ -12,11 +12,8 @@ const AmericanProject: React.FC = () => (
       imageCount={3}
     />
     <ProjectExamplesImageGrid
-      leftBigImageSrc='/project_examples/american/p62.webp'
-      rightSmallImagesSrc={[
-        '/project_examples/american/p63.webp',
-        '/project_examples/american/p64.webp',
-      ]}
+      leftBigImageSrc='/project_examples/america/1.webp'
+      rightSmallImagesSrc={['/project_examples/america/2.webp', '/project_examples/america/3.webp']}
     />
   </Box>
 );

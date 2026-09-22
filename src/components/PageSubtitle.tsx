@@ -3,17 +3,20 @@ import Typography from '@mui/material/Typography';
 
 interface PageSubtitleProps {
   number: string;
+  numberColor?: string;
   title: string;
+  titleColor?: string;
 }
 
-const PageSubtitle: React.FC<PageSubtitleProps> = ({ number, title }) => (
+const PageSubtitle: React.FC<PageSubtitleProps> = ({ number, numberColor, title, titleColor }) => (
   <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
     <Box
       sx={{
         width: 36,
         height: 36,
         borderRadius: '50%',
-        border: '2px solid #FF6B1A',
+        border: '2px solid',
+        borderColor: numberColor || '#FF6B1A',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
@@ -22,7 +25,7 @@ const PageSubtitle: React.FC<PageSubtitleProps> = ({ number, title }) => (
     >
       <Typography
         sx={{
-          color: '#FF6B1A',
+          color: numberColor || '#FF6B1A',
           fontWeight: 700,
           fontSize: 12,
           lineHeight: 1,
@@ -33,7 +36,7 @@ const PageSubtitle: React.FC<PageSubtitleProps> = ({ number, title }) => (
     </Box>
     <Typography
       sx={{
-        color: '#637080',
+        color: titleColor || '#637080',
         fontSize: 18,
         fontWeight: 500,
         lineHeight: 1.2,

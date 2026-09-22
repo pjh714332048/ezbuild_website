@@ -45,7 +45,10 @@ const IntelligentDesign: React.FC = () => {
                     color: 'white',
                     backgroundColor: '#007bff',
                     ['&:disabled']: {
-                      backgroundColor: '#c0c0c',
+                      backgroundColor: '#3f3f3f',
+                      color: '#f3f3f3',
+                      cursor: 'not-allowed',
+                      pointerEvents: 'auto',
                     },
                   }}
                 >
@@ -81,10 +84,23 @@ const IntelligentDesign: React.FC = () => {
                     />
                   </Suspense>
                 ) : (
-                  <>
-                    {/* <img src={DESIGN_BG.src} alt={DESIGN_BG.alt} className='design-bg-img' /> */}
+                  <Box
+                    sx={{
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      flexGrow: 1,
+                      minHeight: 0,
+                    }}
+                  >
+                    <img
+                      src='/intelligent_design/p68.webp'
+                      alt='design background'
+                      className='design-bg-img'
+                      style={{ maxWidth: '100%' }}
+                    />
                     <Box className='design-overlay' />
-                  </>
+                  </Box>
                 )}
               </Box>
             </Grid>

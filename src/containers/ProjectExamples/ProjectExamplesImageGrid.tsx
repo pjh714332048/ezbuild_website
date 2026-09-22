@@ -19,7 +19,7 @@ const ProjectExamplesImageGrid: React.FC<ProjectExamplesImageGridProps> = ({
     px: 1,
     py: 0.5,
     borderRadius: 1,
-    bgcolor: 'rgba(0, 0, 0, 0.6)',
+    bgcolor: '#00000099',
     color: 'common.white',
     fontSize: 14,
   } as const;

@@ -1,8 +1,8 @@
 import AppBar from '@mui/material/AppBar';
+import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Grid from '@mui/material/Grid';
 import Toolbar from '@mui/material/Toolbar';
-import Typography from '@mui/material/Typography';
 import { HOME_PAGE_KEY } from 'models/navigators/HOME_PAGE_KEY';
 import { NAVIGATOR_ITEMS } from 'models/navigators/NAVIGATOR_ITEMS';
 
@@ -29,12 +29,14 @@ const NavigatorHeader: React.FC = () => {
             width: 1,
           }}
         >
-          <Grid size='grow' sx={{ cursor: 'pointer' }} onClick={() => handleClick(HOME_PAGE_KEY)}>
-            <Typography variant='h6' noWrap component='div' sx={{ m: 2, color: '' }}>
-              <span style={{ color: '#000000' }}>ez</span>
-              <span style={{ color: '#FF6B1A' }}>B</span>
-              <span style={{ color: '#000000' }}>uild.ai</span>
-            </Typography>
+          <Grid size='grow'>
+            <Box
+              component='img'
+              src='/ezbuild-ai-logo-transparent.svg'
+              alt='ezBuild.ai'
+              sx={{ m: 2, height: 32, display: 'block', cursor: 'pointer' }}
+              onClick={() => handleClick(HOME_PAGE_KEY)}
+            />
           </Grid>
           <Grid>
             {Object.entries(NAVIGATOR_ITEMS).map(([key, item]) => {

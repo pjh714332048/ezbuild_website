@@ -112,7 +112,7 @@ const QuestionSelector: React.FC<QuestionProps> = ({ onModelChange }) => {
               cursor: 'pointer',
               fontFamily: 'inherit',
               fontSize: 'inherit',
-              ['&:hover']: { borderColor: 'white', bgcolor: 'rgba(255, 255, 255, 0.08)' },
+              ['&:hover']: { borderColor: 'white', bgcolor: '#FFFFFF14' },
             }}
           >
             <Typography sx={{ color: 'white' }}>{option.label}</Typography>

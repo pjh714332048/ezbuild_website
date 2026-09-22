@@ -27,7 +27,7 @@ const WholeHouseCustomizationSystemList: React.FC = () => {
         width: '100%',
         height: '100%',
         bgcolor: '#0a3d4a',
-        border: '1px solid rgba(255,255,255,0.12)',
+        border: '1px solid #FFFFFF1F',
         display: 'flex',
         flexDirection: 'column',
       }}
@@ -41,7 +41,7 @@ const WholeHouseCustomizationSystemList: React.FC = () => {
               key={index}
               sx={{
                 flex: 1,
-                borderTop: index > 0 ? '1px solid rgba(255,255,255,0.12)' : 'none',
+                borderTop: index > 0 ? '1px solid #FFFFFF1F' : 'none',
               }}
             >
               {[0, 1].map(colOffset => {
@@ -52,7 +52,7 @@ const WholeHouseCustomizationSystemList: React.FC = () => {
                     size={6}
                     key={item.number}
                     sx={{
-                      borderRight: colOffset === 0 ? '1px solid rgba(255,255,255,0.12)' : 'none',
+                      borderRight: colOffset === 0 ? '1px solid #FFFFFF1F' : 'none',
                       display: 'flex',
                       alignItems: 'center',
                       padding: '24px 32px',
@@ -83,7 +83,7 @@ const WholeHouseCustomizationSystemList: React.FC = () => {
                     </Typography>
                     <Typography
                       sx={{
-                        color: 'rgba(255,255,255,0.35)',
+                        color: '#FFFFFF59',
                         fontSize: 22,
                         fontWeight: 300,
                         ml: 2,

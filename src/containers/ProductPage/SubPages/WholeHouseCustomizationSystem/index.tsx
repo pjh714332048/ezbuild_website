@@ -38,7 +38,7 @@ const WholeHouseCustomizationSystem = () => {
                 sx={{
                   width: '100%',
                   height: '1px',
-                  backgroundColor: 'rgba(255,255,255,0.5)',
+                  backgroundColor: '#FFFFFF80',
                   mt: 0.5,
                 }}
               />

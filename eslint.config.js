@@ -29,6 +29,11 @@ export default [
         {
           selector: 'objectLiteralProperty',
           format: ['camelCase'],
+          filter: {
+            // Allow MUI sx nested selectors like '& .MuiStepConnector-line'
+            regex: '^&\\s|Mui[A-Z]|\\.[A-Z]',
+            match: false,
+          },
         },
         // 导出的 interface / type 必须 PascalCase
         {
