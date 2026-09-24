@@ -16,15 +16,13 @@ const deliveryItems: DeliveryItem[] = [
 
 const DeliveryItems: React.FC = () => {
   return (
-    <Grid container sx={{ width: 1, height: 1, justifyContent: 'center', alignItems: 'center' }}>
+    <Grid container sx={{ width: 1, height: 1, alignItems: 'center' }}>
       {deliveryItems.map(item => (
         <Grid
           key={item.value}
           size={{ xs: 6, sm: 3, lg: 'grow' }}
           sx={{
             height: 1,
-            justifyContent: 'center',
-            alignItems: 'center',
             border: '1px solid #3f3f3f44',
             p: 1,
             textAlign: 'left',

@@ -1,4 +1,4 @@
-import Box from '@mui/material/Box';
+import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 
 interface MarketItem {
@@ -20,12 +20,13 @@ const marketData: MarketItem[] = [
 ];
 
 const GlobalNetsTable: React.FC = () => (
-  <Box sx={{ display: 'flex', flexDirection: 'column', flexGrow: 1, minHeight: 0, width: '100%' }}>
+  <Grid container sx={{ width: '100%', minHeight: 0 }}>
     {marketData.map(item => (
-      <Box
+      <Grid
+        container
+        size={12}
         key={item.number}
         sx={{
-          display: 'flex',
           alignItems: 'center',
           py: 2,
           px: 2.5,
@@ -35,19 +36,19 @@ const GlobalNetsTable: React.FC = () => (
           ['&:last-child']: { borderBottom: '1px solid #3f3f3f' },
         }}
       >
-        <Typography
-          variant='body2'
-          sx={{
-            color: '#FF6B1A',
-            fontWeight: 600,
-            fontFamily: '"Courier New", Courier, monospace',
-            minWidth: 32,
-            mr: 2,
-          }}
-        >
-          {item.number}
-        </Typography>
-        <Box sx={{ flex: 1 }}>
+        <Grid size='auto' sx={{ minWidth: 32, mr: 2 }}>
+          <Typography
+            variant='body2'
+            sx={{
+              color: '#FF6B1A',
+              fontWeight: 600,
+              fontFamily: '"Courier New", Courier, monospace',
+            }}
+          >
+            {item.number}
+          </Typography>
+        </Grid>
+        <Grid size='grow'>
           <Typography
             variant='body1'
             sx={{
@@ -68,10 +69,10 @@ const GlobalNetsTable: React.FC = () => (
           >
             {item.description}
           </Typography>
-        </Box>
-      </Box>
+        </Grid>
+      </Grid>
     ))}
-  </Box>
+  </Grid>
 );
 
 export default GlobalNetsTable;

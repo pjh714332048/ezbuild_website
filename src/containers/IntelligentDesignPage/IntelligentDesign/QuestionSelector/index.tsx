@@ -3,6 +3,7 @@ import { useState } from 'react';
 import ChevronRight from '@mui/icons-material/ChevronRight';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
+import Grid from '@mui/material/Grid';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
 import { QUESTION_NODES } from 'models/question/QUESTION_NODES';
@@ -65,19 +66,19 @@ const QuestionSelector: React.FC<QuestionProps> = ({ onModelChange }) => {
   return (
     <Box sx={{ width: '100%' }}>
       <Box sx={{ mb: 3 }}>
-        <Box sx={{ display: 'flex', gap: 1, mb: 1 }}>
+        <Grid container sx={{ gap: 1, mb: 1 }}>
           {Array.from({ length: totalSteps }, (_, i) => (
-            <Box
+            <Grid
               key={i}
+              size='grow'
               sx={{
-                flex: 1,
                 height: 3,
                 borderRadius: 1,
                 bgcolor: i < currentStep ? '#FF6B1A' : '#4A5568',
               }}
             />
           ))}
-        </Box>
+        </Grid>
         <Typography
           sx={{
             color: '#FF6B1A',
@@ -92,15 +93,15 @@ const QuestionSelector: React.FC<QuestionProps> = ({ onModelChange }) => {
       <Typography variant='h3' sx={{ fontWeight: 700, mb: 2, color: '#FFFFFF' }}>
         {currentNode.title}
       </Typography>
-      <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1.5, width: '100%' }}>
+      <Grid container sx={{ gap: 1.5, width: '100%' }}>
         {currentNode.options.map(option => (
-          <Box
+          <Grid
             key={option.label}
+            container
+            size={12}
             onClick={() => handleSelect(option)}
             sx={{
-              display: 'flex',
               alignItems: 'center',
-              justifyContent: 'space-between',
               py: 1.25,
               px: 2,
               width: '100%',
@@ -115,11 +116,13 @@ const QuestionSelector: React.FC<QuestionProps> = ({ onModelChange }) => {
               ['&:hover']: { borderColor: 'white', bgcolor: '#FFFFFF14' },
             }}
           >
-            <Typography sx={{ color: 'white' }}>{option.label}</Typography>
+            <Grid size='grow'>
+              <Typography sx={{ color: 'white' }}>{option.label}</Typography>
+            </Grid>
             <ChevronRight sx={{ color: 'white' }} />
-          </Box>
+          </Grid>
         ))}
-      </Box>
+      </Grid>
       <Stack direction='row' spacing={1} sx={{ mt: 2 }}>
         <Button
           onClick={handleBack}

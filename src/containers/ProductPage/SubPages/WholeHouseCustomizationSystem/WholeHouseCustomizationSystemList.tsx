@@ -1,6 +1,5 @@
 import React from 'react';
 
-import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 
@@ -22,14 +21,13 @@ const systemItems: SystemItem[] = [
 
 const WholeHouseCustomizationSystemList: React.FC = () => {
   return (
-    <Box
+    <Grid
+      container
       sx={{
         width: '100%',
         height: '100%',
         bgcolor: '#0a3d4a',
         border: '1px solid #FFFFFF1F',
-        display: 'flex',
-        flexDirection: 'column',
       }}
     >
       {systemItems.reduce<React.ReactNode[]>((rows, _item, index) => {
@@ -40,7 +38,6 @@ const WholeHouseCustomizationSystemList: React.FC = () => {
               size={12}
               key={index}
               sx={{
-                flex: 1,
                 borderTop: index > 0 ? '1px solid #FFFFFF1F' : 'none',
               }}
             >
@@ -50,47 +47,49 @@ const WholeHouseCustomizationSystemList: React.FC = () => {
                 return (
                   <Grid
                     size={6}
+                    container
                     key={item.number}
                     sx={{
                       borderRight: colOffset === 0 ? '1px solid #FFFFFF1F' : 'none',
-                      display: 'flex',
                       alignItems: 'center',
                       padding: 'clamp(12px, 2vw, 24px) clamp(16px, 2.5vw, 32px)',
                       minHeight: 80,
                     }}
                   >
-                    <Typography
-                      variant='body2'
-                      sx={{
-                        color: '#c8a84e',
-                        fontWeight: 400,
-                        minWidth: 28,
-                        mr: 3,
-                        fontSize: 14,
-                      }}
-                    >
-                      {item.number}
-                    </Typography>
-                    <Typography
-                      sx={{
-                        color: '#ffffff',
-                        fontSize: 18,
-                        fontWeight: 500,
-                        flexGrow: 1,
-                      }}
-                    >
-                      {item.title}
-                    </Typography>
-                    <Typography
-                      sx={{
-                        color: '#FFFFFF59',
-                        fontSize: 'clamp(1rem, 1.4vw, 1.375rem)',
-                        fontWeight: 300,
-                        ml: 2,
-                      }}
-                    >
-                      +
-                    </Typography>
+                    <Grid size='auto' sx={{ minWidth: 28, mr: 3 }}>
+                      <Typography
+                        variant='body2'
+                        sx={{
+                          color: '#c8a84e',
+                          fontWeight: 400,
+                          fontSize: 14,
+                        }}
+                      >
+                        {item.number}
+                      </Typography>
+                    </Grid>
+                    <Grid size='grow'>
+                      <Typography
+                        sx={{
+                          color: '#ffffff',
+                          fontSize: 18,
+                          fontWeight: 500,
+                        }}
+                      >
+                        {item.title}
+                      </Typography>
+                    </Grid>
+                    <Grid size='auto' sx={{ ml: 2 }}>
+                      <Typography
+                        sx={{
+                          color: '#FFFFFF59',
+                          fontSize: 'clamp(1rem, 1.4vw, 1.375rem)',
+                          fontWeight: 300,
+                        }}
+                      >
+                        +
+                      </Typography>
+                    </Grid>
                   </Grid>
                 );
               })}
@@ -99,7 +98,7 @@ const WholeHouseCustomizationSystemList: React.FC = () => {
         }
         return rows;
       }, [])}
-    </Box>
+    </Grid>
   );
 };
 

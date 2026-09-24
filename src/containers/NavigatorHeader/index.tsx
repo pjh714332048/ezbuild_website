@@ -62,7 +62,7 @@ const NavigatorHeader: React.FC = () => {
               />
             </Grid>
             {isMobile ? (
-              <Grid sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+              <Grid container sx={{ alignItems: 'center', gap: 1 }}>
                 <LocaleButton />
                 <IconButton
                   edge='end'
@@ -124,24 +124,19 @@ const NavigatorHeader: React.FC = () => {
           },
         }}
       >
-        <Box
-          sx={{
-            pt: 2,
-            pb: 1,
-            px: 2,
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'space-between',
-          }}
-        >
-          <Box
-            component='img'
-            src='/ezbuild-ai-logo-transparent.svg'
-            alt='ezBuild.ai'
-            sx={{ height: 28, display: 'block' }}
-          />
-          <LocaleButton />
-        </Box>
+        <Grid container sx={{ pt: 2, pb: 1, px: 2, alignItems: 'center' }}>
+          <Grid size='auto'>
+            <Box
+              component='img'
+              src='/ezbuild-ai-logo-transparent.svg'
+              alt='ezBuild.ai'
+              sx={{ height: 28, display: 'block' }}
+            />
+          </Grid>
+          <Grid size='auto' offset='auto'>
+            <LocaleButton />
+          </Grid>
+        </Grid>
         <Divider sx={{ mx: 2, borderColor: '#0000001A' }} />
         <List sx={{ pt: 1 }}>
           {Object.entries(NAVIGATOR_ITEMS).map(([key, item]) => (

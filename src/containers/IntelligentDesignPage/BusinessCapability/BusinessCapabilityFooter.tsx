@@ -16,10 +16,11 @@ const BusinessCapabilityFooter: React.FC = () => (
       </Box>
     </Grid>
     <Grid>
-      <Box sx={{ display: 'flex', flexDirection: 'row', gap: 1, flexWrap: 'wrap' }}>
+      <Grid container sx={{ gap: 1 }}>
         {CapabilityTags.map(tag => (
-          <Box
+          <Grid
             key={tag}
+            size='auto'
             sx={{
               p: 1,
               backgroundColor: 'transparent',
@@ -30,9 +31,9 @@ const BusinessCapabilityFooter: React.FC = () => (
             }}
           >
             {tag}
-          </Box>
+          </Grid>
         ))}
-      </Box>
+      </Grid>
     </Grid>
   </Grid>
 );

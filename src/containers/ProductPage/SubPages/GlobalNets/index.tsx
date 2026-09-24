@@ -18,10 +18,7 @@ const GlobalNets: React.FC = () => (
         </Typography>
       </Grid>
       <Grid size={{ md: 1 }} sx={{ display: { xs: 'none', md: 'block' } }} />
-      <Grid
-        size={{ xs: 12, md: 'grow' }}
-        sx={{ display: 'flex', alignItems: 'flex-end', color: '#52616B' }}
-      >
+      <Grid size={{ xs: 12, md: 'grow' }} sx={{ alignSelf: 'flex-end', color: '#52616B' }}>
         成熟制造能力与当地建筑、审批、施工资源协同，让方案真正适配法规、气候、场地与运营需求。海外项目已覆盖亚洲、美洲、欧洲与澳洲。
       </Grid>
     </Grid>

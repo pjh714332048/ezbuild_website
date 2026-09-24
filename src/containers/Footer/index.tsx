@@ -54,8 +54,8 @@ const Footer: React.FC = () => {
         </Grid>
 
         <Grid size={{ xs: 12, md: 7 }}>
-          <Grid container spacing={2} sx={{ justifyContent: 'flex-end' }}>
-            <Grid size={{ xs: 6, sm: 3 }}>
+          <Grid container spacing={2}>
+            <Grid size={{ xs: 6, sm: 3 }} offset='auto'>
               <Typography
                 sx={{
                   color: '#8899AAFF',
@@ -68,9 +68,9 @@ const Footer: React.FC = () => {
               >
                 浏览
               </Typography>
-              <Grid container spacing={1.5} sx={{ flexDirection: 'column' }}>
+              <Grid container spacing={1.5}>
                 {footerLinks.map(link => (
-                  <Grid key={link.key}>
+                  <Grid key={link.key} size={12}>
                     <Link
                       component='button'
                       type='button'
@@ -105,8 +105,8 @@ const Footer: React.FC = () => {
               >
                 联系
               </Typography>
-              <Grid container spacing={1.5} sx={{ flexDirection: 'column' }}>
-                <Grid>
+              <Grid container spacing={1.5}>
+                <Grid size={12}>
                   <Link
                     href='mailto:mkt@ezbuild.design'
                     underline='none'
@@ -120,7 +120,7 @@ const Footer: React.FC = () => {
                     mkt@ezbuild.design
                   </Link>
                 </Grid>
-                <Grid>
+                <Grid size={12}>
                   <Link
                     href='tel:+8615800877849'
                     underline='none'
@@ -134,7 +134,7 @@ const Footer: React.FC = () => {
                     +86 15800877849
                   </Link>
                 </Grid>
-                <Grid>
+                <Grid size={12}>
                   <Link
                     component='button'
                     type='button'

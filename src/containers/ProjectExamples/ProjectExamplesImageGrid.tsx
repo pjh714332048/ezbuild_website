@@ -1,4 +1,5 @@
 import Box from '@mui/material/Box';
+import Grid from '@mui/material/Grid';
 
 interface ProjectExamplesImageGridProps {
   leftBigImageSrc: string;
@@ -25,15 +26,9 @@ const ProjectExamplesImageGrid: React.FC<ProjectExamplesImageGridProps> = ({
   } as const;
 
   return (
-    <Box
-      sx={{
-        display: 'flex',
-        flexDirection: 'column',
-        gap: 1,
-        width: '100%',
-      }}
-    >
-      <Box
+    <Grid container rowSpacing={1} sx={{ width: '100%' }}>
+      <Grid
+        size={12}
         sx={{
           display: 'grid',
           gridTemplateColumns: { xs: '1fr', sm: '1fr 1fr' },
@@ -83,10 +78,11 @@ const ProjectExamplesImageGrid: React.FC<ProjectExamplesImageGridProps> = ({
               ),
           )}
         </Box>
-      </Box>
+      </Grid>
 
       {/* 底部 1x4 小图格子 */}
-      <Box
+      <Grid
+        size={12}
         sx={{
           display: 'grid',
           gridTemplateColumns: { xs: 'repeat(2, 1fr)', md: 'repeat(2, 1fr)', lg: 'repeat(4, 1fr)' },
@@ -110,8 +106,8 @@ const ProjectExamplesImageGrid: React.FC<ProjectExamplesImageGridProps> = ({
             <Box sx={badgeSx}>{String(i + 6).padStart(2, '0')}</Box>
           </Box>
         ))}
-      </Box>
-    </Box>
+      </Grid>
+    </Grid>
   );
 };
 

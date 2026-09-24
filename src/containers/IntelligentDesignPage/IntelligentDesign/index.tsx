@@ -34,18 +34,14 @@ const IntelligentDesign: React.FC = () => {
             sx={{ alignItems: 'stretch', minHeight: 0, height: 'clamp(280px, 42vw, 600px)' }}
           >
             <Grid
+              container
               size={{ xs: 12, md: 5, lg: 4 }}
-              sx={{ py: 3, display: 'flex', alignItems: 'center' }}
+              sx={{ py: 3, alignItems: 'center', gap: 2 }}
             >
-              <Box
-                sx={{
-                  display: 'flex',
-                  flexDirection: 'column',
-                  width: '100%',
-                  gap: 2,
-                }}
-              >
+              <Grid size={12}>
                 <QuestionSelector onModelChange={handleModelChange} />
+              </Grid>
+              <Grid size={12}>
                 <Button
                   className='design-btn'
                   disableElevation
@@ -53,6 +49,7 @@ const IntelligentDesign: React.FC = () => {
                   disabled={!selectedModelSrc}
                   onClick={() => setRenderedModelSrc(selectedModelSrc)}
                   sx={{
+                    width: '100%',
                     color: 'white',
                     backgroundColor: '#007bff',
                     ['&:disabled']: {
@@ -65,83 +62,81 @@ const IntelligentDesign: React.FC = () => {
                 >
                   开始设计
                 </Button>
-              </Box>
+              </Grid>
             </Grid>
-            <Grid
-              size={{ xs: 12, md: 7, lg: 8 }}
-              sx={{ py: 3, display: 'flex', flexDirection: 'column', minHeight: 0, height: '100%' }}
-            >
-              <Box
+            <Grid size={{ xs: 12, md: 7, lg: 8 }} sx={{ py: 3, minHeight: 0, height: '100%' }}>
+              <Grid
+                container
                 className='design-right'
                 sx={{
-                  flexGrow: 1,
-                  height: '100%',
                   width: '100%',
+                  height: '100%',
                   minHeight: 0,
-                  display: 'flex',
-                  flexDirection: 'column',
                   mx: 2,
                 }}
               >
-                {renderedModelSrc ? (
-                  <Suspense
-                    fallback={
-                      <Box sx={{ display: 'grid', placeItems: 'center', width: '100%' }}>
-                        <CircularProgress aria-label='Loading model' />
-                      </Box>
-                    }
-                  >
-                    <ModelRenderer
-                      key={renderedModelSrc}
-                      src={renderedModelSrc}
-                      height='100%'
-                      background='#fff'
-                    />
-                  </Suspense>
-                ) : (
-                  <Box
-                    sx={{
-                      width: '100%',
-                      height: '100%',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      minHeight: 0,
-                    }}
-                  >
-                    <Box
+                <Grid size={12} sx={{ height: '100%', minHeight: 0 }}>
+                  {renderedModelSrc ? (
+                    <Suspense
+                      fallback={
+                        <Box sx={{ display: 'grid', placeItems: 'center', width: '100%' }}>
+                          <CircularProgress aria-label='Loading model' />
+                        </Box>
+                      }
+                    >
+                      <ModelRenderer
+                        key={renderedModelSrc}
+                        src={renderedModelSrc}
+                        height='100%'
+                        background='#fff'
+                      />
+                    </Suspense>
+                  ) : (
+                    <Grid
+                      container
                       sx={{
-                        position: 'relative',
-                        maxWidth: '100%',
-                        maxHeight: '100%',
-                        display: 'inline-block',
+                        width: '100%',
+                        height: '100%',
+                        minHeight: 0,
+                        alignItems: 'center',
                       }}
                     >
-                      <img
-                        src={designBgSrc}
-                        alt='design background'
-                        className='design-bg-img'
-                        style={{
-                          display: 'block',
+                      <Grid size='grow' />
+                      <Box
+                        sx={{
+                          position: 'relative',
                           maxWidth: '100%',
                           maxHeight: '100%',
-                          width: 'auto',
-                          height: 'auto',
+                          display: 'inline-block',
                         }}
-                      />
-                      <Box
-                        className='design-overlay'
-                        sx={{
-                          position: 'absolute',
-                          inset: 0,
-                          background: '#FFFFFF88',
-                          pointerEvents: 'none',
-                        }}
-                      />
-                    </Box>
-                  </Box>
-                )}
-              </Box>
+                      >
+                        <img
+                          src={designBgSrc}
+                          alt='design background'
+                          className='design-bg-img'
+                          style={{
+                            display: 'block',
+                            maxWidth: '100%',
+                            maxHeight: '100%',
+                            width: 'auto',
+                            height: 'auto',
+                          }}
+                        />
+                        <Box
+                          className='design-overlay'
+                          sx={{
+                            position: 'absolute',
+                            inset: 0,
+                            background: '#FFFFFF88',
+                            pointerEvents: 'none',
+                          }}
+                        />
+                      </Box>
+                      <Grid size='grow' />
+                    </Grid>
+                  )}
+                </Grid>
+              </Grid>
             </Grid>
           </Grid>
         </Grid>

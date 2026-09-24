@@ -14,7 +14,6 @@ const AboutUsPage: React.FC = () => {
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           backgroundRepeat: 'no-repeat',
-          display: 'flex',
         }}
       >
         <Grid
@@ -28,15 +27,15 @@ const AboutUsPage: React.FC = () => {
           <Grid size={{ md: 2, lg: 3 }} sx={{ border: '1px solid #3f3f3f44' }} />
         </Grid>
       </Box>
-      <Box sx={{ display: 'flex', alignItems: 'center' }}>
-        <Grid container sx={{ background: '#FFFFFF', minHeight: '70vh', width: 1 }}>
+      <Grid container sx={{ alignItems: 'center' }}>
+        <Grid size={12} container sx={{ background: '#FFFFFF', minHeight: '70vh', width: 1 }}>
           <Grid size={{ md: 2, lg: 3 }} />
           <Grid size={{ md: 8, lg: 6 }} sx={{ height: 1 }}>
             <AboutUsArticle />
           </Grid>
           <Grid size={{ md: 2, lg: 3 }} />
         </Grid>
-      </Box>
+      </Grid>
     </>
   );
 };

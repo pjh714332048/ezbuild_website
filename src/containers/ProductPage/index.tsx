@@ -1,4 +1,4 @@
-import Box from '@mui/material/Box';
+import Grid from '@mui/material/Grid';
 import PageGrid from 'components/PageGrid';
 
 import GlobalNets from './SubPages/GlobalNets';
@@ -7,7 +7,8 @@ import WholeHouseCustomizationSystem from './SubPages/WholeHouseCustomizationSys
 
 const ProductPage: React.FC = () => (
   <>
-    <Box
+    <Grid
+      container
       id='business_capability'
       sx={{
         scrollMarginTop: '64px',
@@ -15,11 +16,10 @@ const ProductPage: React.FC = () => (
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat',
-        display: 'flex',
       }}
     >
       <PageGrid content={<ModulePlatformPage />} pageBackground='#FFFFFF94' />
-    </Box>
+    </Grid>
     <PageGrid content={<WholeHouseCustomizationSystem />} pageBackground='#064A5B' />
     <PageGrid content={<GlobalNets />} pageBackground='#dfe7e7' />
   </>

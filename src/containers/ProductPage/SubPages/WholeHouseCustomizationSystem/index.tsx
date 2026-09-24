@@ -21,20 +21,18 @@ const WholeHouseCustomizationSystem = () => {
             所有产品都可根据预算、气候、当地法规与审美偏好进行材料配置。标准模块决定效率，选装体系决定每个项目的个性。
           </Typography>
           <Box sx={{ display: 'inline-block', mt: 10 }}>
-            <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
-              <Box
-                sx={{
-                  width: '100%',
-                  height: '1px',
-                  backgroundColor: '#FFFFFF80',
-                  mt: 0.5,
-                }}
-              />
-            </Box>
+            <Box
+              sx={{
+                width: '100%',
+                height: '1px',
+                backgroundColor: '#FFFFFF80',
+                mt: 0.5,
+              }}
+            />
           </Box>
         </Grid>
         <Grid size={{ md: 1 }} sx={{ display: { xs: 'none', md: 'block' } }} />
-        <Grid size={{ xs: 12, md: 'grow' }} sx={{ display: 'flex', flexDirection: 'column' }}>
+        <Grid size={{ xs: 12, md: 'grow' }} container>
           <WholeHouseCustomizationSystemList />
         </Grid>
       </Grid>

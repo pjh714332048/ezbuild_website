@@ -1,5 +1,4 @@
 import ArrowForward from '@mui/icons-material/ArrowForward';
-import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
@@ -17,12 +16,11 @@ const CapabilityListItem: React.FC<CapabilityListItemProps> = ({
   description,
   isLastItem,
 }) => (
-  <Box
+  <Grid
+    container
     sx={[
       {
         width: '100%',
-        display: 'flex',
-        flexDirection: 'row',
         alignItems: 'center',
         gap: 3,
         p: { md: 3, lg: 5 },
@@ -43,14 +41,13 @@ const CapabilityListItem: React.FC<CapabilityListItemProps> = ({
       },
     ]}
   >
-    <Grid container sx={{ flex: 1, minWidth: 0 }}>
+    <Grid container size='grow' sx={{ minWidth: 0 }}>
       <Grid size={1}>
         <Typography
           variant='h4'
           sx={{
             color: '#FF6B1A',
             fontWeight: 700,
-            flexShrink: 0,
             minWidth: 48,
           }}
         >
@@ -58,29 +55,20 @@ const CapabilityListItem: React.FC<CapabilityListItemProps> = ({
         </Typography>
       </Grid>
       <Grid size={4}>
-        <Box
-          sx={{ display: 'flex', flexDirection: 'row', alignItems: 'baseline', gap: 2, flex: 1 }}
-        >
-          <Typography variant='h4' sx={{ color: '#FFFFFF', fontWeight: 600, flexShrink: 0 }}>
-            {title}
-          </Typography>
-        </Box>
+        <Typography variant='h4' sx={{ color: '#FFFFFF', fontWeight: 600 }}>
+          {title}
+        </Typography>
       </Grid>
-      <Grid size='grow'>
-        <Box
-          sx={{ display: 'flex', flexDirection: 'row', alignItems: 'baseline', gap: 2, flex: 1 }}
-        >
-          <Typography variant='body2' sx={{ color: '#FFFFFF91' }}>
-            {description}
-          </Typography>
-        </Box>
+      <Grid size='grow' sx={{ minWidth: 0 }}>
+        <Typography variant='body2' sx={{ color: '#FFFFFF91' }}>
+          {description}
+        </Typography>
       </Grid>
     </Grid>
 
     <IconButton
       className='capability-icon-btn'
       sx={{
-        flexShrink: 0,
         border: '1px solid #FFFFFF',
         borderRadius: '50%',
         color: '#FFFFFF',
@@ -89,7 +77,7 @@ const CapabilityListItem: React.FC<CapabilityListItemProps> = ({
     >
       <ArrowForward />
     </IconButton>
-  </Box>
+  </Grid>
 );
 
 export default CapabilityListItem;

@@ -1,5 +1,5 @@
-import Box from '@mui/material/Box';
 import Divider from '@mui/material/Divider';
+import Grid from '@mui/material/Grid';
 
 import ContactLabel from './ContactLabel';
 import ContactRow from './ContactRow';
@@ -21,34 +21,47 @@ const contactRows: ContactRowData[] = [
 
 const ContactUsInfo: React.FC = () => (
   <>
-    <Box sx={{ mt: 3, width: '100%' }}>
+    <Grid container sx={{ mt: 3, width: '100%' }}>
       {contactRows.map(row => (
-        <ContactRow key={row.label} label={row.label} value={row.value} external={row.external} />
+        <Grid key={row.label} size={12}>
+          <ContactRow label={row.label} value={row.value} external={row.external} />
+        </Grid>
       ))}
-      <Box sx={{ display: 'flex', alignItems: 'stretch', px: 2.5, py: 1.5 }}>
-        <Box sx={{ display: 'flex', alignItems: 'flex-start', gap: 2, flex: 1 }}>
-          <ContactLabel>INSTAGRAM</ContactLabel>
-          <ContactValue>
-            ezBuild
-            <ExternalLink />
-          </ContactValue>
-        </Box>
+      <Grid size={12}>
+        <Grid container sx={{ alignItems: 'stretch', px: 2.5, py: 1.5 }}>
+          <Grid container size='grow' sx={{ alignItems: 'flex-start', gap: 2 }}>
+            <Grid size='auto'>
+              <ContactLabel>INSTAGRAM</ContactLabel>
+            </Grid>
+            <Grid size='grow'>
+              <ContactValue>
+                ezBuild
+                <ExternalLink />
+              </ContactValue>
+            </Grid>
+          </Grid>
 
-        <Box
-          sx={{
-            borderLeft: '1px solid #FFFFFF33',
-            pl: 2,
-            display: 'flex',
-            alignItems: 'flex-start',
-            gap: 2,
-            flex: 1,
-          }}
-        >
-          <ContactLabel>小红书</ContactLabel>
-          <ContactValue>EZBUILD</ContactValue>
-        </Box>
-      </Box>
-    </Box>
+          <Grid
+            container
+            size='grow'
+            sx={{
+              alignItems: 'flex-start',
+              gap: 2,
+              borderLeft: { xs: 'none', sm: '1px solid #FFFFFF33' },
+              pl: { xs: 0, sm: 2 },
+              pt: { xs: 1.5, sm: 0 },
+            }}
+          >
+            <Grid size='auto'>
+              <ContactLabel>小红书</ContactLabel>
+            </Grid>
+            <Grid size='grow'>
+              <ContactValue>EZBUILD</ContactValue>
+            </Grid>
+          </Grid>
+        </Grid>
+      </Grid>
+    </Grid>
     <Divider sx={{ borderColor: '#FFFFFF33' }} />
   </>
 );

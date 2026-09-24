@@ -1,4 +1,3 @@
-import Box from '@mui/material/Box';
 import Divider from '@mui/material/Divider';
 import Grid from '@mui/material/Grid';
 
@@ -7,18 +6,18 @@ import BusinessCapabilityTitle from './BusinessCapabilityTitle';
 import CapabilityList from './CapabilityList';
 
 const BusinessCapability: React.FC = () => (
-  <Box
+  <Grid
+    container
     sx={{
       scrollMarginTop: '64px',
       background: '#081727',
       backgroundSize: 'cover',
       backgroundPosition: 'center',
       backgroundRepeat: 'no-repeat',
-      display: 'flex',
       py: { xs: 3, md: 6, lg: 10 },
     }}
   >
-    <Grid container sx={{ width: '100%', mt: { xs: 4, md: 8, lg: 12 } }}>
+    <Grid container size={12} sx={{ width: '100%', mt: { xs: 4, md: 8, lg: 12 } }}>
       <Grid
         size={{ xs: 12, md: 2, lg: 3 }}
         sx={{ display: { xs: 'none', sm: 'none', md: 'block' } }}
@@ -34,7 +33,7 @@ const BusinessCapability: React.FC = () => (
         sx={{ display: { xs: 'none', sm: 'none', md: 'block' } }}
       />
     </Grid>
-  </Box>
+  </Grid>
 );
 
 export default BusinessCapability;

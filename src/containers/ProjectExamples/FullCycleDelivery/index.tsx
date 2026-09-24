@@ -32,7 +32,7 @@ const FullCycleDelivery: React.FC = () => {
         content={
           <Box>
             <PageSubtitle number='08' title='全周期交付' />
-            <Grid container sx={{ mt: { xs: 2, md: 4 } }}>
+            <Grid container sx={{ mt: { xs: 2, md: 4 }, alignItems: 'flex-end' }}>
               <Grid size={{ xs: 12, md: 7 }}>
                 <Typography
                   sx={{
@@ -46,7 +46,7 @@ const FullCycleDelivery: React.FC = () => {
                 </Typography>
               </Grid>
               <Grid size={{ xs: 0, md: 1 }} sx={{ display: { xs: 'none', md: 'block' } }} />
-              <Grid size={{ xs: 12, md: 4 }} sx={{ display: 'flex', alignItems: 'flex-end' }}>
+              <Grid size={{ xs: 12, md: 4 }}>
                 <Typography
                   sx={{
                     fontSize: 16,
@@ -67,7 +67,7 @@ const FullCycleDelivery: React.FC = () => {
               sx={{
                 mt: { xs: 3, md: 5, lg: 8 },
                 px: '5%',
-                '& .MuiStepConnector-line': {
+                ['& .MuiStepConnector-line']: {
                   borderColor: '#C8CDD3',
                 },
               }}
@@ -88,7 +88,7 @@ const FullCycleDelivery: React.FC = () => {
                       ),
                     }}
                     sx={{
-                      '& .MuiStepLabel-labelContainer': {
+                      ['& .MuiStepLabel-labelContainer']: {
                         display: 'flex',
                         flexDirection: 'column',
                         alignItems: 'center',
@@ -135,87 +135,88 @@ const FullCycleDelivery: React.FC = () => {
             </Stepper>
 
             {/* Content Card */}
-            <Box
+            <Grid
+              container
               sx={{
                 mt: { xs: 2, md: 5, lg: 8 },
-                display: 'flex',
                 borderRadius: 2,
                 overflow: 'hidden',
               }}
             >
-              <Box sx={{ flex: { xs: '0 0 100%', md: '0 0 60%' }, overflow: 'hidden' }}>
+              <Grid size={{ xs: 12, md: 7.2 }} sx={{ overflow: 'hidden' }}>
                 <img
                   src='/project_examples/factory.jpeg'
                   alt='全周期交付'
                   style={{ width: '100%', height: '100%', objectFit: 'cover' }}
                 />
-              </Box>
-              <Box
-                sx={{
-                  flex: { xs: '0 0 100%', md: '0 0 40%' },
-                  bgcolor: '#0A1628',
-                  p: { xs: 2, md: 3, lg: 5 },
-                  display: 'flex',
-                  flexDirection: 'column',
-                  justifyContent: 'center',
-                }}
+              </Grid>
+              <Grid
+                size={{ xs: 12, md: 4.8 }}
+                sx={{ bgcolor: '#0A1628', p: { xs: 2, md: 3, lg: 5 } }}
               >
-                <Typography
-                  sx={{
-                    fontSize: 14,
-                    color: '#E87722',
-                    fontWeight: 600,
-                    mb: 2,
-                  }}
-                >
-                  制造确定性
-                </Typography>
-                <Typography
-                  sx={{
-                    fontSize: 'clamp(1.25rem, 1.8vw, 1.75rem)',
-                    fontWeight: 700,
-                    color: '#FFFFFF',
-                    lineHeight: 1.4,
-                    mb: 4,
-                  }}
-                >
-                  更少现场变量，更多交付把握。
-                </Typography>
-
-                {bulletItems.map((item, index) => (
-                  <Box
-                    key={item}
-                    sx={{
-                      display: 'flex',
-                      alignItems: 'flex-start',
-                      gap: 1.5,
-                      py: 2,
-                      borderBottom: index < bulletItems.length - 1 ? '1px solid #FFFFFF1F' : 'none',
-                    }}
-                  >
-                    <Box
-                      sx={{
-                        width: 6,
-                        height: 6,
-                        borderRadius: '50%',
-                        bgcolor: '#FF6B1A',
-                        flexShrink: 0,
-                        mt: 1,
-                      }}
-                    />
+                <Grid container sx={{ height: '100%', alignItems: 'center' }}>
+                  <Grid size={12}>
                     <Typography
                       sx={{
                         fontSize: 14,
-                        color: '#FFFFFFCC',
-                        lineHeight: 1.6,
+                        color: '#E87722',
+                        fontWeight: 600,
+                        mb: 2,
                       }}
                     >
-                      {item}
+                      制造确定性
                     </Typography>
-                  </Box>
-                ))}
-              </Box>
-            </Box>
+                    <Typography
+                      sx={{
+                        fontSize: 'clamp(1.25rem, 1.8vw, 1.75rem)',
+                        fontWeight: 700,
+                        color: '#FFFFFF',
+                        lineHeight: 1.4,
+                        mb: 4,
+                      }}
+                    >
+                      更少现场变量，更多交付把握。
+                    </Typography>
+
+                    {bulletItems.map((item, index) => (
+                      <Grid
+                        key={item}
+                        container
+                        sx={{
+                          alignItems: 'flex-start',
+                          gap: 1.5,
+                          py: 2,
+                          borderBottom:
+                            index < bulletItems.length - 1 ? '1px solid #FFFFFF1F' : 'none',
+                        }}
+                      >
+                        <Grid size='auto' sx={{ mt: 1 }}>
+                          <Box
+                            sx={{
+                              width: 6,
+                              height: 6,
+                              borderRadius: '50%',
+                              bgcolor: '#FF6B1A',
+                            }}
+                          />
+                        </Grid>
+                        <Grid size='grow'>
+                          <Typography
+                            sx={{
+                              fontSize: 14,
+                              color: '#FFFFFFCC',
+                              lineHeight: 1.6,
+                            }}
+                          >
+                            {item}
+                          </Typography>
+                        </Grid>
+                      </Grid>
+                    ))}
+                  </Grid>
+                </Grid>
+              </Grid>
+            </Grid>
           </Box>
         }
       />

@@ -1,4 +1,4 @@
-import Box from '@mui/material/Box';
+import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 
 interface ModulePlatformGridContentProps {
@@ -16,36 +16,38 @@ const ModulePlatformGridContent: React.FC<ModulePlatformGridContentProps> = ({
   numberString,
   numberDescription,
 }) => (
-  <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
-    <Typography variant='caption' sx={{ color: '#FF6B1A', fontWeight: 600, letterSpacing: 1.5 }}>
-      {smallTitle}
-    </Typography>
-
-    <Typography variant='h5' sx={{ color: '#1a1a1a', fontWeight: 700, lineHeight: 1.2 }}>
-      {title}
-    </Typography>
-
-    <Typography variant='body2' sx={{ color: '#666', lineHeight: 1.7 }}>
-      {content}
-    </Typography>
-
-    <Box
-      sx={{
-        display: 'flex',
-        flexDirection: 'row',
-        alignItems: 'baseline',
-        gap: 1.5,
-        mt: 1,
-      }}
-    >
-      <Typography variant='h4' sx={{ color: '#FF6B1A', fontWeight: 700, lineHeight: 1 }}>
-        {numberString}
+  <Grid container sx={{ gap: 2 }}>
+    <Grid size={12}>
+      <Typography variant='caption' sx={{ color: '#FF6B1A', fontWeight: 600, letterSpacing: 1.5 }}>
+        {smallTitle}
       </Typography>
-      <Typography variant='body2' sx={{ color: '#888' }}>
-        {numberDescription}
+    </Grid>
+
+    <Grid size={12}>
+      <Typography variant='h5' sx={{ color: '#1a1a1a', fontWeight: 700, lineHeight: 1.2 }}>
+        {title}
       </Typography>
-    </Box>
-  </Box>
+    </Grid>
+
+    <Grid size={12}>
+      <Typography variant='body2' sx={{ color: '#666', lineHeight: 1.7 }}>
+        {content}
+      </Typography>
+    </Grid>
+
+    <Grid container size={12} sx={{ alignItems: 'baseline', gap: 1.5, mt: 1 }}>
+      <Grid size='auto'>
+        <Typography variant='h4' sx={{ color: '#FF6B1A', fontWeight: 700, lineHeight: 1 }}>
+          {numberString}
+        </Typography>
+      </Grid>
+      <Grid size='grow'>
+        <Typography variant='body2' sx={{ color: '#888' }}>
+          {numberDescription}
+        </Typography>
+      </Grid>
+    </Grid>
+  </Grid>
 );
 
 export default ModulePlatformGridContent;

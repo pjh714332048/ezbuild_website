@@ -42,7 +42,6 @@ const GlobalNetsMap: React.FC = () => {
     <Box
       sx={{
         width: '100%',
-        flexGrow: 1,
         minHeight: 0,
         position: 'relative',
         overflow: 'hidden',

@@ -11,7 +11,6 @@ const ContactLabel: React.FC<{ children: ReactNode }> = ({ children }) => (
       letterSpacing: '0.08em',
       textTransform: 'uppercase',
       minWidth: 90,
-      flexShrink: 0,
     }}
   >
     {children}
