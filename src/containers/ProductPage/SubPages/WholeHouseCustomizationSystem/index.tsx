@@ -1,6 +1,4 @@
-import ArrowForward from '@mui/icons-material/ArrowForward';
 import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import PageSubtitle from 'components/PageSubtitle';
@@ -24,16 +22,6 @@ const WholeHouseCustomizationSystem = () => {
           </Typography>
           <Box sx={{ display: 'inline-block', mt: 10 }}>
             <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
-              <Button
-                endIcon={<ArrowForward />}
-                sx={{
-                  color: 'white',
-                  fontSize: '1.1rem',
-                  textTransform: 'none',
-                }}
-              >
-                获取项目选装清单
-              </Button>
               <Box
                 sx={{
                   width: '100%',

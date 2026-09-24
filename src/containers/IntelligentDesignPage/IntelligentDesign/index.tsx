@@ -10,6 +10,8 @@ import QuestionSelector from './QuestionSelector';
 
 const ModelRenderer = lazy(() => import('components/ModelRenderer'));
 
+const designBgSrc = '/intelligent_design/p68.webp';
+
 const IntelligentDesign: React.FC = () => {
   const [selectedModelSrc, setSelectedModelSrc] = useState<string | null>(null);
   const [renderedModelSrc, setRenderedModelSrc] = useState<string | null>(null);
@@ -67,12 +69,13 @@ const IntelligentDesign: React.FC = () => {
             </Grid>
             <Grid
               size={{ xs: 12, md: 7, lg: 8 }}
-              sx={{ py: 3, display: 'flex', flexDirection: 'column', minHeight: 0 }}
+              sx={{ py: 3, display: 'flex', flexDirection: 'column', minHeight: 0, height: '100%' }}
             >
               <Box
                 className='design-right'
                 sx={{
                   flexGrow: 1,
+                  height: '100%',
                   width: '100%',
                   minHeight: 0,
                   display: 'flex',
@@ -98,20 +101,44 @@ const IntelligentDesign: React.FC = () => {
                 ) : (
                   <Box
                     sx={{
+                      width: '100%',
+                      height: '100%',
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'center',
-                      flexGrow: 1,
                       minHeight: 0,
                     }}
                   >
-                    <img
-                      src='/intelligent_design/p68.webp'
-                      alt='design background'
-                      className='design-bg-img'
-                      style={{ maxWidth: '100%' }}
-                    />
-                    <Box className='design-overlay' />
+                    <Box
+                      sx={{
+                        position: 'relative',
+                        maxWidth: '100%',
+                        maxHeight: '100%',
+                        display: 'inline-block',
+                      }}
+                    >
+                      <img
+                        src={designBgSrc}
+                        alt='design background'
+                        className='design-bg-img'
+                        style={{
+                          display: 'block',
+                          maxWidth: '100%',
+                          maxHeight: '100%',
+                          width: 'auto',
+                          height: 'auto',
+                        }}
+                      />
+                      <Box
+                        className='design-overlay'
+                        sx={{
+                          position: 'absolute',
+                          inset: 0,
+                          background: '#FFFFFF88',
+                          pointerEvents: 'none',
+                        }}
+                      />
+                    </Box>
                   </Box>
                 )}
               </Box>

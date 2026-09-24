@@ -6,7 +6,7 @@ const AsianProject: React.FC = () => (
   <Box>
     <ProjectExamplesSubTitle
       index={5}
-      location='亚洲项目'
+      location='越南'
       title='三层轻钢别墅'
       description='结构施工·外立面·室内完成面'
       imageCount={5}
