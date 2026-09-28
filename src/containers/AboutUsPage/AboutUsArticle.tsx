@@ -2,14 +2,16 @@ import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import PageSubtitle from 'components/PageSubtitle';
-
-const articleTags = ['数字化设计', '柔性制造', '全球供应链', '本地化交付'];
+import { useTranslation } from 'providers/useTranslation';
 
 const AboutUsArticle: React.FC = () => {
+  const { t } = useTranslation();
+  const articleTags = [t('about.tags.0'), t('about.tags.1'), t('about.tags.2'), t('about.tags.3')];
+
   return (
     <Grid container sx={{ height: 1, alignItems: 'center' }}>
       <Grid size={12}>
-        <PageSubtitle number='01' title='我们是谁' />
+        <PageSubtitle number='01' title={t('about.subtitle')} />
         <Box>
           <Grid container sx={{ width: 1 }}>
             <Grid size={{ xs: 12, lg: 'grow' }}>
@@ -19,10 +21,10 @@ const AboutUsArticle: React.FC = () => {
                   fontWeight: 'bold',
                 }}
               >
-                全球能力，
+                {t('about.headingWhite')}
               </Typography>
               <Typography variant='h1' sx={{ color: '#E87722', fontWeight: 'bold' }}>
-                本地落地。
+                {t('about.headingAccent')}
               </Typography>
               <Typography
                 variant='body1'
@@ -32,11 +34,10 @@ const AboutUsArticle: React.FC = () => {
                   fontSize: 'clamp(1.125rem, 1.6vw, 1.5rem)',
                 }}
               >
-                ezBuild
-                是由清华大学背景团队创立的智能建造企业。我们以模块化设计为核心，整合标准化产品、先进制造、供应链与项目交付能力。
+                {t('about.body')}
               </Typography>
               <Typography sx={{ color: '#637080', fontSize: 'clamp(0.95rem, 1.1vw, 1.125rem)' }}>
-                我们不只提供建筑产品，更从前期规划一路参与到工厂预制、跨境物流、现场装配与后期运维，让每个环节更透明、更高效、更可控。
+                {t('about.bodySecondary')}
               </Typography>
               <Grid container spacing={2} sx={{ mt: { xs: 1, md: 2 } }}>
                 {articleTags.map(tag => (

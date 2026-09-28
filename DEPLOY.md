@@ -1,3 +1,5 @@
+# 单独推包 rsync -avz --progress dist/ root@119.45.31.214:/var/www/website/
+
 # 部署文档
 
 ## 首次搭建 Registry

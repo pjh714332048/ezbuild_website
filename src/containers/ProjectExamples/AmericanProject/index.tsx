@@ -1,21 +1,29 @@
 import Box from '@mui/material/Box';
 import ProjectExamplesImageGrid from 'containers/ProjectExamples/ProjectExamplesImageGrid';
 import ProjectExamplesSubTitle from 'containers/ProjectExamples/ProjectExamplesSubTitle';
+import { useTranslation } from 'providers/useTranslation';
 
-const AmericanProject: React.FC = () => (
-  <Box>
-    <ProjectExamplesSubTitle
-      index={0}
-      location='美国 · 加州'
-      title='模块化木结构公寓'
-      description='混合结构协调 · 完整设计图集'
-      imageCount={3}
-    />
-    <ProjectExamplesImageGrid
-      leftBigImageSrc='/project_examples/america/1.webp'
-      rightSmallImagesSrc={['/project_examples/america/2.webp', '/project_examples/america/3.webp']}
-    />
-  </Box>
-);
+const AmericanProject: React.FC = () => {
+  const { t } = useTranslation();
+
+  return (
+    <Box>
+      <ProjectExamplesSubTitle
+        index={0}
+        location={t('projectExamples.americanLocation')}
+        title={t('projectExamples.americanTitle')}
+        description={t('projectExamples.americanDescription')}
+        imageCount={3}
+      />
+      <ProjectExamplesImageGrid
+        leftBigImageSrc='/project_examples/america/1.webp'
+        rightSmallImagesSrc={[
+          '/project_examples/america/2.webp',
+          '/project_examples/america/3.webp',
+        ]}
+      />
+    </Box>
+  );
+};
 
 export default AmericanProject;

@@ -26,6 +26,7 @@
       "components/*": ["./src/components/*"],
       "containers/*": ["./src/containers/*"],
       "models/*": ["./src/models/*"],
+      "providers/*": ["./src/providers/*"],
       "store/*": ["./src/store/*"]
     }
   },

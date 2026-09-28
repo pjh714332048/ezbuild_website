@@ -1,20 +1,23 @@
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
+import { useTranslation } from 'providers/useTranslation';
 
 interface DeliveryItem {
   value: string;
   suffix: string;
-  label: string;
+  labelKey: string;
 }
 
 const deliveryItems: DeliveryItem[] = [
-  { value: '500', suffix: '+', label: '中国及日本交付建筑' },
-  { value: '8', suffix: '+', label: '海外项目市场' },
-  { value: '30-50', suffix: '%', label: '较传统方式缩短工期' },
-  { value: '80', suffix: '%', label: '最高可减少建筑垃圾' },
+  { value: '500', suffix: '+', labelKey: 'about.delivery.buildingsDelivered' },
+  { value: '8', suffix: '+', labelKey: 'about.delivery.overseasMarkets' },
+  { value: '30-50', suffix: '%', labelKey: 'about.delivery.scheduleReduction' },
+  { value: '80', suffix: '%', labelKey: 'about.delivery.wasteReduction' },
 ];
 
 const DeliveryItems: React.FC = () => {
+  const { t } = useTranslation();
+
   return (
     <Grid container sx={{ width: 1, height: 1, alignItems: 'center' }}>
       {deliveryItems.map(item => (
@@ -43,7 +46,7 @@ const DeliveryItems: React.FC = () => {
             </Typography>
           </Typography>
           <Typography variant='body2' sx={{ color: '#637080', fontWeight: 'bold' }}>
-            {item.label}
+            {t(item.labelKey as 'about.delivery.buildingsDelivered')}
           </Typography>
         </Grid>
       ))}

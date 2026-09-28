@@ -4,6 +4,7 @@ import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import CircularProgress from '@mui/material/CircularProgress';
 import Grid from '@mui/material/Grid';
+import { useTranslation } from 'providers/useTranslation';
 
 import IntelligentDesignTitle from './IntelligentDesignTitle';
 import QuestionSelector from './QuestionSelector';
@@ -13,33 +14,47 @@ const ModelRenderer = lazy(() => import('components/ModelRenderer'));
 const designBgSrc = '/intelligent_design/p68.webp';
 
 const IntelligentDesign: React.FC = () => {
+  const { t } = useTranslation();
   const [selectedModelSrc, setSelectedModelSrc] = useState<string | null>(null);
   const [renderedModelSrc, setRenderedModelSrc] = useState<string | null>(null);
+  const [isQuestionFinished, setIsQuestionFinished] = useState(false);
 
   const handleModelChange = (modelSrc: string | null) => {
     setSelectedModelSrc(modelSrc);
     setRenderedModelSrc(null);
   };
+
+  const handleContactUs = () => {
+    const el = document.getElementById('contact_us');
+    el?.scrollIntoView({ behavior: 'smooth' });
+  };
   return (
     <Box>
-      <Grid container sx={{ minHeight: '100vh', width: '100%', pt: { md: 8, lg: 12 } }}>
+      <Grid container sx={{ minHeight: '100vh', width: '100%', pt: { xs: 10, md: 8, lg: 12 } }}>
         <Grid
           size={{ xs: 12, md: 2, lg: 3 }}
           sx={{ display: { xs: 'none', sm: 'none', md: 'block' } }}
         />
-        <Grid size={{ xs: 12, sm: 12, md: 8, lg: 6 }}>
+        <Grid size={{ xs: 12, sm: 12, md: 8, lg: 6 }} sx={{ px: { xs: 2, md: 0 } }}>
           <IntelligentDesignTitle />
           <Grid
             container
-            sx={{ alignItems: 'stretch', minHeight: 0, height: 'clamp(280px, 42vw, 600px)' }}
+            sx={{
+              alignItems: { xs: 'flex-start', md: 'stretch' },
+              minHeight: 0,
+              height: { xs: 'auto', md: 'clamp(280px, 42vw, 600px)' },
+            }}
           >
             <Grid
               container
               size={{ xs: 12, md: 5, lg: 4 }}
-              sx={{ py: 3, alignItems: 'center', gap: 2 }}
+              sx={{ py: { xs: 2, md: 3 }, alignItems: 'center', gap: 2 }}
             >
               <Grid size={12}>
-                <QuestionSelector onModelChange={handleModelChange} />
+                <QuestionSelector
+                  onModelChange={handleModelChange}
+                  onFinishedChange={setIsQuestionFinished}
+                />
               </Grid>
               <Grid size={12}>
                 <Button
@@ -60,11 +75,37 @@ const IntelligentDesign: React.FC = () => {
                     },
                   }}
                 >
-                  开始设计
+                  {t('intelligentDesign.startDesign')}
                 </Button>
               </Grid>
+              {isQuestionFinished && (
+                <Grid size={12}>
+                  <Button
+                    variant='outlined'
+                    onClick={handleContactUs}
+                    sx={{
+                      width: '100%',
+                      color: 'white',
+                      borderColor: '#FFFFFF80',
+                      ['&:hover']: {
+                        borderColor: 'white',
+                        backgroundColor: '#FFFFFF14',
+                      },
+                    }}
+                  >
+                    {t('intelligentDesign.contactUsAction')}
+                  </Button>
+                </Grid>
+              )}
             </Grid>
-            <Grid size={{ xs: 12, md: 7, lg: 8 }} sx={{ py: 3, minHeight: 0, height: '100%' }}>
+            <Grid
+              size={{ xs: 12, md: 7, lg: 8 }}
+              sx={{
+                py: { xs: 2, md: 3 },
+                minHeight: 0,
+                height: { xs: 320, md: '100%' },
+              }}
+            >
               <Grid
                 container
                 className='design-right'

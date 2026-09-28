@@ -10,8 +10,7 @@ import { QUESTION_NODES } from 'models/question/QUESTION_NODES';
 import { QUESTION_ROOT_ID } from 'models/question/QUESTION_ROOT_ID';
 import type { QuestionOption } from 'models/question/QuestionOption';
 import { RESULT_PREFIX } from 'models/question/RESULT_PREFIX';
-import { useAppSelector } from 'store/hooks';
-import { selectLanguage } from 'store/slices/locale/selectors';
+import { useTranslation } from 'providers/useTranslation';
 
 const getMaxDepth = (nodeId: string): number => {
   const node = QUESTION_NODES[nodeId];
@@ -33,10 +32,11 @@ const resultModels: Readonly<Record<string, string>> = {
 
 export type QuestionProps = {
   readonly onModelChange: (modelSrc: string | null) => void;
+  readonly onFinishedChange?: (isFinished: boolean) => void;
 };
 
-const QuestionSelector: React.FC<QuestionProps> = ({ onModelChange }) => {
-  const language = useAppSelector(selectLanguage);
+const QuestionSelector: React.FC<QuestionProps> = ({ onModelChange, onFinishedChange }) => {
+  const { t } = useTranslation();
   const [history, setHistory] = useState<readonly string[]>([QUESTION_ROOT_ID]);
   const currentId = history[history.length - 1];
   const currentNode = QUESTION_NODES[currentId];
@@ -47,6 +47,7 @@ const QuestionSelector: React.FC<QuestionProps> = ({ onModelChange }) => {
     if (option.next.startsWith(RESULT_PREFIX)) {
       const resultId = option.next.slice(RESULT_PREFIX.length);
       onModelChange(resultModels[resultId] ?? null);
+      onFinishedChange?.(true);
       return;
     }
 
@@ -55,11 +56,13 @@ const QuestionSelector: React.FC<QuestionProps> = ({ onModelChange }) => {
 
   const handleBack = () => {
     onModelChange(null);
+    onFinishedChange?.(false);
     setHistory(previous => (previous.length > 1 ? previous.slice(0, -1) : previous));
   };
 
   const handleReset = () => {
     onModelChange(null);
+    onFinishedChange?.(false);
     setHistory([QUESTION_ROOT_ID]);
   };
 
@@ -136,11 +139,11 @@ const QuestionSelector: React.FC<QuestionProps> = ({ onModelChange }) => {
             },
           }}
         >
-          {language === 'en' ? 'Back' : '返回'}
+          {t('intelligentDesign.back')}
         </Button>
         {currentStep > 1 && (
           <Button onClick={handleReset} sx={{ color: 'white' }}>
-            {language === 'en' ? 'Start over' : '重新选择'}
+            {t('intelligentDesign.startOver')}
           </Button>
         )}
       </Stack>

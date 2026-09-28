@@ -13,6 +13,7 @@ export default defineConfig({
       components: path.resolve(import.meta.dirname, 'src/components'),
       containers: path.resolve(import.meta.dirname, 'src/containers'),
       models: path.resolve(import.meta.dirname, 'src/models'),
+      providers: path.resolve(import.meta.dirname, 'src/providers'),
       store: path.resolve(import.meta.dirname, 'src/store'),
     },
   },

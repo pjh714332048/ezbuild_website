@@ -2,24 +2,24 @@ import React from 'react';
 
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
+import { useTranslation } from 'providers/useTranslation';
 
-interface SystemItem {
-  number: string;
-  title: string;
-}
+const systemItemKeys = [
+  'products.wholeHouseSystemItems.0',
+  'products.wholeHouseSystemItems.1',
+  'products.wholeHouseSystemItems.2',
+  'products.wholeHouseSystemItems.3',
+  'products.wholeHouseSystemItems.4',
+  'products.wholeHouseSystemItems.5',
+  'products.wholeHouseSystemItems.6',
+  'products.wholeHouseSystemItems.7',
+] as const;
 
-const systemItems: SystemItem[] = [
-  { number: '01', title: '结构体系' },
-  { number: '02', title: '外立面' },
-  { number: '03', title: '门窗系统' },
-  { number: '04', title: '室内饰面' },
-  { number: '05', title: '厨房系统' },
-  { number: '06', title: '卫浴系统' },
-  { number: '07', title: '能源设备' },
-  { number: '08', title: '全屋智能' },
-];
+const systemItemNumbers = ['01', '02', '03', '04', '05', '06', '07', '08'];
 
 const WholeHouseCustomizationSystemList: React.FC = () => {
+  const { t } = useTranslation();
+
   return (
     <Grid
       container
@@ -30,7 +30,7 @@ const WholeHouseCustomizationSystemList: React.FC = () => {
         border: '1px solid #FFFFFF1F',
       }}
     >
-      {systemItems.reduce<React.ReactNode[]>((rows, _item, index) => {
+      {systemItemKeys.reduce<React.ReactNode[]>((rows, _key, index) => {
         if (index % 2 === 0) {
           rows.push(
             <Grid
@@ -42,13 +42,15 @@ const WholeHouseCustomizationSystemList: React.FC = () => {
               }}
             >
               {[0, 1].map(colOffset => {
-                const item = systemItems[index + colOffset];
-                if (!item) return null;
+                const itemIndex = index + colOffset;
+                const titleKey = systemItemKeys[itemIndex];
+                const number = systemItemNumbers[itemIndex];
+                if (!titleKey || !number) return null;
                 return (
                   <Grid
                     size={6}
                     container
-                    key={item.number}
+                    key={number}
                     sx={{
                       borderRight: colOffset === 0 ? '1px solid #FFFFFF1F' : 'none',
                       alignItems: 'center',
@@ -65,7 +67,7 @@ const WholeHouseCustomizationSystemList: React.FC = () => {
                           fontSize: 14,
                         }}
                       >
-                        {item.number}
+                        {number}
                       </Typography>
                     </Grid>
                     <Grid size='grow'>
@@ -76,7 +78,7 @@ const WholeHouseCustomizationSystemList: React.FC = () => {
                           fontWeight: 500,
                         }}
                       >
-                        {item.title}
+                        {t(titleKey)}
                       </Typography>
                     </Grid>
                     <Grid size='auto' sx={{ ml: 2 }}>

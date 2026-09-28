@@ -94,7 +94,7 @@ export default [
             {
               group: ['../**', '**/../*'],
               message:
-                '禁止使用 .. 相对路径导入，请使用 api/components/containers/models/store 别名',
+                '禁止使用 .. 相对路径导入，请使用 api/components/containers/models/providers/store 别名',
             },
           ],
         },

@@ -1,6 +1,7 @@
 import ArrowForward from '@mui/icons-material/ArrowForward';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
+import { useTranslation } from 'providers/useTranslation';
 import { useAppDispatch } from 'store/hooks';
 import { setIsContactUsModelOpen } from 'store/slices/dialogController/dialogControllerSlice';
 
@@ -8,14 +9,14 @@ import ContactDialog from './ContactDialog';
 import ContactUsInfo from './ContactUsInfo';
 
 const ContactGrid: React.FC = () => {
+  const { t } = useTranslation();
   const dispatch = useAppDispatch();
 
   return (
     <>
       <ContactDialog />
       <Typography variant='h6' sx={{ color: '#FFFFFFD1', fontSize: 14 }}>
-        告诉我们项目所在地、用途、规模与目标时间。ezBuild
-        团队将从模块化适配与交付路径开始，为你梳理下一步。
+        {t('contactUs.contactGrid.description')}
       </Typography>
       <ContactUsInfo />
       <Button
@@ -37,10 +38,10 @@ const ContactGrid: React.FC = () => {
           dispatch(setIsContactUsModelOpen(true));
         }}
       >
-        发送项目需求
+        {t('contactUs.contactGrid.sendButton')}
       </Button>
       <Typography variant='body1' sx={{ fontSize: 12, color: '#3f3f3f' }}>
-        全球项目合作 · 模块化方案咨询
+        {t('contactUs.contactGrid.cooperationNote')}
       </Typography>
     </>
   );

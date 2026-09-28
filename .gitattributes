@@ -1,2 +1,21 @@
 * text eol=lf
+
+# Binary files
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.webp binary
+*.svg binary
+*.ico binary
+*.woff binary
+*.woff2 binary
+*.ttf binary
+*.eot binary
 *.obj text eol=lf
+*.mp4 binary
+*.webm binary
+*.mp3 binary
+*.ogg binary
+*.pdf binary
+*.zip binary

@@ -3,112 +3,118 @@ import Divider from '@mui/material/Divider';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import PageSubtitle from 'components/PageSubtitle';
+import { useTranslation } from 'providers/useTranslation';
 
-const ToFuturePage: React.FC = () => (
-  <Grid
-    container
-    sx={{
-      width: '100%',
-      aspectRatio: '16 / 9',
-      backgroundImage: 'url(/to_futrue_background.png)',
-      backgroundSize: 'cover',
-      backgroundPosition: 'center',
-    }}
-  >
+const ToFuturePage: React.FC = () => {
+  const { t } = useTranslation();
+
+  return (
     <Grid
-      size={{ xs: 12, md: 5 }}
-      offset={{ xs: 0, md: 7 }}
+      container
       sx={{
-        height: '100%',
-        bgcolor: '#0F322DD9',
-        px: { xs: 4, md: 6 },
-        py: 8,
+        width: '100%',
+        aspectRatio: { xs: 'auto', md: '16 / 9' },
+        minHeight: { xs: 480, md: 0 },
+        backgroundImage: 'url(/to_futrue_background.png)',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
       }}
     >
-      <Grid container sx={{ height: '100%', alignItems: 'center' }}>
-        <Grid size={12}>
-          <PageSubtitle number='09' title='面向未来' />
-          <Typography
-            sx={{
-              fontSize: { xs: 32, md: 40 },
-              fontWeight: 700,
-              color: '#FFFFFF',
-              lineHeight: 1.3,
-              my: 3,
-            }}
-          >
-            更轻的足迹，
-            <br />
-            更长的
-            <Box component='span' sx={{ color: '#FF6B1A' }}>
-              价值周期
-            </Box>
-          </Typography>
+      <Grid
+        size={{ xs: 12, md: 5 }}
+        offset={{ xs: 0, md: 7 }}
+        sx={{
+          height: '100%',
+          bgcolor: '#0F322DD9',
+          px: { xs: 2, md: 6 },
+          py: { xs: 4, md: 8 },
+        }}
+      >
+        <Grid container sx={{ height: '100%', alignItems: 'center' }}>
+          <Grid size={12}>
+            <PageSubtitle number='09' title={t('projectExamples.toFuture.subtitle')} />
+            <Typography
+              sx={{
+                fontSize: { xs: 32, md: 40 },
+                fontWeight: 700,
+                color: '#FFFFFF',
+                lineHeight: 1.3,
+                my: 3,
+              }}
+            >
+              {t('projectExamples.toFuture.titleWhite')}
+              <br />
+              {t('projectExamples.toFuture.titleLine2')}
+              <Box component='span' sx={{ color: '#FF6B1A' }}>
+                {t('projectExamples.toFuture.titleAccent')}
+              </Box>
+            </Typography>
 
-          {/* 描述文字 */}
-          <Typography
-            sx={{
-              fontSize: 14,
-              color: '#FFFFFFBF',
-              lineHeight: 1.8,
-              mb: 4,
-            }}
-          >
-            干法施工、精准用料、可循环材料与被动式节能设计，共同降低建造和运营阶段的环境负担。
-          </Typography>
+            {/* 描述文字 */}
+            <Typography
+              sx={{
+                fontSize: 14,
+                color: '#FFFFFFBF',
+                lineHeight: 1.8,
+                mb: 4,
+              }}
+            >
+              {t('projectExamples.toFuture.description')}
+            </Typography>
 
-          {/* 分隔线 */}
-          <Divider sx={{ borderColor: '#FFFFFF33', mb: 4 }} />
+            {/* 分隔线 */}
+            <Divider sx={{ borderColor: '#FFFFFF33', mb: 4 }} />
 
-          {/* 数据统计 */}
-          <Grid container sx={{ width: '100%' }}>
-            <Grid size='grow'>
-              <Typography
-                sx={{
-                  fontSize: 36,
-                  fontWeight: 700,
-                  color: '#FF6B1A',
-                  lineHeight: 1.2,
-                }}
-              >
-                80%
-              </Typography>
-              <Typography
-                sx={{
-                  fontSize: 13,
-                  color: '#FFFFFF',
-                  mt: 0.5,
-                }}
-              >
-                最高减少建筑垃圾
-              </Typography>
-            </Grid>
-            <Grid size='grow'>
-              <Typography
-                sx={{
-                  fontSize: 36,
-                  fontWeight: 700,
-                  color: '#FF6B1A',
-                  lineHeight: 1.2,
-                }}
-              >
-                30-50%
-              </Typography>
-              <Typography
-                sx={{
-                  fontSize: 13,
-                  color: '#FFFFFF',
-                  mt: 0.5,
-                }}
-              >
-                缩短建设周期
-              </Typography>
+            {/* 数据统计 */}
+            <Grid container sx={{ width: '100%' }}>
+              <Grid size='grow'>
+                <Typography
+                  sx={{
+                    fontSize: 36,
+                    fontWeight: 700,
+                    color: '#FF6B1A',
+                    lineHeight: 1.2,
+                  }}
+                >
+                  80%
+                </Typography>
+                <Typography
+                  sx={{
+                    fontSize: 13,
+                    color: '#FFFFFF',
+                    mt: 0.5,
+                  }}
+                >
+                  {t('projectExamples.toFuture.wasteReduction')}
+                </Typography>
+              </Grid>
+              <Grid size='grow'>
+                <Typography
+                  sx={{
+                    fontSize: 36,
+                    fontWeight: 700,
+                    color: '#FF6B1A',
+                    lineHeight: 1.2,
+                  }}
+                >
+                  30-50%
+                </Typography>
+                <Typography
+                  sx={{
+                    fontSize: 13,
+                    color: '#FFFFFF',
+                    mt: 0.5,
+                  }}
+                >
+                  {t('projectExamples.toFuture.scheduleReduction')}
+                </Typography>
+              </Grid>
             </Grid>
           </Grid>
         </Grid>
       </Grid>
     </Grid>
-  </Grid>
-);
+  );
+};
 
 export default ToFuturePage;

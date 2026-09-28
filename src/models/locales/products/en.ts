@@ -1,0 +1,63 @@
+export const EN_PRODUCTS = {
+  modulePlatformSubtitle: 'PROPRIETARY PRODUCTS',
+  modulePlatformTitleLine1: 'Three product families.',
+  modulePlatformTitleLine2: 'One modular platform.',
+  modulePlatformDescription:
+    'A shared modular logic accelerates design and production while each family serves a distinct use case.',
+  noahTitle: 'Rapid-Deploy Emergency Housing',
+  noahContent:
+    'A semi-permanent timber system for relief and temporary communities, with integrated kitchen and bathroom modules for comfortable use beyond five years.',
+  noahNumberDescription: 'target schedule reduction',
+  hemuduTitle: 'Hemudu Modular Residential System',
+  hemuduContent:
+    'More than 15 base and functional units combine into 80–200 m² homes, stays, retreats and senior-living layouts.',
+  hemuduNumberDescription: 'day assembly target',
+  pandoraTitle: 'Pandora Reconfigurable Space System',
+  pandoraContent:
+    'Mortise-and-tenon logic enables fast nail-free assembly for detachable, relocatable and expandable commercial or shared spaces.',
+  pandoraNumberDescription: 'detach, move, expand, reconfigure',
+  wholeHouseSubtitle: 'WHOLE-HOME OPTIONS',
+  wholeHouseTitleLine1: 'From structure to finish.',
+  wholeHouseTitleLine2: 'Configure the whole home.',
+  wholeHouseDescription:
+    'Every product can be configured around budget, climate, local codes and design preference. Standard modules create efficiency, while material choices make each project distinct.',
+  wholeHouseSystemItems: [
+    'Structure',
+    'Façade',
+    'Doors & Windows',
+    'Interior Finishes',
+    'Kitchen',
+    'Bathroom',
+    'Energy',
+    'Smart Home',
+  ],
+  globalNetsSubtitle: 'GLOBAL NETWORK',
+  globalNetsTitleLine1: 'Built across ',
+  globalNetsTitleLine2: 'borders',
+  globalNetsDescription:
+    'Mature manufacturing works with local design, approval and construction expertise. Projects now span Asia, the Americas, Europe and Australia.',
+  globalNetsMapTitles: [
+    'China | Design & Manufacturing Hub',
+    'Japan | Scale Delivery Market',
+    'USA | Timber Housing Market',
+    'Australia | Light-Gauge Steel Housing Market',
+    'Brazil | Vacation Homes & Hospitality',
+    'Portugal | Garden Annex Housing',
+    'Cambodia | Light-Steel Hotel Projects',
+    'Malaysia | Volume Housing Communities',
+    'Philippines | Light-Steel Villa Communities',
+  ],
+  globalNetsMapDescriptions: [
+    'Drawing on intelligent design, product R&D and a mature supply chain, we orchestrate modular buildings from design development to production and delivery, covering residential, hospitality, commercial and public building scenarios.',
+    'Long-standing experience in urban housing, schools, offices and hotel projects, with deep familiarity with dense sites and precision construction requirements. Standardized production and rapid on-site assembly enable consistent volume delivery.',
+    'Focused on modular timber houses and multi-story apartments, providing technical support from architectural design and structural coordination to complete construction document sets, adaptable to local codes, climate conditions and construction systems.',
+    'For detached and volume housing projects, we deliver integrated light-gauge steel structure, envelope and interior fit-out solutions. Factory prefabrication reduces on-site work and supports varied floor plans and material configurations.',
+    'Prefabricated vacation homes, residential communities and hospitality facilities are the primary applications. The modular system supports diverse floor-plan combinations and phased construction, flexibly expanding with site and operational needs.',
+    'Compact annex dwellings and courtyard living spaces, with complete solutions from spatial design to whole-home interiors, balancing limited sites, efficient construction and everyday living comfort.',
+    'Light-steel modular solutions for hotel guestrooms, public areas and supporting facilities. Standard units combined with local construction collaboration improve project efficiency and quality consistency.',
+    'Focused on affordable housing and large-scale residential communities, using standard floor plans and a modular production system for volume delivery, adjustable to local climate, cost and community planning requirements.',
+    'For low-density villas and community housing projects, a replicable and expandable light-steel building system. Standard components and flexible floor-plan combinations adapt to different families and site needs.',
+  ],
+  globalNetsMarketCountries: ['', '', '', '', '', '', '', '', ''],
+  globalNetsMarketDescriptions: ['', '', '', '', '', '', '', '', ''],
+} as const;

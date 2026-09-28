@@ -7,22 +7,20 @@ import Typography from '@mui/material/Typography';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import PageGrid from 'components/PageGrid';
 import PageSubtitle from 'components/PageSubtitle';
+import { useTranslation } from 'providers/useTranslation';
 
 const timelineSteps = [
-  { number: '01', zh: '需求与研判', en: 'DISCOVER' },
-  { number: '02', zh: '方案与配置', en: 'DESIGN' },
-  { number: '03', zh: '深化与生产', en: 'MANUFACTURE' },
-  { number: '04', zh: '物流与装配', en: 'ASSEMBLE' },
-  { number: '05', zh: '交付与运维', en: 'OPERATE' },
-];
+  { number: '01', zhKey: 'step1Zh', enKey: 'step1En' },
+  { number: '02', zhKey: 'step2Zh', enKey: 'step2En' },
+  { number: '03', zhKey: 'step3Zh', enKey: 'step3En' },
+  { number: '04', zhKey: 'step4Zh', enKey: 'step4En' },
+  { number: '05', zhKey: 'step5Zh', enKey: 'step5En' },
+] as const;
 
-const bulletItems = [
-  '工厂端精准下料与标准化质量管理',
-  '设计、生产、运输、安装数据协同',
-  '减少返工、材料损耗与多工种等待',
-];
+const bulletKeys = ['bullet1', 'bullet2', 'bullet3'] as const;
 
 const FullCycleDelivery: React.FC = () => {
+  const { t } = useTranslation();
   const isMobile = useMediaQuery(theme => theme.breakpoints.down('md'));
 
   return (
@@ -31,7 +29,7 @@ const FullCycleDelivery: React.FC = () => {
         pageBackground='#F5F0EB'
         content={
           <Box>
-            <PageSubtitle number='08' title='全周期交付' />
+            <PageSubtitle number='08' title={t('projectExamples.fullCycleDelivery.subtitle')} />
             <Grid container sx={{ mt: { xs: 2, md: 4 }, alignItems: 'flex-end' }}>
               <Grid size={{ xs: 12, md: 7 }}>
                 <Typography
@@ -42,7 +40,7 @@ const FullCycleDelivery: React.FC = () => {
                     lineHeight: 1.15,
                   }}
                 >
-                  一次协同，全程可控
+                  {t('projectExamples.fullCycleDelivery.title')}
                 </Typography>
               </Grid>
               <Grid size={{ xs: 0, md: 1 }} sx={{ display: { xs: 'none', md: 'block' } }} />
@@ -54,7 +52,7 @@ const FullCycleDelivery: React.FC = () => {
                     lineHeight: 1.7,
                   }}
                 >
-                  把现场的不确定性前置到设计与工厂，用清晰节点管理时间、成本与品质。
+                  {t('projectExamples.fullCycleDelivery.description')}
                 </Typography>
               </Grid>
             </Grid>
@@ -105,7 +103,7 @@ const FullCycleDelivery: React.FC = () => {
                             mt: 1,
                           }}
                         >
-                          {step.zh}
+                          {t(`projectExamples.fullCycleDelivery.${step.zhKey}`)}
                         </Typography>
                         <Typography
                           sx={{
@@ -115,7 +113,7 @@ const FullCycleDelivery: React.FC = () => {
                             fontWeight: 500,
                           }}
                         >
-                          {step.en}
+                          {t(`projectExamples.fullCycleDelivery.${step.enKey}`)}
                         </Typography>
                       </>
                     }
@@ -146,7 +144,7 @@ const FullCycleDelivery: React.FC = () => {
               <Grid size={{ xs: 12, md: 7.2 }} sx={{ overflow: 'hidden' }}>
                 <img
                   src='/project_examples/factory.jpeg'
-                  alt='全周期交付'
+                  alt={t('projectExamples.fullCycleDelivery.subtitle')}
                   style={{ width: '100%', height: '100%', objectFit: 'cover' }}
                 />
               </Grid>
@@ -164,7 +162,7 @@ const FullCycleDelivery: React.FC = () => {
                         mb: 2,
                       }}
                     >
-                      制造确定性
+                      {t('projectExamples.fullCycleDelivery.cardTitle')}
                     </Typography>
                     <Typography
                       sx={{
@@ -175,19 +173,19 @@ const FullCycleDelivery: React.FC = () => {
                         mb: 4,
                       }}
                     >
-                      更少现场变量，更多交付把握。
+                      {t('projectExamples.fullCycleDelivery.cardSubtitle')}
                     </Typography>
 
-                    {bulletItems.map((item, index) => (
+                    {bulletKeys.map((key, index) => (
                       <Grid
-                        key={item}
+                        key={key}
                         container
                         sx={{
                           alignItems: 'flex-start',
                           gap: 1.5,
                           py: 2,
                           borderBottom:
-                            index < bulletItems.length - 1 ? '1px solid #FFFFFF1F' : 'none',
+                            index < bulletKeys.length - 1 ? '1px solid #FFFFFF1F' : 'none',
                         }}
                       >
                         <Grid size='auto' sx={{ mt: 1 }}>
@@ -208,7 +206,7 @@ const FullCycleDelivery: React.FC = () => {
                               lineHeight: 1.6,
                             }}
                           >
-                            {item}
+                            {t(`projectExamples.fullCycleDelivery.${key}`)}
                           </Typography>
                         </Grid>
                       </Grid>

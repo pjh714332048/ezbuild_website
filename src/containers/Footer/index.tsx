@@ -6,15 +6,39 @@ import Typography from '@mui/material/Typography';
 import PageGrid from 'components/PageGrid';
 import { HOME_PAGE_KEY } from 'models/navigators/HOME_PAGE_KEY';
 import { NAVIGATOR_ITEMS } from 'models/navigators/NAVIGATOR_ITEMS';
-
-const footerLinks: { key: string; label: string }[] = [
-  { key: 'about', label: NAVIGATOR_ITEMS.about.cnLabel },
-  { key: 'intelligence_design', label: NAVIGATOR_ITEMS.intelligence_design.cnLabel },
-  { key: 'business_capability', label: NAVIGATOR_ITEMS.business_capability.cnLabel },
-  { key: 'project_examples', label: NAVIGATOR_ITEMS.project_examples.cnLabel },
-];
+import { useTranslation } from 'providers/useTranslation';
 
 const Footer: React.FC = () => {
+  const { t, language } = useTranslation();
+
+  const footerLinks: { key: string; label: string }[] = [
+    {
+      key: 'about',
+      label: language === 'en' ? NAVIGATOR_ITEMS.about.enLabel : NAVIGATOR_ITEMS.about.cnLabel,
+    },
+    {
+      key: 'intelligence_design',
+      label:
+        language === 'en'
+          ? NAVIGATOR_ITEMS.intelligence_design.enLabel
+          : NAVIGATOR_ITEMS.intelligence_design.cnLabel,
+    },
+    {
+      key: 'business_capability',
+      label:
+        language === 'en'
+          ? NAVIGATOR_ITEMS.business_capability.enLabel
+          : NAVIGATOR_ITEMS.business_capability.cnLabel,
+    },
+    {
+      key: 'project_examples',
+      label:
+        language === 'en'
+          ? NAVIGATOR_ITEMS.project_examples.enLabel
+          : NAVIGATOR_ITEMS.project_examples.cnLabel,
+    },
+  ];
+
   const handleNavigate = (id: string) => {
     const el = document.getElementById(id);
     el?.scrollIntoView({ behavior: 'smooth' });
@@ -49,7 +73,7 @@ const Footer: React.FC = () => {
               maxWidth: '100%',
             }}
           >
-            智能设计与模块化建造综合解决方案提供商
+            {t('footer.description')}
           </Typography>
         </Grid>
 
@@ -66,7 +90,7 @@ const Footer: React.FC = () => {
                   mb: 2,
                 }}
               >
-                浏览
+                {t('footer.browse')}
               </Typography>
               <Grid container spacing={1.5}>
                 {footerLinks.map(link => (
@@ -103,7 +127,7 @@ const Footer: React.FC = () => {
                   mb: 2,
                 }}
               >
-                联系
+                {t('footer.contact')}
               </Typography>
               <Grid container spacing={1.5}>
                 <Grid size={12}>
@@ -148,7 +172,7 @@ const Footer: React.FC = () => {
                       ['&:hover']: { color: '#FF6B1AFF' },
                     }}
                   >
-                    返回顶部 ↑
+                    {t('footer.backToTop')}
                   </Link>
                 </Grid>
               </Grid>
@@ -163,9 +187,7 @@ const Footer: React.FC = () => {
       {/* Bottom section */}
       <Grid container sx={{ alignItems: 'center' }}>
         <Grid size='grow'>
-          <Typography sx={{ color: '#8899AA99', fontSize: 12 }}>
-            © 2026 ezBuild.ai. 保留所有权利。
-          </Typography>
+          <Typography sx={{ color: '#8899AA99', fontSize: 12 }}>{t('footer.copyright')}</Typography>
         </Grid>
         <Grid>
           <Typography

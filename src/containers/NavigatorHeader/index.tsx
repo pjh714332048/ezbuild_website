@@ -16,6 +16,7 @@ import { useTheme } from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { HOME_PAGE_KEY } from 'models/navigators/HOME_PAGE_KEY';
 import { NAVIGATOR_ITEMS } from 'models/navigators/NAVIGATOR_ITEMS';
+import { useTranslation } from 'providers/useTranslation';
 
 import LocaleButton from './LocaleButton';
 
@@ -25,6 +26,9 @@ const NavigatorHeader: React.FC = () => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('md'));
   const [drawerOpen, setDrawerOpen] = useState(false);
+  const { language } = useTranslation();
+  const getLabel = (item: (typeof NAVIGATOR_ITEMS)[keyof typeof NAVIGATOR_ITEMS]) =>
+    language === 'en' ? item.enLabel : item.cnLabel;
 
   const handleClick = (key: string) => {
     const el = document.getElementById(key);
@@ -102,7 +106,7 @@ const NavigatorHeader: React.FC = () => {
                         },
                       }}
                     >
-                      {item.cnLabel}
+                      {getLabel(item)}
                     </Button>
                   );
                 })}
@@ -154,8 +158,8 @@ const NavigatorHeader: React.FC = () => {
               }}
             >
               <ListItemText
-                primary={item.cnLabel}
-                secondary={item.enLabel}
+                primary={getLabel(item)}
+                secondary={language === 'en' ? item.cnLabel : item.enLabel}
                 slotProps={{
                   primary: { sx: { fontSize: '1rem', fontWeight: 500, color: '#000000DE' } },
                   secondary: { sx: { fontSize: '0.75rem', color: '#00000099' } },

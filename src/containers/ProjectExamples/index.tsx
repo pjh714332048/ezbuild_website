@@ -2,6 +2,7 @@ import Box from '@mui/material/Box';
 import Divider from '@mui/material/Divider';
 import PageGrid from 'components/PageGrid';
 import PageSubtitle from 'components/PageSubtitle';
+import { useTranslation } from 'providers/useTranslation';
 
 import AmericanProject from './AmericanProject';
 import AsianProject from './AsianProject';
@@ -19,13 +20,15 @@ import TochigiProject from './TochigiProject';
 import TokyoProject from './TokyoProject';
 
 const ProjectExamples: React.FC = () => {
+  const { t } = useTranslation();
+
   return (
     <Box id='project_examples'>
       <PageGrid
         pageBackground='#FFFFFF'
         content={
           <Box>
-            <PageSubtitle number='07' title='项目图库' />
+            <PageSubtitle number='07' title={t('projectExamples.subtitle')} />
             <ProjectExamplesTitle />
             <AmericanProject />
             <Divider sx={{ mt: 5 }} />
