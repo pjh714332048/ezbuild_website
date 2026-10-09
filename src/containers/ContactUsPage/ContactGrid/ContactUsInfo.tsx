@@ -28,27 +28,32 @@ const ContactUsInfo: React.FC = () => {
   const contactRows: ContactRowData[] = [
     { labelKey: 'contactUs.info.email', value: 'mkt@ezbuild.design' },
     { labelKey: 'contactUs.info.phone', value: '+86 15800877849' },
-    { labelKey: 'WHATSAPP', value: '+86 15800877849', external: true },
+    // { labelKey: 'WHATSAPP', value: '+86 15800877849', external: true },
     { labelKey: 'contactUs.info.office', value: t('contactUs.info.officeAddress') },
   ];
 
   const socialRows: SocialRowData[] = [
     {
       label: 'INSTAGRAM',
-      value: 'EZBUILD',
+      value: '@ezbuild_ai_house',
       external: true,
       href: 'https://www.instagram.com/ezbuild_ai_house?stkn=MTduOW1ndTA3aWtrYg%3D%3D&utm_source=qr',
     },
-    { label: 'X', value: 'EZBUILD', external: true, href: 'https://x.com/ezBuild_aihouse' },
+    {
+      label: 'X',
+      value: '@ezBuild_aihouse',
+      external: true,
+      href: 'https://x.com/ezBuild_aihouse',
+    },
     {
       label: 'YOUTUBE',
-      value: 'EZBUILD',
+      value: '@ezBuild-ai-house',
       external: true,
       href: 'https://www.youtube.com/@ezBuild-ai-house',
     },
     {
       label: t('contactUs.info.xiaohongshu'),
-      value: 'EZBUILD',
+      value: '@ezBuild',
       external: true,
       href: 'https://www.xiaohongshu.com/user/profile/65e4b8b9000000000500a54d?xsec_token=YBieW-Zv6JsKniSf6jty87y30MYBM1USQjqaEaMyIrW9E=&xsec_source=app_share&xhsshare=CopyLink&shareRedId=ODtHNEU9RkI2NzUyOTgwNjY4OTdFOjpN&apptime=1790217538&share_id=48c222fa0eca4e5eb8f0a1f659bfc872',
     },
@@ -70,54 +75,40 @@ const ContactUsInfo: React.FC = () => {
             />
           </Grid>
         ))}
-        <Grid size={12}>
-          <Grid container sx={{ px: 2.5, py: 1.5, rowGap: { xs: 1.5, sm: 0 } }}>
-            {socialRows.map((row, index) => (
-              <Grid
-                key={`${row.label}-${index}`}
-                size={{ xs: 12, sm: 6 }}
-                sx={{
-                  borderLeft: { xs: 'none', sm: index % 2 === 1 ? '1px solid #FFFFFF33' : 'none' },
-                  pl: { xs: 0, sm: index % 2 === 1 ? 2 : 0 },
-                  borderBottom: { xs: 'none', sm: index < 2 ? '1px solid #FFFFFF33' : 'none' },
-                  pb: { xs: 0, sm: index < 2 ? 1.5 : 0 },
-                  pt: { xs: 0, sm: index < 2 ? 0 : 1.5 },
-                }}
-              >
-                <Link
-                  href={row.href || undefined}
-                  target='_blank'
-                  rel='noopener noreferrer'
-                  underline='none'
-                  sx={{
-                    display: 'block',
-                    px: 1.5,
-                    py: 1,
-                    borderRadius: 1,
-                    color: 'inherit',
-                    transition: 'background-color 0.2s ease',
-                    ['&:hover']: {
-                      cursor: 'pointer',
-                      backgroundColor: '#FFFFFF1A',
-                    },
-                  }}
-                >
-                  <Grid container sx={{ alignItems: 'flex-start', gap: 2 }}>
-                    <Grid size='auto'>
-                      <ContactLabel>{row.label}</ContactLabel>
-                    </Grid>
-                    <Grid size='grow'>
-                      <ContactValue>
-                        {row.value}
-                        {row.external && <ExternalLink />}
-                      </ContactValue>
-                    </Grid>
-                  </Grid>
-                </Link>
+        {socialRows.map((row, index) => (
+          <Grid key={`${row.label}-${index}`} size={12}>
+            <Link
+              href={row.href || undefined}
+              target='_blank'
+              rel='noopener noreferrer'
+              underline='none'
+              sx={{
+                display: 'block',
+                py: 1,
+                borderRadius: 1,
+                color: 'inherit',
+                transition: 'background-color 0.2s ease',
+                ['&:hover']: {
+                  cursor: 'pointer',
+                  backgroundColor: '#FFFFFF1A',
+                },
+              }}
+            >
+              <Grid container sx={{ alignItems: 'flex-start', gap: 2, px: 2.5, py: 1.5 }}>
+                <Grid size={3}>
+                  <ContactLabel>{row.label}</ContactLabel>
+                </Grid>
+                <Grid size={9}>
+                  <ContactValue>
+                    {row.value}
+                    {row.external && <ExternalLink />}
+                  </ContactValue>
+                </Grid>
               </Grid>
-            ))}
+            </Link>
+            {index < socialRows.length - 1 && <Divider sx={{ borderColor: '#FFFFFF33' }} />}
           </Grid>
-        </Grid>
+        ))}
       </Grid>
       <Divider sx={{ borderColor: '#FFFFFF33' }} />
     </>

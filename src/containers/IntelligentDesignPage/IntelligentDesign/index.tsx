@@ -32,10 +32,10 @@ const IntelligentDesign: React.FC = () => {
     <Box>
       <Grid container sx={{ minHeight: '100vh', width: '100%', pt: { xs: 10, md: 8, lg: 12 } }}>
         <Grid
-          size={{ xs: 12, md: 2, lg: 3 }}
+          size={{ xs: 12, md: 3, lg: 3 }}
           sx={{ display: { xs: 'none', sm: 'none', md: 'block' } }}
         />
-        <Grid size={{ xs: 12, sm: 12, md: 8, lg: 6 }} sx={{ px: { xs: 2, md: 0 } }}>
+        <Grid size={{ xs: 12, sm: 12, md: 6, lg: 6 }} sx={{ px: { xs: 2, md: 0 } }}>
           <IntelligentDesignTitle />
           <Grid
             container
@@ -47,7 +47,7 @@ const IntelligentDesign: React.FC = () => {
           >
             <Grid
               container
-              size={{ xs: 12, md: 5, lg: 4 }}
+              size={{ xs: 12, md: 4, lg: 4 }}
               sx={{ py: { xs: 2, md: 3 }, alignItems: 'center', gap: 2 }}
             >
               <Grid size={12}>
@@ -66,10 +66,10 @@ const IntelligentDesign: React.FC = () => {
                   sx={{
                     width: '100%',
                     color: 'white',
-                    backgroundColor: '#007bff',
+                    backgroundColor: '#007BFFFF',
                     ['&:disabled']: {
-                      backgroundColor: '#3f3f3f',
-                      color: '#f3f3f3',
+                      backgroundColor: '#3F3F3FFF',
+                      color: '#F3F3F3FF',
                       cursor: 'not-allowed',
                       pointerEvents: 'auto',
                     },
@@ -99,7 +99,7 @@ const IntelligentDesign: React.FC = () => {
               )}
             </Grid>
             <Grid
-              size={{ xs: 12, md: 7, lg: 8 }}
+              size={{ xs: 12, md: 8, lg: 8 }}
               sx={{
                 py: { xs: 2, md: 3 },
                 minHeight: 0,
@@ -129,7 +129,7 @@ const IntelligentDesign: React.FC = () => {
                         key={renderedModelSrc}
                         src={renderedModelSrc}
                         height='100%'
-                        background='#fff'
+                        background='#FFFFFFFF'
                       />
                     </Suspense>
                   ) : (
@@ -182,7 +182,7 @@ const IntelligentDesign: React.FC = () => {
           </Grid>
         </Grid>
         <Grid
-          size={{ xs: 12, md: 2, lg: 3 }}
+          size={{ xs: 12, md: 3, lg: 3 }}
           sx={{ display: { xs: 'none', sm: 'none', md: 'block' } }}
         />
       </Grid>

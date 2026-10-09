@@ -11,7 +11,7 @@ const ModulePlatformGridImage: React.FC<ModulePlatformGridImageProps> = ({ image
       sx={{
         position: 'relative',
         width: '100%',
-        height: '70%',
+        aspectRatio: '987 / 1400',
         my: 2,
       }}
     >
@@ -21,13 +21,13 @@ const ModulePlatformGridImage: React.FC<ModulePlatformGridImageProps> = ({ image
           top: 0,
           left: 0,
           zIndex: 1,
-          bgcolor: '#FF6B1A',
-          color: '#FFFFFF',
-          fontSize: 14,
+          bgcolor: '#FF6B1AFF',
+          color: '#FFFFFFFF',
+          fontSize: 'clamp(0.625rem, 0.7292vw, 0.875rem)',
           fontWeight: 700,
           lineHeight: 1,
-          px: 1.5,
-          py: 1,
+          px: 'clamp(8px, 0.625vw, 12px)',
+          py: 'clamp(5px, 0.4167vw, 8px)',
           borderBottomRightRadius: 8,
           borderTopLeftRadius: 8,
         }}

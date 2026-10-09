@@ -26,7 +26,7 @@ const ProjectExamplesSubTitle: React.FC<ProjectExamplesSubTitleProps> = ({
         <Typography
           variant='h4'
           sx={{
-            color: '#FF6B1A',
+            color: '#FF6B1AFF',
             fontWeight: 700,
             minWidth: 48,
           }}
@@ -36,20 +36,34 @@ const ProjectExamplesSubTitle: React.FC<ProjectExamplesSubTitleProps> = ({
       </Grid>
       <Grid size='grow'>
         <Box>
-          <Typography variant='h5' sx={{ color: '#FF6B1A', fontSize: 12, fontWeight: 600 }}>
+          <Typography
+            variant='h5'
+            sx={{
+              color: '#FF6B1AFF',
+              fontSize: 'clamp(0.625rem, 0.625vw, 0.75rem)',
+              fontWeight: 600,
+            }}
+          >
             {location}
           </Typography>
           <Typography
             variant='h2'
             sx={{
-              color: '#000',
-              fontSize: 'clamp(1.5rem, 2.2vw, 2.25rem)',
+              color: '#000000FF',
+              fontSize: 'clamp(1.2rem, 1.875vw, 2.25rem)',
               fontWeight: 400,
             }}
           >
             {title}
           </Typography>
-          <Typography variant='h4' sx={{ color: '#3f3f3f55', fontSize: 12, fontWeight: 600 }}>
+          <Typography
+            variant='h4'
+            sx={{
+              color: '#3F3F3F55',
+              fontSize: 'clamp(0.625rem, 0.625vw, 0.75rem)',
+              fontWeight: 600,
+            }}
+          >
             {description}
           </Typography>
         </Box>
@@ -57,7 +71,7 @@ const ProjectExamplesSubTitle: React.FC<ProjectExamplesSubTitleProps> = ({
       <Grid size='auto'>
         <Box
           sx={{
-            border: '1px solid #000',
+            border: '1px solid #000000FF',
             borderRadius: 1,
             px: 2,
             py: 0.5,

@@ -12,7 +12,7 @@ const ModulePlatformPage: React.FC = () => {
     <>
       <ModulePlatformPageTitle />
       <Grid container spacing={2} sx={{ width: '100%', mt: 5 }}>
-        <Grid size={{ xs: 12, md: 4, lg: 'grow' }} sx={{ p: 2, background: '#FFFFFF' }}>
+        <Grid size={{ xs: 12, md: 'grow' }} sx={{ p: 2, background: '#FFFFFFFF' }}>
           <ModulePlatformGridImage badge='01' imageSrc='/module_platform_images/1.webp' />
           <ModulePlatformGridContent
             smallTitle='NOAH'
@@ -22,23 +22,22 @@ const ModulePlatformPage: React.FC = () => {
             numberDescription={t('products.noahNumberDescription')}
           />
         </Grid>
-        <Grid size={{ xs: 12, md: 4, lg: 'grow' }} sx={{ p: 2, background: '#FFFFFF' }}>
+        <Grid size={{ xs: 12, md: 'grow' }} sx={{ p: 2, background: '#FFFFFFFF' }}>
           <ModulePlatformGridImage badge='02' imageSrc='/module_platform_images/2.webp' />
           <ModulePlatformGridContent
             smallTitle='HEMUDU'
             title={t('products.hemuduTitle')}
             content={t('products.hemuduContent')}
-            numberString='20 - 30'
+            numberString='20–30'
             numberDescription={t('products.hemuduNumberDescription')}
           />
         </Grid>
-        <Grid size={{ xs: 12, md: 4, lg: 'grow' }} sx={{ p: 2, background: '#FFFFFF' }}>
+        <Grid size={{ xs: 12, md: 'grow' }} sx={{ p: 2, background: '#FFFFFFFF' }}>
           <ModulePlatformGridImage badge='03' imageSrc='/module_platform_images/3.webp' />
           <ModulePlatformGridContent
             smallTitle='PANDORA'
             title={t('products.pandoraTitle')}
             content={t('products.pandoraContent')}
-            numberString='4×'
             numberDescription={t('products.pandoraNumberDescription')}
           />
         </Grid>

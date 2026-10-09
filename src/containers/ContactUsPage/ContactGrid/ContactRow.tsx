@@ -14,10 +14,10 @@ const ContactRow: React.FC<{ label: string; value: string; external?: boolean }>
 }) => (
   <Box>
     <Grid container sx={{ alignItems: 'flex-start', gap: 2, px: 2.5, py: 1.5 }}>
-      <Grid size='auto'>
+      <Grid size={3}>
         <ContactLabel>{label}</ContactLabel>
       </Grid>
-      <Grid size='grow'>
+      <Grid size={9}>
         <ContactValue>
           {value}
           {external && <ExternalLink />}

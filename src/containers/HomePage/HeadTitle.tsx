@@ -19,7 +19,7 @@ const HeadTitle: React.FC = () => {
             component='span'
             sx={{
               color: '#FFFFFFBF',
-              letterSpacing: 1.5,
+              letterSpacing: '0.0781vw',
               whiteSpace: { xs: 'normal', sm: 'nowrap' },
             }}
           >
@@ -27,12 +27,12 @@ const HeadTitle: React.FC = () => {
           </Typography>
         </Grid>
       </Grid>
-      <Typography variant='h1' component='h1' sx={{ fontWeight: 'bold', color: '#FFFFFF' }}>
+      <Typography variant='h1' component='h1' sx={{ fontWeight: 'bold', color: '#FFFFFFFF' }}>
         {t('home.titleLine1')}
       </Typography>
       <Typography variant='h1' component='h1' sx={{ fontWeight: 'bold' }}>
-        <span style={{ color: '#FFFFFF' }}>{t('home.titleLine2White')}</span>
-        <span style={{ color: '#FF6B1A' }}>{t('home.titleLine2Accent')}</span>
+        <span style={{ color: '#FFFFFFFF' }}>{t('home.titleLine2White')}</span>
+        <span style={{ color: '#FF6B1AFF' }}>{t('home.titleLine2Accent')}</span>
       </Typography>
       <Typography variant='body1' component='p' sx={{ color: '#FFFFFFC2' }}>
         {t('home.description')}

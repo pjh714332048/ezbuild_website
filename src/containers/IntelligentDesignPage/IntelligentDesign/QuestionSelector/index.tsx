@@ -36,7 +36,7 @@ export type QuestionProps = {
 };
 
 const QuestionSelector: React.FC<QuestionProps> = ({ onModelChange, onFinishedChange }) => {
-  const { t } = useTranslation();
+  const { t, language } = useTranslation();
   const [history, setHistory] = useState<readonly string[]>([QUESTION_ROOT_ID]);
   const currentId = history[history.length - 1];
   const currentNode = QUESTION_NODES[currentId];
@@ -77,15 +77,15 @@ const QuestionSelector: React.FC<QuestionProps> = ({ onModelChange, onFinishedCh
               sx={{
                 height: 3,
                 borderRadius: 1,
-                bgcolor: i < currentStep ? '#FF6B1A' : '#4A5568',
+                bgcolor: i < currentStep ? '#FF6B1AFF' : '#4A5568FF',
               }}
             />
           ))}
         </Grid>
         <Typography
           sx={{
-            color: '#FF6B1A',
-            fontSize: 14,
+            color: '#FF6B1AFF',
+            fontSize: 'clamp(0.625rem, 0.7292vw, 0.875rem)',
             fontWeight: 700,
             fontVariantNumeric: 'tabular-nums',
           }}
@@ -93,8 +93,8 @@ const QuestionSelector: React.FC<QuestionProps> = ({ onModelChange, onFinishedCh
           {String(currentStep).padStart(2, '0')} / {String(totalSteps).padStart(2, '0')}
         </Typography>
       </Box>
-      <Typography variant='h3' sx={{ fontWeight: 700, mb: 2, color: '#FFFFFF' }}>
-        {currentNode.title}
+      <Typography variant='h3' sx={{ fontWeight: 700, mb: 2, color: '#FFFFFFFF' }}>
+        {language === 'en' ? (currentNode.enTitle ?? currentNode.title) : currentNode.title}
       </Typography>
       <Grid container sx={{ gap: 1.5, width: '100%' }}>
         {currentNode.options.map(option => (
@@ -120,7 +120,9 @@ const QuestionSelector: React.FC<QuestionProps> = ({ onModelChange, onFinishedCh
             }}
           >
             <Grid size='grow'>
-              <Typography sx={{ color: 'white' }}>{option.label}</Typography>
+              <Typography sx={{ color: 'white' }}>
+                {language === 'en' ? option.enLabel : option.label}
+              </Typography>
             </Grid>
             <ChevronRight sx={{ color: 'white' }} />
           </Grid>
@@ -133,7 +135,7 @@ const QuestionSelector: React.FC<QuestionProps> = ({ onModelChange, onFinishedCh
           sx={{
             color: 'white',
             ['&:disabled']: {
-              color: '#3F3F3F',
+              color: '#3F3F3FFF',
               pointerEvents: 'auto',
               ['&:hover']: { cursor: 'not-allowed' },
             },

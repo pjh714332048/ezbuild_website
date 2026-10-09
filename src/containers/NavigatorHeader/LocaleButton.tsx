@@ -40,7 +40,9 @@ const LocaleButton: React.FC = () => {
         sx={{ gap: 0.25, px: 0.75, py: 0.5, color: '#000000DE' }}
       >
         <LanguageIcon sx={{ fontSize: 16 }} />
-        <Typography sx={{ fontSize: 12.5, fontWeight: 500, lineHeight: 1 }}>
+        <Typography
+          sx={{ fontSize: 'clamp(0.625rem, 0.651vw, 0.7813rem)', fontWeight: 500, lineHeight: 1 }}
+        >
           {LANGUAGE_SECTION_LIST[language]}
         </Typography>
       </IconButton>

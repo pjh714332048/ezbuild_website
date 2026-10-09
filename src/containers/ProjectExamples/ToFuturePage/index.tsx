@@ -35,9 +35,9 @@ const ToFuturePage: React.FC = () => {
             <PageSubtitle number='09' title={t('projectExamples.toFuture.subtitle')} />
             <Typography
               sx={{
-                fontSize: { xs: 32, md: 40 },
+                fontSize: { xs: 32, md: 'clamp(1.3333rem, 2.0833vw, 2.5rem)' },
                 fontWeight: 700,
-                color: '#FFFFFF',
+                color: '#FFFFFFFF',
                 lineHeight: 1.3,
                 my: 3,
               }}
@@ -45,7 +45,7 @@ const ToFuturePage: React.FC = () => {
               {t('projectExamples.toFuture.titleWhite')}
               <br />
               {t('projectExamples.toFuture.titleLine2')}
-              <Box component='span' sx={{ color: '#FF6B1A' }}>
+              <Box component='span' sx={{ color: '#FF6B1AFF' }}>
                 {t('projectExamples.toFuture.titleAccent')}
               </Box>
             </Typography>
@@ -53,7 +53,7 @@ const ToFuturePage: React.FC = () => {
             {/* 描述文字 */}
             <Typography
               sx={{
-                fontSize: 14,
+                fontSize: 'clamp(0.625rem, 0.7292vw, 0.875rem)',
                 color: '#FFFFFFBF',
                 lineHeight: 1.8,
                 mb: 4,
@@ -70,18 +70,18 @@ const ToFuturePage: React.FC = () => {
               <Grid size='grow'>
                 <Typography
                   sx={{
-                    fontSize: 36,
+                    fontSize: 'clamp(1.2rem, 1.875vw, 2.25rem)',
                     fontWeight: 700,
-                    color: '#FF6B1A',
+                    color: '#FF6B1AFF',
                     lineHeight: 1.2,
                   }}
                 >
-                  80%
+                  {t('projectExamples.toFuture.wasteReductionValue')}
                 </Typography>
                 <Typography
                   sx={{
-                    fontSize: 13,
-                    color: '#FFFFFF',
+                    fontSize: 'clamp(0.625rem, 0.6771vw, 0.8125rem)',
+                    color: '#FFFFFFFF',
                     mt: 0.5,
                   }}
                 >
@@ -91,18 +91,18 @@ const ToFuturePage: React.FC = () => {
               <Grid size='grow'>
                 <Typography
                   sx={{
-                    fontSize: 36,
+                    fontSize: 'clamp(1.2rem, 1.875vw, 2.25rem)',
                     fontWeight: 700,
-                    color: '#FF6B1A',
+                    color: '#FF6B1AFF',
                     lineHeight: 1.2,
                   }}
                 >
-                  30-50%
+                  {t('projectExamples.toFuture.scheduleReductionValue')}
                 </Typography>
                 <Typography
                   sx={{
-                    fontSize: 13,
-                    color: '#FFFFFF',
+                    fontSize: 'clamp(0.625rem, 0.6771vw, 0.8125rem)',
+                    color: '#FFFFFFFF',
                     mt: 0.5,
                   }}
                 >

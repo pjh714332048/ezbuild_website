@@ -6,9 +6,10 @@ import Typography from '@mui/material/Typography';
 const ContactValue: React.FC<{ children: ReactNode }> = ({ children }) => (
   <Typography
     sx={{
-      color: '#FFFFFF',
+      color: '#FFFFFFFF',
       fontWeight: 600,
-      fontSize: '0.95rem',
+      fontSize: 'clamp(0.75rem, 0.7917vw, 0.95rem)',
+      whiteSpace: 'nowrap',
     }}
   >
     {children}

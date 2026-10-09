@@ -25,10 +25,10 @@ const HomePage: React.FC = () => {
     >
       <Grid container spacing={2} size={12} sx={{ width: '100%' }}>
         <Grid
-          size={{ xs: 12, md: 2, lg: 3 }}
+          size={{ xs: 12, md: 3, lg: 3 }}
           sx={{ display: { xs: 'none', sm: 'none', md: 'block' } }}
         />
-        <Grid size={{ xs: 12, sm: 12, md: 8, lg: 6 }} sx={{ px: { xs: 2, md: 0 } }}>
+        <Grid size={{ xs: 12, sm: 12, md: 6, lg: 6 }} sx={{ px: { xs: 2, md: 0 } }}>
           <HeadTitle />
           <Grid
             container
@@ -47,13 +47,13 @@ const HomePage: React.FC = () => {
                   el?.scrollIntoView({ behavior: 'smooth' });
                 }}
                 sx={{
-                  backgroundColor: '#FF6B1A',
+                  backgroundColor: '#FF6B1AFF',
                   color: 'white',
                   px: { xs: 2.5, md: 4 },
                   py: { xs: 1.25, md: 2 },
-                  fontSize: { xs: '0.95rem', md: '1.1rem' },
+                  fontSize: { xs: '0.95rem', md: 'clamp(0.6875rem, 0.9167vw, 1.1rem)' },
                   ['&:hover']: {
-                    backgroundColor: '#e55d10',
+                    backgroundColor: '#E55D10FF',
                   },
                 }}
               >
@@ -70,7 +70,7 @@ const HomePage: React.FC = () => {
                   }}
                   sx={{
                     color: 'white',
-                    fontSize: { xs: '0.95rem', md: '1.1rem' },
+                    fontSize: { xs: '0.95rem', md: 'clamp(0.6875rem, 0.9167vw, 1.1rem)' },
                     textTransform: 'none',
                     px: { xs: 1, md: 2 },
                   }}
@@ -92,7 +92,7 @@ const HomePage: React.FC = () => {
           </Grid>
         </Grid>
         <Grid
-          size={{ xs: 12, md: 2, lg: 3 }}
+          size={{ xs: 12, md: 3, lg: 3 }}
           sx={{ display: { xs: 'none', sm: 'none', md: 'block' } }}
         />
       </Grid>

@@ -1,11 +1,12 @@
 export const EN_HOME = {
-  titleLine1: 'Building certainty',
-  titleLine2White: 'into ',
-  titleLine2Accent: 'very project',
+  titleLine1: 'Bringing greater',
+  titleLine2White: 'certainty to ',
+  titleLine2Accent: 'every build.',
   description:
-    'We connect intelligent design, proprietary modular products, advanced manufacturing and local delivery expertise to',
-  descriptionLine2: 'create flexible, efficient and sustainable buildings.',
-  designSubtitle: 'INTELLIGENT DESIGN × MODULAR BUILD',
-  experienceDesign: 'Try smart design',
-  viewGlobalProjects: 'View global projects',
+    'We bring together intelligent design, proprietary modular products, advanced manufacturing and local delivery expertise to provide flexible, efficient and sustainable',
+  descriptionLine2:
+    'solutions for residential, tourism, hospitality, commercial and public buildings.',
+  designSubtitle: 'Intelligent design & modular construction',
+  experienceDesign: 'Try intelligent design',
+  viewGlobalProjects: 'Explore global projects',
 } as const;

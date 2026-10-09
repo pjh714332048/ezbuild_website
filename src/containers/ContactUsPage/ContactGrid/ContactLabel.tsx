@@ -7,7 +7,7 @@ const ContactLabel: React.FC<{ children: ReactNode }> = ({ children }) => (
   <Typography
     sx={{
       color: '#FFFFFFAF',
-      fontSize: '0.75rem',
+      fontSize: 'clamp(0.625rem, 0.625vw, 0.75rem)',
       letterSpacing: '0.08em',
       textTransform: 'uppercase',
       minWidth: 90,

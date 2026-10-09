@@ -65,3 +65,122 @@ image: <server-ip>:5000/official-website:<version> # 将 latest 改为实际版�
 ```bash
 kubectl apply -f k8s/
 ```
+
+## 4. 过渡部署（K8s 就绪前）
+
+若 K8s 集群尚未跑通，可先用单个容器临时顶替，端口与未来 K8s NodePort 保持一致（30080）。域名入口层（DNS / 宿主机 Nginx / HTTPS 证书）在后续切换 K8s 时无需任何改动。
+
+```bash
+docker run -d \
+  --name official-website-tmp \
+  --restart=always \
+  -p 30080:80 \
+  <server-ip>:5000/official-website:<version>
+```
+
+验证：`curl -I http://127.0.0.1:30080` 返回 200 即可，随后按第 5 节接入域名。
+
+## 5. 域名接入（ezbuild.design）
+
+采用宿主机 Nginx 反向代理 + Certbot 签发 HTTPS 证书的方案，流量路径：
+
+```
+浏览器 → https://ezbuild.design → 宿主机 Nginx (80/443) → 127.0.0.1:30080 → K8s NodePort Service 或过渡容器 → Nginx
+```
+
+### 5.1 配置 DNS 解析
+
+在域名服务商（购买 `ezbuild.design` 处）添加两条 A 记录，指向服务器 IP（下文以 `119.45.31.214` 为例）：
+
+| 类型 | 主机记录 | 记录值        |
+| ---- | -------- | ------------- |
+| A    | @        | 119.45.31.214 |
+| A    | www      | 119.45.31.214 |
+
+验证解析生效（返回服务器 IP 即可）：
+
+```bash
+nslookup ezbuild.design
+```
+
+### 5.2 安装宿主机 Nginx 与 Certbot
+
+```bash
+sudo apt update
+sudo apt install -y nginx certbot python3-certbot-nginx
+```
+
+### 5.3 配置反向代理
+
+创建 `/etc/nginx/conf.d/ezbuild.conf`：
+
+```nginx
+server {
+    listen 80;
+    server_name ezbuild.design www.ezbuild.design;
+
+    location / {
+        proxy_pass http://127.0.0.1:30080;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+}
+```
+
+> K8s Service 为 NodePort 30080（见 `k8s/service.yaml`），宿主机 Nginx 只需代理本机 30080 端口。
+
+检查并重载：
+
+```bash
+sudo nginx -t && sudo systemctl reload nginx
+```
+
+此时通过 `http://ezbuild.design` 应已能访问（若 80 端口被系统默认站点占用，删除 `/etc/nginx/sites-enabled/default` 后重载）。
+
+### 5.4 签发 HTTPS 证书
+
+```bash
+sudo certbot --nginx -d ezbuild.design -d www.ezbuild.design
+```
+
+Certbot 会自动完成：验证域名所有权 → 申请 Let's Encrypt 证书 → 改写 Nginx 配置监听 443 并配置 HTTP 自动跳转 HTTPS。
+
+### 5.5 验证与续期
+
+```bash
+# 验证 HTTPS 与证书信息
+curl -I https://ezbuild.design
+
+# 查看自动续期定时器（证书有效期 90 天，certbot 自动续期）
+sudo systemctl list-timers | grep certbot
+
+# 手动测试续期流程
+certbot renew --dry-run
+```
+
+### 5.6 防火墙（可选）
+
+```bash
+# 仅放行 SSH / HTTP / HTTPS，收敛起见可同时关闭 30080 对外访问
+sudo ufw allow 22
+sudo ufw allow 80
+sudo ufw allow 443
+sudo ufw enable
+```
+
+## 6. K8s 跑通后从过渡方案切换
+
+K8s 集群就绪后，下线临时容器并启用 K8s 部署。NodePort 同为 30080，域名、证书、宿主机 Nginx 配置均无需改动：
+
+```bash
+# 1. 下线临时容器（不能与 NodePort 同时占用 30080）
+docker stop official-website-tmp && docker rm official-website-tmp
+
+# 2. 更新 k8s/deployment.yaml 镜像标签后部署
+kubectl apply -f k8s/
+
+# 3. 验证接管
+curl -I https://ezbuild.design
+```

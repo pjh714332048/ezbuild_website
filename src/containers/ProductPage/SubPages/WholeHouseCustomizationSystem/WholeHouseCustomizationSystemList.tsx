@@ -26,7 +26,7 @@ const WholeHouseCustomizationSystemList: React.FC = () => {
       sx={{
         width: '100%',
         height: '100%',
-        bgcolor: '#0a3d4a',
+        bgcolor: '#0A3D4AFF',
         border: '1px solid #FFFFFF1F',
       }}
     >
@@ -54,17 +54,23 @@ const WholeHouseCustomizationSystemList: React.FC = () => {
                     sx={{
                       borderRight: colOffset === 0 ? '1px solid #FFFFFF1F' : 'none',
                       alignItems: 'center',
-                      padding: 'clamp(12px, 2vw, 24px) clamp(16px, 2.5vw, 32px)',
-                      minHeight: 80,
+                      padding: 'clamp(12px, 2vw, 24px) clamp(16px, 1.25vw, 24px)',
+                      minHeight: 'clamp(56px, 4.1667vw, 80px)',
                     }}
                   >
-                    <Grid size='auto' sx={{ minWidth: 28, mr: 3 }}>
+                    <Grid
+                      size='auto'
+                      sx={{
+                        minWidth: 'clamp(16px, 1.25vw, 24px)',
+                        mr: 'clamp(8px, 0.625vw, 12px)',
+                      }}
+                    >
                       <Typography
                         variant='body2'
                         sx={{
-                          color: '#c8a84e',
+                          color: '#C8A84EFF',
                           fontWeight: 400,
-                          fontSize: 14,
+                          fontSize: 'clamp(0.625rem, 0.7292vw, 0.875rem)',
                         }}
                       >
                         {number}
@@ -73,19 +79,19 @@ const WholeHouseCustomizationSystemList: React.FC = () => {
                     <Grid size='grow'>
                       <Typography
                         sx={{
-                          color: '#ffffff',
-                          fontSize: 18,
+                          color: '#FFFFFFFF',
+                          fontSize: 'clamp(0.7rem, 0.9375vw, 1.125rem)',
                           fontWeight: 500,
                         }}
                       >
                         {t(titleKey)}
                       </Typography>
                     </Grid>
-                    <Grid size='auto' sx={{ ml: 2 }}>
+                    <Grid size='auto' sx={{ ml: 'clamp(4px, 0.3125vw, 6px)' }}>
                       <Typography
                         sx={{
                           color: '#FFFFFF59',
-                          fontSize: 'clamp(1rem, 1.4vw, 1.375rem)',
+                          fontSize: 'clamp(0.7333rem, 1.1458vw, 1.375rem)',
                           fontWeight: 300,
                         }}
                       >

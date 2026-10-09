@@ -1,7 +1,7 @@
 export const EN_FOOTER = {
-  description: 'Integrated intelligent design and modular construction solutions.',
+  description: 'Integrated solutions for intelligent design and modular construction.',
   browse: 'Explore',
-  contact: 'Connect',
+  contact: 'Contact us',
   backToTop: 'Back to top ↑',
   copyright: '© 2026 ezBuild.ai. All rights reserved.',
 } as const;

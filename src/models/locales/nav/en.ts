@@ -1,7 +1,7 @@
 export const EN_NAV = {
-  about: 'About',
-  intelligenceDesign: 'Smart Design',
-  businessCapability: 'Products',
+  about: 'About us',
+  intelligenceDesign: 'Intelligent design',
+  businessCapability: 'Our products',
   projectExamples: 'Projects',
-  contactUs: 'Contact',
+  contactUs: 'Contact us',
 } as const;

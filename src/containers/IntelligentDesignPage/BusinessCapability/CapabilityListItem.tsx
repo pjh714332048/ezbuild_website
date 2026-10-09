@@ -24,18 +24,18 @@ const CapabilityListItem: React.FC<CapabilityListItemProps> = ({
         alignItems: 'center',
         gap: 3,
         p: { md: 3, lg: 5 },
-        borderTop: '1px solid #2D2D2D',
+        borderTop: '1px solid #2D2D2DFF',
         transition: 'padding 0.3s ease',
       },
-      isLastItem && { borderBottom: '1px solid #2D2D2D' },
+      isLastItem && { borderBottom: '1px solid #2D2D2DFF' },
       {
         ['&:hover']: {
           py: { md: 4, lg: 7 },
           background: '#FFFFFF11',
           ['& .capability-icon-btn']: {
-            border: '1px solid #FF6B1A',
-            backgroundColor: '#FF6B1A',
-            color: '#FFFFFF',
+            border: '1px solid #FF6B1AFF',
+            backgroundColor: '#FF6B1AFF',
+            color: '#FFFFFFFF',
           },
         },
       },
@@ -46,16 +46,20 @@ const CapabilityListItem: React.FC<CapabilityListItemProps> = ({
         <Typography
           variant='h4'
           sx={{
-            color: '#FF6B1A',
+            color: '#FF6B1AFF',
             fontWeight: 700,
             minWidth: 48,
+            fontSize: 'clamp(0.8rem, 1.25vw, 1.5rem)',
           }}
         >
           {String(index + 1).padStart(2, '0')}
         </Typography>
       </Grid>
       <Grid size={4}>
-        <Typography variant='h4' sx={{ color: '#FFFFFF', fontWeight: 600 }}>
+        <Typography
+          variant='h4'
+          sx={{ color: '#FFFFFFFF', fontWeight: 600, fontSize: 'clamp(0.8rem, 1.25vw, 1.5rem)' }}
+        >
           {title}
         </Typography>
       </Grid>
@@ -69,9 +73,9 @@ const CapabilityListItem: React.FC<CapabilityListItemProps> = ({
     <IconButton
       className='capability-icon-btn'
       sx={{
-        border: '1px solid #FFFFFF',
+        border: '1px solid #FFFFFFFF',
         borderRadius: '50%',
-        color: '#FFFFFF',
+        color: '#FFFFFFFF',
         transition: 'all 0.3s ease',
       }}
     >

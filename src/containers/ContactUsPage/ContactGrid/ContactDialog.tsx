@@ -9,7 +9,6 @@ import DialogTitle from '@mui/material/DialogTitle';
 import Grid from '@mui/material/Grid';
 import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
-import { PROJECT_INQUIRY_RECIPIENT } from 'models/email/PROJECT_INQUIRY_RECIPIENT';
 import type { ProjectInquiry } from 'models/email/ProjectInquiry';
 import { useTranslation } from 'providers/useTranslation';
 import { useAppDispatch, useAppSelector } from 'store/hooks';
@@ -255,13 +254,11 @@ const ContactDialog: React.FC = () => {
           }}
           onClick={handleSendEmail}
         >
-          {sendResult.isLoading
-            ? t('contactUs.dialog.sending')
-            : t('contactUs.dialog.sendAndEmail')}
+          {sendResult.isLoading ? t('contactUs.dialog.sending') : t('contactUs.dialog.submit')}
         </Button>
         {sendResult.isSuccess && (
           <Typography sx={{ mt: 1.5, fontSize: 13, color: '#2E7D32FF', textAlign: 'center' }}>
-            {t('contactUs.dialog.sentSuccess')} {PROJECT_INQUIRY_RECIPIENT}
+            {t('contactUs.dialog.sentSuccess')}
           </Typography>
         )}
         {sendResult.isError && (

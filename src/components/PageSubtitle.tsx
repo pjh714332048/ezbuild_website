@@ -14,20 +14,20 @@ const PageSubtitle: React.FC<PageSubtitleProps> = ({ number, numberColor, title,
       container
       size='auto'
       sx={{
-        width: 36,
-        height: 36,
+        width: 'clamp(24px, 1.875vw, 36px)',
+        height: 'clamp(24px, 1.875vw, 36px)',
         borderRadius: '50%',
         border: '2px solid',
-        borderColor: numberColor || '#FF6B1A',
+        borderColor: numberColor || '#FF6B1AFF',
         alignItems: 'center',
         justifyContent: 'center',
       }}
     >
       <Typography
         sx={{
-          color: numberColor || '#FF6B1A',
+          color: numberColor || '#FF6B1AFF',
           fontWeight: 700,
-          fontSize: 12,
+          fontSize: 'clamp(0.625rem, 0.625vw, 0.75rem)',
           lineHeight: 1,
         }}
       >
@@ -37,8 +37,8 @@ const PageSubtitle: React.FC<PageSubtitleProps> = ({ number, numberColor, title,
     <Grid size='grow'>
       <Typography
         sx={{
-          color: titleColor || '#637080',
-          fontSize: 18,
+          color: titleColor || '#637080FF',
+          fontSize: 'clamp(0.7rem, 0.9375vw, 1.125rem)',
           fontWeight: 500,
           lineHeight: 1.2,
         }}

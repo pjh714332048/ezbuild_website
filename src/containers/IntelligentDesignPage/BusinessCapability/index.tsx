@@ -10,7 +10,7 @@ const BusinessCapability: React.FC = () => (
     container
     sx={{
       scrollMarginTop: '64px',
-      background: '#081727',
+      background: '#081727FF',
       backgroundSize: 'cover',
       backgroundPosition: 'center',
       backgroundRepeat: 'no-repeat',
@@ -19,17 +19,17 @@ const BusinessCapability: React.FC = () => (
   >
     <Grid container size={12} sx={{ width: '100%', mt: { xs: 4, md: 8, lg: 12 } }}>
       <Grid
-        size={{ xs: 12, md: 2, lg: 3 }}
+        size={{ xs: 12, md: 3, lg: 3 }}
         sx={{ display: { xs: 'none', sm: 'none', md: 'block' } }}
       />
-      <Grid size={{ xs: 12, sm: 12, md: 8, lg: 6 }}>
+      <Grid size={{ xs: 12, sm: 12, md: 6, lg: 6 }}>
         <BusinessCapabilityTitle />
         <Divider />
         <CapabilityList />
         <BusinessCapabilityFooter />
       </Grid>
       <Grid
-        size={{ xs: 12, md: 2, lg: 3 }}
+        size={{ xs: 12, md: 3, lg: 3 }}
         sx={{ display: { xs: 'none', sm: 'none', md: 'block' } }}
       />
     </Grid>

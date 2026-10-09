@@ -1,5 +1,9 @@
+import { useState } from 'react';
+
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
+
+import ProjectExamplesImageLightbox from './ProjectExamplesImageLightbox';
 
 interface ProjectExamplesImageGridProps {
   leftBigImageSrc: string;
@@ -12,17 +16,37 @@ const ProjectExamplesImageGrid: React.FC<ProjectExamplesImageGridProps> = ({
   rightSmallImagesSrc = [],
   bottomSmallImagesSrc = [],
 }) => {
+  const allImages = [leftBigImageSrc, ...rightSmallImagesSrc, ...bottomSmallImagesSrc];
+  const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
+
+  const handleImageClick = (index: number) => {
+    setLightboxIndex(index);
+  };
+
+  const handleCloseLightbox = () => {
+    setLightboxIndex(null);
+  };
+
+  const imageSx = {
+    width: '100%',
+    aspectRatio: '16/9',
+    objectFit: 'cover',
+    borderRadius: 1,
+    display: 'block',
+    cursor: 'pointer',
+  } as const;
+
   const badgeSx = {
     position: 'absolute',
     bottom: 8,
     left: 8,
     zIndex: 1,
-    px: 1,
-    py: 0.5,
+    px: 'clamp(6px, 0.4167vw, 8px)',
+    py: 'clamp(3px, 0.2083vw, 4px)',
     borderRadius: 1,
     bgcolor: '#00000099',
     color: 'common.white',
-    fontSize: 14,
+    fontSize: 'clamp(0.625rem, 0.7292vw, 0.875rem)',
   } as const;
 
   return (
@@ -40,13 +64,8 @@ const ProjectExamplesImageGrid: React.FC<ProjectExamplesImageGridProps> = ({
           <Box
             component='img'
             src={leftBigImageSrc}
-            sx={{
-              width: '100%',
-              aspectRatio: '16/9',
-              objectFit: 'cover',
-              borderRadius: 1,
-              display: 'block',
-            }}
+            onClick={() => handleImageClick(0)}
+            sx={imageSx}
           />
           <Box sx={badgeSx}>01</Box>
         </Box>
@@ -58,20 +77,15 @@ const ProjectExamplesImageGrid: React.FC<ProjectExamplesImageGridProps> = ({
             alignContent: 'start',
           }}
         >
-          {Array.from({ length: 4 }).map(
-            (_, i) =>
-              rightSmallImagesSrc[i] && (
-                <Box key={i} sx={{ position: 'relative', height: 'fit-content' }}>
+          {rightSmallImagesSrc.map(
+            (src, i) =>
+              src && (
+                <Box key={src} sx={{ position: 'relative', height: 'fit-content' }}>
                   <Box
                     component='img'
-                    src={rightSmallImagesSrc[i]}
-                    sx={{
-                      width: '100%',
-                      aspectRatio: '16/9',
-                      objectFit: 'cover',
-                      borderRadius: 1,
-                      display: 'block',
-                    }}
+                    src={src}
+                    onClick={() => handleImageClick(i + 1)}
+                    sx={imageSx}
                   />
                   <Box sx={badgeSx}>{String(i + 2).padStart(2, '0')}</Box>
                 </Box>
@@ -95,18 +109,21 @@ const ProjectExamplesImageGrid: React.FC<ProjectExamplesImageGridProps> = ({
             <Box
               component='img'
               src={src}
-              sx={{
-                width: '100%',
-                aspectRatio: '16/9',
-                objectFit: 'cover',
-                borderRadius: 1,
-                display: 'block',
-              }}
+              onClick={() => handleImageClick(rightSmallImagesSrc.length + i + 1)}
+              sx={imageSx}
             />
             <Box sx={badgeSx}>{String(i + 6).padStart(2, '0')}</Box>
           </Box>
         ))}
       </Grid>
+
+      <ProjectExamplesImageLightbox
+        open={lightboxIndex !== null}
+        images={allImages}
+        index={lightboxIndex ?? 0}
+        onIndexChange={setLightboxIndex}
+        onClose={handleCloseLightbox}
+      />
     </Grid>
   );
 };

@@ -68,7 +68,7 @@ const Footer: React.FC = () => {
           <Typography
             sx={{
               color: '#8899AABB',
-              fontSize: 13,
+              fontSize: 'clamp(0.625rem, 0.6771vw, 0.8125rem)',
               lineHeight: 1.7,
               maxWidth: '100%',
             }}
@@ -79,14 +79,14 @@ const Footer: React.FC = () => {
 
         <Grid size={{ xs: 12, md: 7 }}>
           <Grid container spacing={2}>
-            <Grid size={{ xs: 6, sm: 3 }} offset='auto'>
+            <Grid size={{ xs: 6, sm: 3 }} offset='auto' sx={{ minWidth: { md: 90 } }}>
               <Typography
                 sx={{
                   color: '#8899AAFF',
-                  fontSize: 12,
+                  fontSize: 'clamp(0.625rem, 0.625vw, 0.75rem)',
                   fontWeight: 600,
                   textTransform: 'uppercase',
-                  letterSpacing: 1.5,
+                  letterSpacing: '0.0781vw',
                   mb: 2,
                 }}
               >
@@ -102,7 +102,7 @@ const Footer: React.FC = () => {
                       onClick={() => handleNavigate(link.key)}
                       sx={{
                         color: '#CCDDEEFF',
-                        fontSize: 14,
+                        fontSize: 'clamp(0.625rem, 0.7292vw, 0.875rem)',
                         textAlign: 'left',
                         transition: 'color 0.2s ease',
                         ['&:hover']: {
@@ -116,14 +116,14 @@ const Footer: React.FC = () => {
                 ))}
               </Grid>
             </Grid>
-            <Grid size={{ xs: 6, sm: 3 }}>
+            <Grid size={{ xs: 6, sm: 3 }} sx={{ minWidth: { md: 96 } }}>
               <Typography
                 sx={{
                   color: '#8899AAFF',
-                  fontSize: 12,
+                  fontSize: 'clamp(0.625rem, 0.625vw, 0.75rem)',
                   fontWeight: 600,
                   textTransform: 'uppercase',
-                  letterSpacing: 1.5,
+                  letterSpacing: '0.0781vw',
                   mb: 2,
                 }}
               >
@@ -136,7 +136,7 @@ const Footer: React.FC = () => {
                     underline='none'
                     sx={{
                       color: '#CCDDEEFF',
-                      fontSize: 14,
+                      fontSize: 'clamp(0.625rem, 0.7292vw, 0.875rem)',
                       transition: 'color 0.2s ease',
                       ['&:hover']: { color: '#FF6B1AFF' },
                     }}
@@ -150,7 +150,7 @@ const Footer: React.FC = () => {
                     underline='none'
                     sx={{
                       color: '#CCDDEEFF',
-                      fontSize: 14,
+                      fontSize: 'clamp(0.625rem, 0.7292vw, 0.875rem)',
                       transition: 'color 0.2s ease',
                       ['&:hover']: { color: '#FF6B1AFF' },
                     }}
@@ -166,7 +166,7 @@ const Footer: React.FC = () => {
                     onClick={handleBackToTop}
                     sx={{
                       color: '#CCDDEEFF',
-                      fontSize: 14,
+                      fontSize: 'clamp(0.625rem, 0.7292vw, 0.875rem)',
                       textAlign: 'left',
                       transition: 'color 0.2s ease',
                       ['&:hover']: { color: '#FF6B1AFF' },
@@ -187,14 +187,16 @@ const Footer: React.FC = () => {
       {/* Bottom section */}
       <Grid container sx={{ alignItems: 'center' }}>
         <Grid size='grow'>
-          <Typography sx={{ color: '#8899AA99', fontSize: 12 }}>{t('footer.copyright')}</Typography>
+          <Typography sx={{ color: '#8899AA99', fontSize: 'clamp(0.625rem, 0.625vw, 0.75rem)' }}>
+            {t('footer.copyright')}
+          </Typography>
         </Grid>
         <Grid>
           <Typography
             sx={{
               color: '#8899AA99',
-              fontSize: 12,
-              letterSpacing: 2,
+              fontSize: 'clamp(0.625rem, 0.625vw, 0.75rem)',
+              letterSpacing: '0.1042vw',
             }}
           >
             CHINA · JAPAN · GLOBAL

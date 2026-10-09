@@ -19,7 +19,7 @@ const AboutUsPage: React.FC = () => {
         <Grid
           container
           sx={{
-            background: '#F1EEE6',
+            background: '#F1EEE6FF',
             minHeight: '10vh',
             width: 1,
             px: { xs: 2, md: 0 },
@@ -27,15 +27,15 @@ const AboutUsPage: React.FC = () => {
           }}
         >
           <Grid
-            size={{ md: 2, lg: 3 }}
-            sx={{ border: '1px solid #3f3f3f44', display: { xs: 'none', md: 'block' } }}
+            size={{ md: 3, lg: 3 }}
+            sx={{ border: '1px solid #3F3F3F44', display: { xs: 'none', md: 'block' } }}
           />
-          <Grid size={{ xs: 12, md: 8, lg: 6 }}>
+          <Grid size={{ xs: 12, md: 6, lg: 6 }}>
             <DeliveryItems />
           </Grid>
           <Grid
-            size={{ md: 2, lg: 3 }}
-            sx={{ border: '1px solid #3f3f3f44', display: { xs: 'none', md: 'block' } }}
+            size={{ md: 3, lg: 3 }}
+            sx={{ border: '1px solid #3F3F3F44', display: { xs: 'none', md: 'block' } }}
           />
         </Grid>
       </Box>
@@ -44,20 +44,19 @@ const AboutUsPage: React.FC = () => {
           size={12}
           container
           sx={{
-            background: '#FFFFFF',
+            background: '#FFFFFFFF',
             minHeight: '70vh',
             width: 1,
-            pt: 5,
+            py: { xs: 5, md: 4, lg: 7 },
             alignItems: 'center',
             px: { xs: 2, md: 0 },
-            pb: { xs: 6, md: 0 },
           }}
         >
-          <Grid size={{ md: 2, lg: 3 }} sx={{ display: { xs: 'none', md: 'block' } }} />
-          <Grid size={{ xs: 12, md: 8, lg: 6 }} sx={{ height: 1 }}>
+          <Grid size={{ md: 3, lg: 3 }} sx={{ display: { xs: 'none', md: 'block' } }} />
+          <Grid size={{ xs: 12, md: 6, lg: 6 }} sx={{ height: 1 }}>
             <AboutUsArticle />
           </Grid>
-          <Grid size={{ md: 2, lg: 3 }} sx={{ display: { xs: 'none', md: 'block' } }} />
+          <Grid size={{ md: 3, lg: 3 }} sx={{ display: { xs: 'none', md: 'block' } }} />
         </Grid>
       </Grid>
     </>

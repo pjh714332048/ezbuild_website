@@ -13,7 +13,7 @@ const IntelligentDesignPage: React.FC = () => {
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat',
-        background: '#0b1c31',
+        background: '#0B1C31FF',
       }}
     >
       <IntelligentDesign />

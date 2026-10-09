@@ -9,7 +9,7 @@ const TokyoProject: React.FC = () => {
   return (
     <Box>
       <ProjectExamplesSubTitle
-        index={10}
+        index={8}
         location={t('projectExamples.tokyoLocation')}
         title={t('projectExamples.tokyoTitle')}
         description={t('projectExamples.tokyoDescription')}
