@@ -17,7 +17,7 @@ const HomePage: React.FC = () => {
       id={HOME_PAGE_KEY}
       sx={{
         backgroundColor: '#102B3A',
-        backgroundImage: 'url(/home/hero-modular.jpeg)',
+        backgroundImage: 'url(/home/home_background.png)',
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat',

@@ -7,7 +7,7 @@ const IntelligentDesignTitle: React.FC = () => {
   const { t } = useTranslation();
   return (
     <>
-      <PageSubtitle number='02' title={t('intelligentDesign.subtitle')} titleColor='#FFFFFFCC' />
+      <PageSubtitle number='02' title={t('intelligentDesign.subtitle')} titleColor='#FFFFFF' />
       <Grid
         container
         sx={{ width: '100%', mt: 3, rowGap: 2, ['@media (max-height: 750px)']: { mt: 2 } }}

@@ -48,10 +48,9 @@ const NavigatorHeader: React.FC = () => {
       >
         <Toolbar
           sx={{
-            ['&&']: { minHeight: 'var(--header-height)', px: 'var(--page-gutter)' },
+            ['&&']: { minHeight: 'var(--header-height)', px: { xs: 2, md: 3 } },
             width: '100%',
-            maxWidth: 1440,
-            mx: 'auto',
+            boxSizing: 'border-box',
           }}
         >
           <Grid

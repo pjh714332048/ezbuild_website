@@ -7,7 +7,7 @@ const BusinessCapabilityTitle: React.FC = () => {
   const { t } = useTranslation();
   return (
     <>
-      <PageSubtitle number='03' title={t('intelligentDesign.bcSubtitle')} titleColor='#FFFFFFCC' />
+      <PageSubtitle number='03' title={t('intelligentDesign.bcSubtitle')} titleColor='#FFFFFF' />
       <Grid container sx={{ width: '100%', mt: 3 }}>
         <Grid size={{ xs: 12, md: 6 }}>
           <Typography variant='h2' sx={{ color: '#FFFFFF' }}>
