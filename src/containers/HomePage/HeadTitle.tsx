@@ -20,17 +20,35 @@ const HeadTitle: React.FC = () => {
             sx={{
               color: '#FFFFFFBF',
               letterSpacing: '0.0781vw',
-              whiteSpace: { xs: 'normal', sm: 'nowrap' },
+              overflowWrap: 'anywhere',
             }}
           >
             {t('home.designSubtitle')}
           </Typography>
         </Grid>
       </Grid>
-      <Typography variant='h1' component='h1' sx={{ fontWeight: 'bold', color: '#FFFFFFFF' }}>
+      <Typography
+        variant='h1'
+        component='h1'
+        sx={{
+          fontWeight: 'bold',
+          color: '#FFFFFFFF',
+          fontSize: 'clamp(2.5rem, min(5vw, 8vh), 6rem)',
+          lineHeight: 1.15,
+        }}
+      >
         {t('home.titleLine1')}
       </Typography>
-      <Typography variant='h1' component='h1' sx={{ fontWeight: 'bold' }}>
+      <Typography
+        variant='h1'
+        component='h1'
+        sx={{
+          fontWeight: 'bold',
+          fontSize: 'clamp(2.5rem, min(5vw, 8vh), 6rem)',
+          lineHeight: 1.15,
+          mb: 2,
+        }}
+      >
         <span style={{ color: '#FFFFFFFF' }}>{t('home.titleLine2White')}</span>
         <span style={{ color: '#FF6B1AFF' }}>{t('home.titleLine2Accent')}</span>
       </Typography>

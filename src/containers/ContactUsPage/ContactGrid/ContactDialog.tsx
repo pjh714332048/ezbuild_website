@@ -1,12 +1,14 @@
 import { useState } from 'react';
 
 import ArrowForward from '@mui/icons-material/ArrowForward';
+import CloseIcon from '@mui/icons-material/Close';
 import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
 import Grid from '@mui/material/Grid';
+import IconButton from '@mui/material/IconButton';
 import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
 import type { ProjectInquiry } from 'models/email/ProjectInquiry';
@@ -168,6 +170,8 @@ const ContactDialog: React.FC = () => {
       onClose={handleClose}
       fullWidth
       maxWidth='sm'
+      scroll='paper'
+      aria-labelledby='contact-dialog-title'
       slotProps={{
         paper: {
           sx: {
@@ -175,20 +179,50 @@ const ContactDialog: React.FC = () => {
             borderRadius: 2,
             px: 3,
             py: 2.5,
+            m: 2,
+            width: 'calc(100% - 32px)',
+            maxHeight: 'calc(100vh - 32px)',
+            ['@supports (height: 100dvh)']: { maxHeight: 'calc(100dvh - 32px)' },
+            ['@media (max-height: 750px)']: { px: 2, py: 1.5 },
           },
         },
       }}
     >
-      <DialogTitle sx={{ px: 0, pt: 0, pb: 0.5 }}>
+      <DialogTitle
+        id='contact-dialog-title'
+        sx={{
+          px: 0,
+          pt: 0,
+          pb: 1,
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          gap: 2,
+          flexShrink: 0,
+        }}
+      >
         <Typography variant='h6' sx={{ fontWeight: 700, color: '#1A1A2EFF', fontSize: 20 }}>
           {t('contactUs.dialog.title')}
         </Typography>
+        <IconButton onClick={handleClose} aria-label={t('common.close')} size='small'>
+          <CloseIcon />
+        </IconButton>
       </DialogTitle>
-      <DialogContent sx={{ px: 0, py: 0 }}>
+      <DialogContent
+        sx={{ px: 0, py: 0, minHeight: 0, overflowY: 'auto', scrollbarGutter: 'stable' }}
+      >
         <Typography sx={{ fontSize: 13, color: '#666666FF' }}>
           {t('contactUs.dialog.requiredNote')}
         </Typography>
-        <Grid container sx={{ columnSpacing: 2, rowGap: 2.5, mt: 2 }}>
+        <Grid
+          container
+          sx={{
+            columnSpacing: 2,
+            rowGap: 2.5,
+            mt: 2,
+            ['@media (max-height: 750px)']: { rowGap: 1.5, mt: 1 },
+          }}
+        >
           {contactFormFields.map(field => {
             const label = t(field.labelKey as 'contactUs.dialog.fieldName');
             return (
@@ -236,7 +270,16 @@ const ContactDialog: React.FC = () => {
           })}
         </Grid>
       </DialogContent>
-      <DialogActions sx={{ px: 0, pt: 3, pb: 0, display: 'block' }}>
+      <DialogActions
+        sx={{
+          px: 0,
+          pt: 2,
+          pb: 0,
+          display: 'block',
+          flexShrink: 0,
+          ['@media (max-height: 750px)']: { pt: 1.5 },
+        }}
+      >
         <Button
           fullWidth
           disabled={sendResult.isLoading}

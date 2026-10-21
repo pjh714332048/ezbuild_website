@@ -1,3 +1,51 @@
+# TKE 生产部署
+
+仅一个生产环境，执行脚本：
+
+```powershell
+.\deploy\deploy.ps1
+# 指定版本并检查 TKE 节点入口
+.\deploy\deploy.ps1 -Version 20261021-120000 -BaseUrl http://<TKE节点公网IP>:30081
+# 推送本地已有镜像并部署
+.\deploy\deploy.ps1 -Version 20261021-120000 -SkipBuild
+```
+
+- Deployment / Service / 容器名称：`ezbuild-website`，命名空间：`ezbuild`。
+- 镜像：`ezbuild-images.tencentcloudcr.com/ezbuild/ezbuild:website-<Version>`，默认版本为本机时间。
+- 脚本构建并推送镜像，将固定摘要写回 `k8s/deployment.yaml`，应用配置并等待滚动更新完成。
+- NodePort：`30081`（`30080` 已用于参考项目）。节点安全组需允许入口访问；如该端口已被其他 Service 使用，请先修改 `k8s/service.yaml`。
+- `-BaseUrl` 可选，指定后检查首页。请使用实际指向本次 TKE 部署的节点地址或域名。
+
+## 首次准备
+
+安装并启动 Docker，安装 kubectl，配置 TKE 集群 kubeconfig，确认 `kubectl config current-context` 指向目标集群。TKE 节点需能访问 TCR。
+
+```powershell
+docker login ezbuild-images.tencentcloudcr.com
+kubectl apply -f k8s/namespace.yaml
+kubectl create secret docker-registry tcr-secret -n ezbuild --docker-server=ezbuild-images.tencentcloudcr.com --docker-username=<TCR用户名> --docker-password=<TCR密码>
+```
+
+若 `ezbuild` 命名空间已有可用的 `tcr-secret`，直接复用。脚本在构建前检查该凭证。
+
+## 域名入口与排查
+
+将域名入口的反向代理上游指向 `http://<TKE节点可达IP>:30081`，或在 TKE 配置 Ingress / CLB 转发至 `ezbuild/ezbuild-website` Service 的 80 端口。原域名若仍指向旧服务器，需要同步调整入口；只有代理与节点在同机时才使用 `127.0.0.1`。
+
+```powershell
+kubectl get pods,svc -n ezbuild -l app=ezbuild-website
+kubectl logs -n ezbuild deployment/ezbuild-website --tail=50
+kubectl rollout undo deployment/ezbuild-website -n ezbuild
+```
+
+回滚后，下次发布请使用所需版本重新运行脚本；脚本会更新本地 manifest 的镜像字段。
+
+---
+
+# 历史部署参考（自建 Registry / 单机）
+
+以下是旧部署记录，使用旧名称 `official-website` 和端口 `30080`，不适用于当前 TKE 配置；当前 `k8s/` 以本文顶部的生产部署说明为准。
+
 # 单独推包 rsync -avz --progress dist/ root@119.45.31.214:/var/www/website/
 
 # 部署文档

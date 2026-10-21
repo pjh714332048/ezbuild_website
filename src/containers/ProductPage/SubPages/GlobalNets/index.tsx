@@ -10,7 +10,7 @@ const GlobalNets: React.FC = () => {
   const { t } = useTranslation();
 
   return (
-    <Box id='global_nets' sx={{ height: '100%', py: { xs: 5, md: 10 }, scrollMarginTop: '64px' }}>
+    <Box id='global_nets' sx={{ height: '100%', py: { xs: 5, md: 10 } }}>
       <Grid container sx={{ alignItems: 'stretch' }}>
         <Grid size={{ xs: 12, md: 6 }}>
           <PageSubtitle number='06' title={t('products.globalNetsSubtitle')} />

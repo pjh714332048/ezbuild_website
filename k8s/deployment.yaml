@@ -1,22 +1,25 @@
-apiVersion: apps/v1
+﻿apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: official-website
+  name: ezbuild-website
+  namespace: ezbuild
   labels:
-    app: official-website
+    app: ezbuild-website
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: official-website
+      app: ezbuild-website
   template:
     metadata:
       labels:
-        app: official-website
+        app: ezbuild-website
     spec:
+      imagePullSecrets:
+        - name: tcr-secret
       containers:
-        - name: official-website
-          image: <server-ip>:5000/official-website:latest
+        - name: ezbuild-website
+          image: ezbuild-images.tencentcloudcr.com/ezbuild/ezbuild:website-20261021-113718@sha256:98fb82af26c41d615f1a3e7ccfb1fee5da087aa9c28458fae51ec786e3430ccd
           ports:
             - containerPort: 80
           resources:
@@ -45,4 +48,4 @@ spec:
       volumes:
         - name: nginx-config
           configMap:
-            name: official-website-nginx-config
+            name: ezbuild-website-nginx-config

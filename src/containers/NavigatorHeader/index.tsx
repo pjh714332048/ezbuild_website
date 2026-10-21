@@ -12,7 +12,6 @@ import List from '@mui/material/List';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemText from '@mui/material/ListItemText';
 import Toolbar from '@mui/material/Toolbar';
-import { useTheme } from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { HOME_PAGE_KEY } from 'models/navigators/HOME_PAGE_KEY';
 import { NAVIGATOR_ITEMS } from 'models/navigators/NAVIGATOR_ITEMS';
@@ -23,8 +22,7 @@ import LocaleButton from './LocaleButton';
 const drawerWidth = 280;
 
 const NavigatorHeader: React.FC = () => {
-  const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down('md'));
+  const isCompactNavigation = useMediaQuery('(max-width: 1099.95px)');
   const [drawerOpen, setDrawerOpen] = useState(false);
   const { language } = useTranslation();
   const getLabel = (item: (typeof NAVIGATOR_ITEMS)[keyof typeof NAVIGATOR_ITEMS]) =>
@@ -48,25 +46,42 @@ const NavigatorHeader: React.FC = () => {
           background: '#FFFFFFF5',
         }}
       >
-        <Toolbar>
+        <Toolbar
+          sx={{
+            ['&&']: { minHeight: 'var(--header-height)', px: 'var(--page-gutter)' },
+            width: '100%',
+            maxWidth: 1440,
+            mx: 'auto',
+          }}
+        >
           <Grid
             container
             sx={{
               alignItems: 'center',
               width: 1,
+              flexWrap: 'nowrap',
+              gap: 2,
             }}
           >
-            <Grid size='grow'>
+            <Grid size='grow' sx={{ minWidth: 0 }}>
               <Box
                 component='img'
                 src='/ezbuild-ai-logo-transparent.svg'
                 alt='ezBuild.ai'
-                sx={{ m: 2, height: 32, display: 'block', cursor: 'pointer' }}
+                sx={{
+                  height: { xs: 28, lg: 32 },
+                  maxWidth: '100%',
+                  display: 'block',
+                  cursor: 'pointer',
+                }}
                 onClick={() => handleClick(HOME_PAGE_KEY)}
               />
             </Grid>
-            {isMobile ? (
-              <Grid container sx={{ alignItems: 'center', gap: 1 }}>
+            {isCompactNavigation ? (
+              <Grid
+                container
+                sx={{ alignItems: 'center', gap: 1, flexWrap: 'nowrap', flexShrink: 0 }}
+              >
                 <LocaleButton />
                 <IconButton
                   edge='end'
@@ -78,14 +93,23 @@ const NavigatorHeader: React.FC = () => {
                 </IconButton>
               </Grid>
             ) : (
-              <Grid>
+              <Grid
+                sx={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: { xs: 0.5, lg: 1, xl: 2 },
+                  flexShrink: 0,
+                }}
+              >
                 {Object.entries(NAVIGATOR_ITEMS).map(([key, item]) => {
                   return (
                     <Button
                       key={item.enLabel}
                       onClick={() => handleClick(key)}
                       sx={{
-                        mr: { md: 2, lg: 4 },
+                        px: { xs: 1, lg: 1.5 },
+                        minWidth: 'auto',
+                        whiteSpace: 'nowrap',
                         position: 'relative',
                         color: '#000000',
 
@@ -119,7 +143,7 @@ const NavigatorHeader: React.FC = () => {
 
       <Drawer
         anchor='right'
-        open={drawerOpen}
+        open={drawerOpen && isCompactNavigation}
         onClose={() => setDrawerOpen(false)}
         sx={{
           '& .MuiDrawer-paper': {

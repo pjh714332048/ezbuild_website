@@ -1,5 +1,6 @@
 import Divider from '@mui/material/Divider';
 import Grid from '@mui/material/Grid';
+import ContentContainer from 'components/ContentContainer';
 
 import BusinessCapabilityFooter from './BusinessCapabilityFooter';
 import BusinessCapabilityTitle from './BusinessCapabilityTitle';
@@ -9,29 +10,20 @@ const BusinessCapability: React.FC = () => (
   <Grid
     container
     sx={{
-      scrollMarginTop: '64px',
       background: '#081727FF',
       backgroundSize: 'cover',
       backgroundPosition: 'center',
       backgroundRepeat: 'no-repeat',
-      py: { xs: 3, md: 6, lg: 10 },
+      py: 'var(--section-spacing)',
     }}
   >
     <Grid container size={12} sx={{ width: '100%', mt: { xs: 4, md: 8, lg: 12 } }}>
-      <Grid
-        size={{ xs: 12, md: 3, lg: 3 }}
-        sx={{ display: { xs: 'none', sm: 'none', md: 'block' } }}
-      />
-      <Grid size={{ xs: 12, sm: 12, md: 6, lg: 6 }}>
+      <ContentContainer>
         <BusinessCapabilityTitle />
         <Divider />
         <CapabilityList />
         <BusinessCapabilityFooter />
-      </Grid>
-      <Grid
-        size={{ xs: 12, md: 3, lg: 3 }}
-        sx={{ display: { xs: 'none', sm: 'none', md: 'block' } }}
-      />
+      </ContentContainer>
     </Grid>
   </Grid>
 );

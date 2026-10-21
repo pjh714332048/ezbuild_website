@@ -8,8 +8,8 @@ const ContactValue: React.FC<{ children: ReactNode }> = ({ children }) => (
     sx={{
       color: '#FFFFFFFF',
       fontWeight: 600,
-      fontSize: 'clamp(0.75rem, 0.7917vw, 0.95rem)',
-      whiteSpace: 'nowrap',
+      fontSize: 'var(--font-body)',
+      overflowWrap: 'anywhere',
     }}
   >
     {children}

@@ -81,18 +81,14 @@ const toHexAlpha = (hex: string, alphaHex: string): string => `${hex.slice(0, 7)
 const GlobalNetsMap: React.FC = () => {
   const { t } = useTranslation();
   const [selectedDot, setSelectedDot] = useState<MapDot | null>(null);
-  const [cardPosition, setCardPosition] = useState<{ left: number; top: number }>({
-    left: 0,
-    top: 0,
-  });
+  const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
 
   const handleDotClick = (dot: MapDot, event: MouseEvent<HTMLElement>) => {
     if (selectedDot?.id === dot.id) {
       setSelectedDot(null);
       return;
     }
-    const rect = event.currentTarget.getBoundingClientRect();
-    setCardPosition({ left: rect.left + rect.width / 2, top: rect.top + rect.height / 2 });
+    setAnchorEl(event.currentTarget);
     setSelectedDot(dot);
   };
 
@@ -161,7 +157,7 @@ const GlobalNetsMap: React.FC = () => {
         open={!!selectedDot}
         title={selectedDot ? t(selectedDot.titleKey) : ''}
         content={selectedDot ? t(selectedDot.contentKey) : ''}
-        anchorPosition={cardPosition}
+        anchorEl={anchorEl}
         onClose={() => setSelectedDot(null)}
       />
     </Box>

@@ -1,5 +1,15 @@
 import type { QuestionNode } from './QuestionNode';
 
+const styleQuestion = (resultId: string): QuestionNode => ({
+  id: `${resultId}Style`,
+  title: '您希望什么样的建筑风格？',
+  enTitle: 'What architectural style would you like?',
+  options: [
+    { label: 'A. 包豪斯', enLabel: 'A. Bauhaus', next: `result:${resultId}Bauhaus` },
+    { label: 'B. 自然风', enLabel: 'B. Natural', next: `result:${resultId}Natural` },
+  ],
+});
+
 export const QUESTION_NODES: Readonly<Record<string, QuestionNode>> = {
   ['function']: {
     id: 'function',
@@ -21,8 +31,8 @@ export const QUESTION_NODES: Readonly<Record<string, QuestionNode>> = {
     title: '您需要多少间客房？',
     enTitle: 'How many guest rooms do you need?',
     options: [
-      { label: '8 间', enLabel: '8 guest rooms', next: 'result:bnb2008' },
-      { label: '12 间', enLabel: '12 guest rooms', next: 'result:bnb20012' },
+      { label: '8 间', enLabel: '8 guest rooms', next: 'bnb2008Style' },
+      { label: '12 间', enLabel: '12 guest rooms', next: 'bnb20012Style' },
     ],
   },
   ['houseSize']: {
@@ -39,8 +49,8 @@ export const QUESTION_NODES: Readonly<Record<string, QuestionNode>> = {
     title: '预计有多少人居住？',
     enTitle: 'How many people will live here?',
     options: [
-      { label: '1–2 人', enLabel: '1–2 people', next: 'result:houseSmall12' },
-      { label: '3–4 人', enLabel: '3–4 people', next: 'result:houseSmall34' },
+      { label: '1–2 人', enLabel: '1–2 people', next: 'houseSmall12Style' },
+      { label: '3–4 人', enLabel: '3–4 people', next: 'houseSmall34Style' },
     ],
   },
   ['houseMidPeople']: {
@@ -48,8 +58,14 @@ export const QUESTION_NODES: Readonly<Record<string, QuestionNode>> = {
     title: '预计有多少人居住？',
     enTitle: 'How many people will live here?',
     options: [
-      { label: '1–2 人', enLabel: '1–2 people', next: 'result:houseMid12' },
-      { label: '3–4 人', enLabel: '3–4 people', next: 'result:houseMid34' },
+      { label: '1–2 人', enLabel: '1–2 people', next: 'houseMid12Style' },
+      { label: '3–4 人', enLabel: '3–4 people', next: 'houseMid34Style' },
     ],
   },
+  bnb2008Style: styleQuestion('bnb2008'),
+  bnb20012Style: styleQuestion('bnb20012'),
+  houseSmall12Style: styleQuestion('houseSmall12'),
+  houseSmall34Style: styleQuestion('houseSmall34'),
+  houseMid12Style: styleQuestion('houseMid12'),
+  houseMid34Style: styleQuestion('houseMid34'),
 };

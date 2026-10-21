@@ -11,7 +11,6 @@ const ModulePlatformGridImage: React.FC<ModulePlatformGridImageProps> = ({ image
       sx={{
         position: 'relative',
         width: '100%',
-        aspectRatio: '987 / 1400',
         my: 2,
       }}
     >
@@ -23,7 +22,7 @@ const ModulePlatformGridImage: React.FC<ModulePlatformGridImageProps> = ({ image
           zIndex: 1,
           bgcolor: '#FF6B1AFF',
           color: '#FFFFFFFF',
-          fontSize: 'clamp(0.625rem, 0.7292vw, 0.875rem)',
+          fontSize: 'var(--font-small)',
           fontWeight: 700,
           lineHeight: 1,
           px: 'clamp(8px, 0.625vw, 12px)',
@@ -37,13 +36,8 @@ const ModulePlatformGridImage: React.FC<ModulePlatformGridImageProps> = ({ image
       <Box
         sx={{
           width: '100%',
-          height: '100%',
-          overflowY: 'auto',
           borderRadius: 2,
-          ['&::-webkit-scrollbar']: {
-            display: 'none',
-          },
-          scrollbarWidth: 'none',
+          overflow: 'hidden',
         }}
       >
         <Box

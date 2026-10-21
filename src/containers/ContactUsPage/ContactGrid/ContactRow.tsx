@@ -13,11 +13,14 @@ const ContactRow: React.FC<{ label: string; value: string; external?: boolean }>
   external,
 }) => (
   <Box>
-    <Grid container sx={{ alignItems: 'flex-start', gap: 2, px: 2.5, py: 1.5 }}>
-      <Grid size={3}>
+    <Grid
+      container
+      sx={{ alignItems: 'flex-start', flexWrap: 'nowrap', gap: 2, px: { xs: 1, lg: 2.5 }, py: 1.5 }}
+    >
+      <Grid sx={{ width: 104, flexShrink: 0 }}>
         <ContactLabel>{label}</ContactLabel>
       </Grid>
-      <Grid size={9}>
+      <Grid size='grow' sx={{ minWidth: 0 }}>
         <ContactValue>
           {value}
           {external && <ExternalLink />}

@@ -68,7 +68,7 @@ const Footer: React.FC = () => {
           <Typography
             sx={{
               color: '#8899AABB',
-              fontSize: 'clamp(0.625rem, 0.6771vw, 0.8125rem)',
+              fontSize: 'var(--font-caption)',
               lineHeight: 1.7,
               maxWidth: '100%',
             }}
@@ -79,11 +79,11 @@ const Footer: React.FC = () => {
 
         <Grid size={{ xs: 12, md: 7 }}>
           <Grid container spacing={2}>
-            <Grid size={{ xs: 6, sm: 3 }} offset='auto' sx={{ minWidth: { md: 90 } }}>
+            <Grid size={6} sx={{ minWidth: 0 }}>
               <Typography
                 sx={{
                   color: '#8899AAFF',
-                  fontSize: 'clamp(0.625rem, 0.625vw, 0.75rem)',
+                  fontSize: 'var(--font-caption)',
                   fontWeight: 600,
                   textTransform: 'uppercase',
                   letterSpacing: '0.0781vw',
@@ -102,7 +102,7 @@ const Footer: React.FC = () => {
                       onClick={() => handleNavigate(link.key)}
                       sx={{
                         color: '#CCDDEEFF',
-                        fontSize: 'clamp(0.625rem, 0.7292vw, 0.875rem)',
+                        fontSize: 'var(--font-small)',
                         textAlign: 'left',
                         transition: 'color 0.2s ease',
                         ['&:hover']: {
@@ -116,11 +116,11 @@ const Footer: React.FC = () => {
                 ))}
               </Grid>
             </Grid>
-            <Grid size={{ xs: 6, sm: 3 }} sx={{ minWidth: { md: 96 } }}>
+            <Grid size={6} sx={{ minWidth: 0 }}>
               <Typography
                 sx={{
                   color: '#8899AAFF',
-                  fontSize: 'clamp(0.625rem, 0.625vw, 0.75rem)',
+                  fontSize: 'var(--font-caption)',
                   fontWeight: 600,
                   textTransform: 'uppercase',
                   letterSpacing: '0.0781vw',
@@ -136,7 +136,7 @@ const Footer: React.FC = () => {
                     underline='none'
                     sx={{
                       color: '#CCDDEEFF',
-                      fontSize: 'clamp(0.625rem, 0.7292vw, 0.875rem)',
+                      fontSize: 'var(--font-small)',
                       transition: 'color 0.2s ease',
                       ['&:hover']: { color: '#FF6B1AFF' },
                     }}
@@ -150,7 +150,7 @@ const Footer: React.FC = () => {
                     underline='none'
                     sx={{
                       color: '#CCDDEEFF',
-                      fontSize: 'clamp(0.625rem, 0.7292vw, 0.875rem)',
+                      fontSize: 'var(--font-small)',
                       transition: 'color 0.2s ease',
                       ['&:hover']: { color: '#FF6B1AFF' },
                     }}
@@ -166,7 +166,7 @@ const Footer: React.FC = () => {
                     onClick={handleBackToTop}
                     sx={{
                       color: '#CCDDEEFF',
-                      fontSize: 'clamp(0.625rem, 0.7292vw, 0.875rem)',
+                      fontSize: 'var(--font-small)',
                       textAlign: 'left',
                       transition: 'color 0.2s ease',
                       ['&:hover']: { color: '#FF6B1AFF' },
@@ -185,9 +185,9 @@ const Footer: React.FC = () => {
       <Divider sx={{ borderColor: '#FFFFFF12', my: 4 }} />
 
       {/* Bottom section */}
-      <Grid container sx={{ alignItems: 'center' }}>
+      <Grid container sx={{ alignItems: 'center', gap: 2 }}>
         <Grid size='grow'>
-          <Typography sx={{ color: '#8899AA99', fontSize: 'clamp(0.625rem, 0.625vw, 0.75rem)' }}>
+          <Typography sx={{ color: '#8899AA99', fontSize: 'var(--font-label)' }}>
             {t('footer.copyright')}
           </Typography>
         </Grid>
@@ -195,7 +195,7 @@ const Footer: React.FC = () => {
           <Typography
             sx={{
               color: '#8899AA99',
-              fontSize: 'clamp(0.625rem, 0.625vw, 0.75rem)',
+              fontSize: 'var(--font-label)',
               letterSpacing: '0.1042vw',
             }}
           >
@@ -207,7 +207,7 @@ const Footer: React.FC = () => {
   );
 
   return (
-    <Box component='footer' sx={{ width: '100%' }}>
+    <Box component='footer' sx={{ width: '100%', overflowWrap: 'anywhere' }}>
       <PageGrid content={footerContent} pageBackground='#0A1628FF' />
     </Box>
   );

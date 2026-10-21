@@ -16,8 +16,8 @@ const ContactUsContent: React.FC = () => {
         numberColor='#FFFFFFFF'
         titleColor='#FFFFFFFF'
       />
-      <Grid container sx={{ my: 4 }}>
-        <Grid size={{ xs: 12, md: 'grow', lg: 'grow' }}>
+      <Grid container spacing={4} sx={{ my: 4 }}>
+        <Grid size={{ xs: 12, lg: 6 }} sx={{ minWidth: 0, overflowWrap: 'anywhere' }}>
           <Typography
             variant='h1'
             sx={{
@@ -41,8 +41,7 @@ const ContactUsContent: React.FC = () => {
             <span>{t('contactUs.titleLine2White2')}</span>
           </Typography>
         </Grid>
-        <Grid size={{ md: 2, lg: 2 }} sx={{ display: { xs: 'none', md: 'block' } }} />
-        <Grid size={{ xs: 12, md: 4, lg: 4 }}>
+        <Grid size={{ xs: 12, lg: 6 }} sx={{ minWidth: 0 }}>
           <ContactGrid />
         </Grid>
       </Grid>

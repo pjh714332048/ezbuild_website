@@ -11,7 +11,6 @@ const ProductPage: React.FC = () => (
       container
       id='business_capability'
       sx={{
-        scrollMarginTop: '64px',
         minHeight: '100vh',
         backgroundSize: 'cover',
         backgroundPosition: 'center',

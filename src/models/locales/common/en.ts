@@ -1,4 +1,7 @@
 export const EN_COMMON = {
+  close: 'Close',
+  previousImage: 'Previous image',
+  nextImage: 'Next image',
   pageTitle: 'ezBuild.ai | Intelligent Design & Modular Construction',
   questionNodes: {
     function: 'What type of building would you like to design?',

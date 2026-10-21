@@ -7,6 +7,7 @@ import Box from '@mui/material/Box';
 import Dialog from '@mui/material/Dialog';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
+import { useTranslation } from 'providers/useTranslation';
 
 interface ProjectExamplesImageLightboxProps {
   open: boolean;
@@ -34,6 +35,7 @@ const ProjectExamplesImageLightbox: React.FC<ProjectExamplesImageLightboxProps> 
   onIndexChange,
   onClose,
 }) => {
+  const { t } = useTranslation();
   const total = images.length;
 
   const showPrev = useCallback(() => {
@@ -73,6 +75,8 @@ const ProjectExamplesImageLightbox: React.FC<ProjectExamplesImageLightboxProps> 
             display: 'grid',
             placeItems: 'center',
             overflow: 'hidden',
+            px: '80px',
+            py: '72px',
           },
         },
       }}
@@ -82,8 +86,9 @@ const ProjectExamplesImageLightbox: React.FC<ProjectExamplesImageLightboxProps> 
         src={images[index]}
         alt={`Project image ${index + 1}`}
         sx={{
-          maxWidth: '90vw',
-          maxHeight: '86vh',
+          maxWidth: '100%',
+          maxHeight: 'calc(100vh - 144px)',
+          ['@supports (height: 100dvh)']: { maxHeight: 'calc(100dvh - 144px)' },
           width: 'auto',
           height: 'auto',
           objectFit: 'contain',
@@ -93,16 +98,27 @@ const ProjectExamplesImageLightbox: React.FC<ProjectExamplesImageLightboxProps> 
 
       {total > 1 && (
         <>
-          <IconButton size='large' onClick={showPrev} sx={{ ...controlButtonSx, left: 16 }}>
+          <IconButton
+            aria-label={t('common.previousImage')}
+            size='large'
+            onClick={showPrev}
+            sx={{ ...controlButtonSx, left: 16 }}
+          >
             <ChevronLeftIcon sx={{ fontSize: 36 }} />
           </IconButton>
-          <IconButton size='large' onClick={showNext} sx={{ ...controlButtonSx, right: 16 }}>
+          <IconButton
+            aria-label={t('common.nextImage')}
+            size='large'
+            onClick={showNext}
+            sx={{ ...controlButtonSx, right: 16 }}
+          >
             <ChevronRightIcon sx={{ fontSize: 36 }} />
           </IconButton>
         </>
       )}
 
       <IconButton
+        aria-label={t('common.close')}
         size='large'
         onClick={onClose}
         sx={{
@@ -127,7 +143,7 @@ const ProjectExamplesImageLightbox: React.FC<ProjectExamplesImageLightboxProps> 
             left: '50%',
             transform: 'translateX(-50%)',
             color: '#FFFFFFCC',
-            fontSize: 'clamp(0.625rem, 0.7292vw, 0.875rem)',
+            fontSize: 'var(--font-small)',
             letterSpacing: '0.1042vw',
             fontVariantNumeric: 'tabular-nums',
           }}

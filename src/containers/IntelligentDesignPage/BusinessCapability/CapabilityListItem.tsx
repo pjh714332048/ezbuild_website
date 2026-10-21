@@ -49,7 +49,7 @@ const CapabilityListItem: React.FC<CapabilityListItemProps> = ({
             color: '#FF6B1AFF',
             fontWeight: 700,
             minWidth: 48,
-            fontSize: 'clamp(0.8rem, 1.25vw, 1.5rem)',
+            fontSize: 'clamp(1.125rem, 1.25vw, 1.5rem)',
           }}
         >
           {String(index + 1).padStart(2, '0')}
@@ -58,7 +58,7 @@ const CapabilityListItem: React.FC<CapabilityListItemProps> = ({
       <Grid size={4}>
         <Typography
           variant='h4'
-          sx={{ color: '#FFFFFFFF', fontWeight: 600, fontSize: 'clamp(0.8rem, 1.25vw, 1.5rem)' }}
+          sx={{ color: '#FFFFFFFF', fontWeight: 600, fontSize: 'clamp(1.125rem, 1.25vw, 1.5rem)' }}
         >
           {title}
         </Typography>

@@ -16,7 +16,7 @@ const ModulePlatformGridContent: React.FC<ModulePlatformGridContentProps> = ({
   numberString,
   numberDescription,
 }) => (
-  <Grid container sx={{ gap: 2 }}>
+  <Grid container direction='column' sx={{ gap: 2, flex: 1 }}>
     <Grid size={12}>
       <Typography
         variant='caption'
@@ -38,7 +38,11 @@ const ModulePlatformGridContent: React.FC<ModulePlatformGridContentProps> = ({
       </Typography>
     </Grid>
 
-    <Grid container size={12} sx={{ alignItems: 'baseline', gap: 1.5, mt: 1 }}>
+    <Grid
+      container
+      size={12}
+      sx={{ alignItems: 'center', gap: 1.5, mt: 'auto', pt: 1, minHeight: 42 }}
+    >
       {numberString && (
         <Grid size='auto'>
           <Typography variant='h4' sx={{ color: '#FF6B1AFF', fontWeight: 700, lineHeight: 1 }}>

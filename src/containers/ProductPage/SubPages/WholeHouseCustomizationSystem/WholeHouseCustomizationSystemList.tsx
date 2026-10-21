@@ -70,7 +70,7 @@ const WholeHouseCustomizationSystemList: React.FC = () => {
                         sx={{
                           color: '#C8A84EFF',
                           fontWeight: 400,
-                          fontSize: 'clamp(0.625rem, 0.7292vw, 0.875rem)',
+                          fontSize: 'var(--font-small)',
                         }}
                       >
                         {number}
@@ -80,7 +80,7 @@ const WholeHouseCustomizationSystemList: React.FC = () => {
                       <Typography
                         sx={{
                           color: '#FFFFFFFF',
-                          fontSize: 'clamp(0.7rem, 0.9375vw, 1.125rem)',
+                          fontSize: 'clamp(1rem, 0.9375vw, 1.125rem)',
                           fontWeight: 500,
                         }}
                       >
@@ -91,7 +91,7 @@ const WholeHouseCustomizationSystemList: React.FC = () => {
                       <Typography
                         sx={{
                           color: '#FFFFFF59',
-                          fontSize: 'clamp(0.7333rem, 1.1458vw, 1.375rem)',
+                          fontSize: 'clamp(1rem, 1.1458vw, 1.375rem)',
                           fontWeight: 300,
                         }}
                       >

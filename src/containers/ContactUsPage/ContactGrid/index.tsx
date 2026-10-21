@@ -15,10 +15,7 @@ const ContactGrid: React.FC = () => {
   return (
     <>
       <ContactDialog />
-      <Typography
-        variant='h6'
-        sx={{ color: '#FFFFFFD1', fontSize: 'clamp(0.625rem, 0.7292vw, 0.875rem)' }}
-      >
+      <Typography variant='h6' sx={{ color: '#FFFFFFD1', fontSize: 'var(--font-small)' }}>
         {t('contactUs.contactGrid.description')}
       </Typography>
       <ContactUsInfo />
@@ -32,7 +29,7 @@ const ContactGrid: React.FC = () => {
           my: 4,
           py: 1.5,
           textTransform: 'none',
-          fontSize: 'clamp(0.75rem, 0.8333vw, 1rem)',
+          fontSize: 'var(--font-body)',
           ['&:hover']: {
             backgroundColor: '#1A2D42FF',
           },
@@ -43,10 +40,7 @@ const ContactGrid: React.FC = () => {
       >
         {t('contactUs.contactGrid.sendButton')}
       </Button>
-      <Typography
-        variant='body1'
-        sx={{ fontSize: 'clamp(0.625rem, 0.625vw, 0.75rem)', color: '#3F3F3FFF' }}
-      >
+      <Typography variant='body1' sx={{ fontSize: 'var(--font-caption)', color: '#3F3F3FFF' }}>
         {t('contactUs.contactGrid.cooperationNote')}
       </Typography>
     </>

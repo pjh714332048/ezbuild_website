@@ -1,4 +1,7 @@
 export const ZH_COMMON = {
+  close: '关闭',
+  previousImage: '上一张图片',
+  nextImage: '下一张图片',
   pageTitle: 'ezBuild.ai | 智能设计与模块化建造',
   questionNodes: {
     function: '您想设计哪类建筑？',

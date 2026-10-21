@@ -1,4 +1,6 @@
-import Grid from '@mui/material/Grid';
+import Box from '@mui/material/Box';
+
+import ContentContainer from './ContentContainer';
 
 interface PageGridProps {
   content: React.ReactNode;
@@ -6,19 +8,16 @@ interface PageGridProps {
 }
 
 const PageGrid: React.FC<PageGridProps> = ({ content, pageBackground }) => (
-  <Grid
-    container
-    spacing={2}
+  <Box
     sx={{
-      px: { xs: 2, sm: 3, md: 0 },
-      py: { xs: 5, md: 4, lg: 7 },
+      width: '100%',
+      minWidth: 0,
+      py: 'var(--section-spacing)',
       background: pageBackground || '#FFFFFF94',
     }}
   >
-    <Grid size={{ md: 2.5, lg: 2.5 }} sx={{ display: { xs: 'none', sm: 'none', md: 'block' } }} />
-    <Grid size={{ xs: 12, sm: 12, md: 7, lg: 7 }}>{content}</Grid>
-    <Grid size={{ md: 2.5, lg: 2.5 }} sx={{ display: { xs: 'none', sm: 'none', md: 'block' } }} />
-  </Grid>
+    <ContentContainer>{content}</ContentContainer>
+  </Box>
 );
 
 export default PageGrid;

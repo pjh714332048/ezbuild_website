@@ -1,9 +1,10 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: official-website-nginx-config
+  name: ezbuild-website-nginx-config
+  namespace: ezbuild
   labels:
-    app: official-website
+    app: ezbuild-website
 data:
   default.conf: |
     server {

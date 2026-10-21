@@ -10,14 +10,18 @@ const WholeHouseCustomizationSystem: React.FC = () => {
   const { t } = useTranslation();
 
   return (
-    <Box sx={{ py: { xs: 5, md: 10 } }}>
-      <Grid container sx={{ alignItems: 'stretch' }}>
-        <Grid size={{ xs: 12, md: 5.5 }}>
-          <PageSubtitle number='05' title={t('products.wholeHouseSubtitle')} />
-          <Typography variant='h2' sx={{ color: '#FFFFFFFF', mt: 3, whiteSpace: 'nowrap' }}>
+    <Box sx={{ py: 'var(--section-spacing)' }}>
+      <Grid container spacing={3} sx={{ alignItems: 'stretch' }}>
+        <Grid size={{ xs: 12, lg: 6 }} sx={{ minWidth: 0 }}>
+          <PageSubtitle
+            number='05'
+            title={t('products.wholeHouseSubtitle')}
+            titleColor='#FFFFFFCC'
+          />
+          <Typography variant='h2' sx={{ color: '#FFFFFFFF', mt: 3, overflowWrap: 'anywhere' }}>
             {t('products.wholeHouseTitleLine1')}
           </Typography>
-          <Typography variant='h2' sx={{ color: '#F4C544FF', mb: 3, whiteSpace: 'nowrap' }}>
+          <Typography variant='h2' sx={{ color: '#F4C544FF', mb: 3, overflowWrap: 'anywhere' }}>
             {t('products.wholeHouseTitleLine2')}
           </Typography>
           <Typography sx={{ color: '#FFFFFFAD' }}>{t('products.wholeHouseDescription')}</Typography>
@@ -32,8 +36,7 @@ const WholeHouseCustomizationSystem: React.FC = () => {
             />
           </Box>
         </Grid>
-        <Grid size={{ md: 0.5 }} sx={{ display: { xs: 'none', md: 'block' } }} />
-        <Grid size={{ xs: 12, md: 'grow' }} container>
+        <Grid size={{ xs: 12, lg: 6 }} container sx={{ minWidth: 0 }}>
           <WholeHouseCustomizationSystemList />
         </Grid>
       </Grid>

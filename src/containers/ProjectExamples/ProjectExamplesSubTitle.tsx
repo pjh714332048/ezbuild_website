@@ -40,7 +40,7 @@ const ProjectExamplesSubTitle: React.FC<ProjectExamplesSubTitleProps> = ({
             variant='h5'
             sx={{
               color: '#FF6B1AFF',
-              fontSize: 'clamp(0.625rem, 0.625vw, 0.75rem)',
+              fontSize: 'var(--font-caption)',
               fontWeight: 600,
             }}
           >
@@ -60,7 +60,7 @@ const ProjectExamplesSubTitle: React.FC<ProjectExamplesSubTitleProps> = ({
             variant='h4'
             sx={{
               color: '#3F3F3F55',
-              fontSize: 'clamp(0.625rem, 0.625vw, 0.75rem)',
+              fontSize: 'var(--font-caption)',
               fontWeight: 600,
             }}
           >

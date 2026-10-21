@@ -1,53 +1,42 @@
 import CloseIcon from '@mui/icons-material/Close';
 import Box from '@mui/material/Box';
-import Dialog from '@mui/material/Dialog';
 import IconButton from '@mui/material/IconButton';
+import Popover from '@mui/material/Popover';
 import Typography from '@mui/material/Typography';
+import { useTranslation } from 'providers/useTranslation';
 
 interface DotInfoCardProps {
   open: boolean;
   title: string;
   content: string;
-  anchorPosition: { left: number; top: number };
+  anchorEl: HTMLElement | null;
   onClose: () => void;
 }
 
 const cardWidth = 300;
-const dotOffset = 14 + 10;
 const cardViewportMargin = 16;
 
-const getCardLeft = (anchorLeft: number): number => {
-  const viewportWidth = window.innerWidth;
-  const actualCardWidth = viewportWidth < 600 ? viewportWidth - cardViewportMargin * 2 : cardWidth;
-  return Math.max(
-    cardViewportMargin,
-    Math.min(anchorLeft + dotOffset, viewportWidth - actualCardWidth - cardViewportMargin),
-  );
-};
-
-const DotInfoCard: React.FC<DotInfoCardProps> = ({
-  open,
-  title,
-  content,
-  anchorPosition,
-  onClose,
-}) => {
+const DotInfoCard: React.FC<DotInfoCardProps> = ({ open, title, content, anchorEl, onClose }) => {
+  const { t } = useTranslation();
   return (
-    <Dialog
+    <Popover
       open={open}
       onClose={onClose}
-      hideBackdrop
+      anchorEl={anchorEl}
+      anchorOrigin={{ vertical: 'center', horizontal: 'right' }}
+      transformOrigin={{ vertical: 'center', horizontal: 'left' }}
+      marginThreshold={cardViewportMargin}
       slotProps={{
         paper: {
           sx: {
-            position: 'fixed',
-            left: getCardLeft(anchorPosition.left),
-            top: anchorPosition.top,
-            transform: 'translateY(-50%)',
             width: { xs: 'calc(100vw - 32px)', sm: cardWidth },
             maxWidth: `calc(100vw - ${cardViewportMargin * 2}px)`,
             margin: 0,
             borderRadius: 3,
+            maxHeight: 'calc(100vh - 32px)',
+            ['@supports (height: 100dvh)']: { maxHeight: 'calc(100dvh - 32px)' },
+            display: 'flex',
+            flexDirection: 'column',
             overflow: 'hidden',
             border: '1px solid #D0D0D0FF',
             boxShadow: '0 8px 32px 0 #00000040',
@@ -60,6 +49,7 @@ const DotInfoCard: React.FC<DotInfoCardProps> = ({
         sx={{
           px: 2,
           py: 1.5,
+          flexShrink: 0,
           borderBottom: '1px solid #D0D0D0FF',
         }}
       >
@@ -81,6 +71,7 @@ const DotInfoCard: React.FC<DotInfoCardProps> = ({
             {title}
           </Typography>
           <IconButton
+            aria-label={t('common.close')}
             size='small'
             onClick={onClose}
             sx={{
@@ -97,7 +88,7 @@ const DotInfoCard: React.FC<DotInfoCardProps> = ({
           </IconButton>
         </Box>
       </Box>
-      <Box sx={{ px: 2, py: 1.5 }}>
+      <Box sx={{ px: 2, py: 1.5, minHeight: 0, overflowY: 'auto', overflowWrap: 'anywhere' }}>
         <Typography
           sx={{
             fontSize: 14,
@@ -108,7 +99,7 @@ const DotInfoCard: React.FC<DotInfoCardProps> = ({
           {content}
         </Typography>
       </Box>
-    </Dialog>
+    </Popover>
   );
 };
 

@@ -32,7 +32,11 @@ const ToFuturePage: React.FC = () => {
       >
         <Grid container sx={{ height: '100%', alignItems: 'center' }}>
           <Grid size={12}>
-            <PageSubtitle number='09' title={t('projectExamples.toFuture.subtitle')} />
+            <PageSubtitle
+              number='09'
+              title={t('projectExamples.toFuture.subtitle')}
+              titleColor='#FFFFFFCC'
+            />
             <Typography
               sx={{
                 fontSize: { xs: 32, md: 'clamp(1.3333rem, 2.0833vw, 2.5rem)' },
@@ -53,7 +57,7 @@ const ToFuturePage: React.FC = () => {
             {/* 描述文字 */}
             <Typography
               sx={{
-                fontSize: 'clamp(0.625rem, 0.7292vw, 0.875rem)',
+                fontSize: 'var(--font-small)',
                 color: '#FFFFFFBF',
                 lineHeight: 1.8,
                 mb: 4,
@@ -80,7 +84,7 @@ const ToFuturePage: React.FC = () => {
                 </Typography>
                 <Typography
                   sx={{
-                    fontSize: 'clamp(0.625rem, 0.6771vw, 0.8125rem)',
+                    fontSize: 'var(--font-caption)',
                     color: '#FFFFFFFF',
                     mt: 0.5,
                   }}
@@ -101,7 +105,7 @@ const ToFuturePage: React.FC = () => {
                 </Typography>
                 <Typography
                   sx={{
-                    fontSize: 'clamp(0.625rem, 0.6771vw, 0.8125rem)',
+                    fontSize: 'var(--font-caption)',
                     color: '#FFFFFFFF',
                     mt: 0.5,
                   }}

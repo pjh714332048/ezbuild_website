@@ -6,5 +6,6 @@ dist
 .husky
 .qoder
 k8s
+deploy
 Dockerfile
 *.md

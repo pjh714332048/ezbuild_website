@@ -47,7 +47,7 @@ const FullCycleDelivery: React.FC = () => {
               <Grid size={{ xs: 12, md: 4 }}>
                 <Typography
                   sx={{
-                    fontSize: 'clamp(0.75rem, 0.8333vw, 1rem)',
+                    fontSize: 'var(--font-body)',
                     color: '#637080FF',
                     lineHeight: 1.7,
                   }}
@@ -97,7 +97,7 @@ const FullCycleDelivery: React.FC = () => {
                       <>
                         <Typography
                           sx={{
-                            fontSize: 'clamp(0.75rem, 0.8333vw, 1rem)',
+                            fontSize: 'var(--font-body)',
                             fontWeight: 700,
                             color: '#1A1A2EFF',
                             mt: 1,
@@ -107,7 +107,7 @@ const FullCycleDelivery: React.FC = () => {
                         </Typography>
                         <Typography
                           sx={{
-                            fontSize: 'clamp(0.625rem, 0.5729vw, 0.6875rem)',
+                            fontSize: 'var(--font-label)',
                             color: '#9BA3AEFF',
                             letterSpacing: '0.1042vw',
                             fontWeight: 500,
@@ -120,7 +120,7 @@ const FullCycleDelivery: React.FC = () => {
                   >
                     <Typography
                       sx={{
-                        fontSize: 'clamp(0.625rem, 0.6771vw, 0.8125rem)',
+                        fontSize: 'var(--font-caption)',
                         color: '#9BA3AEFF',
                         fontWeight: 500,
                       }}
@@ -156,7 +156,7 @@ const FullCycleDelivery: React.FC = () => {
                   <Grid size={12}>
                     <Typography
                       sx={{
-                        fontSize: 'clamp(0.625rem, 0.7292vw, 0.875rem)',
+                        fontSize: 'var(--font-small)',
                         color: '#E87722FF',
                         fontWeight: 600,
                         mb: 2,
@@ -201,7 +201,7 @@ const FullCycleDelivery: React.FC = () => {
                         <Grid size='grow'>
                           <Typography
                             sx={{
-                              fontSize: 'clamp(0.625rem, 0.7292vw, 0.875rem)',
+                              fontSize: 'var(--font-small)',
                               color: '#FFFFFFCC',
                               lineHeight: 1.6,
                             }}

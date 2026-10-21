@@ -8,7 +8,6 @@ const IntelligentDesignPage: React.FC = () => {
     <Box
       id='intelligence_design'
       sx={{
-        scrollMarginTop: '64px',
         minHeight: '100vh',
         backgroundSize: 'cover',
         backgroundPosition: 'center',
