@@ -1,5 +1,5 @@
 const modelPath = (directory: string, filename: string) =>
-  `/architectural_models/${directory}/${filename}.obj`;
+  `/architectural_models/${directory}/${filename}.glb`;
 
 export const RESULT_MODELS: Readonly<Record<string, string>> = {
   bnb2008Bauhaus: modelPath('A', '文旅民宿8间（包豪斯-渲染-贴图）'),

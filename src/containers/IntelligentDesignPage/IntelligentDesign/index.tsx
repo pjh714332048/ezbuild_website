@@ -152,13 +152,7 @@ const IntelligentDesign: React.FC = () => {
                         </Box>
                       }
                     >
-                      <ModelRenderer
-                        key={renderedModelSrc}
-                        src={renderedModelSrc}
-                        mtlSrc={renderedModelSrc.replace(/\.obj$/, '.mtl')}
-                        height='100%'
-                        background='#FFFFFFFF'
-                      />
+                      <ModelRenderer key={renderedModelSrc} src={renderedModelSrc} height='100%' />
                     </Suspense>
                   ) : (
                     <Box

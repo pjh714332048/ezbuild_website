@@ -1,74 +1,73 @@
-import { Suspense } from 'react';
+import { Component, type ReactNode, Suspense } from 'react';
 
 import Box from '@mui/material/Box';
-import useMediaQuery from '@mui/material/useMediaQuery';
-import { Bounds, Center, Html, OrbitControls, useProgress } from '@react-three/drei';
-import { Canvas, useLoader } from '@react-three/fiber';
-import type { Group } from 'three';
-import { MTLLoader } from 'three/examples/jsm/loaders/MTLLoader.js';
-import { OBJLoader } from 'three/examples/jsm/loaders/OBJLoader.js';
+import { Bounds, Center, Clone, Html, OrbitControls, useGLTF } from '@react-three/drei';
+import { Canvas } from '@react-three/fiber';
 
 type ModelRendererProps = {
   readonly src: string;
-  readonly mtlSrc?: string;
   readonly height?: number | string;
   readonly background?: string;
-  readonly autoRotate?: boolean;
 };
 
-const Loader = () => {
-  const { progress } = useProgress();
-  return (
-    <Html center>
-      <span style={{ fontSize: 14, color: '#666' }}>{Math.round(progress)}% loaded</span>
-    </Html>
-  );
+const Model = ({ src }: { readonly src: string }) => {
+  const { scene } = useGLTF(src);
+  return <Clone object={scene} />;
 };
 
-const ObjWithMaterial = ({ src, mtlSrc }: { readonly src: string; readonly mtlSrc: string }) => {
-  const materials = useLoader(MTLLoader, mtlSrc);
-  const object = useLoader(OBJLoader, src, loader => {
-    materials.preload();
-    (loader as OBJLoader).setMaterials(materials);
-  }) as Group;
-  return <primitive object={object} />;
-};
+class ModelErrorBoundary extends Component<{ children: ReactNode }, { failed: boolean }> {
+  state = { failed: false };
 
-const ObjPlain = ({ src }: { readonly src: string }) => {
-  const object = useLoader(OBJLoader, src) as Group;
-  return <primitive object={object} />;
-};
+  static getDerivedStateFromError() {
+    return { failed: true };
+  }
 
-const ModelRenderer = ({
-  src,
-  mtlSrc,
-  height = 480,
-  background = '#f5f7fb',
-  autoRotate = true,
-}: ModelRendererProps) => {
-  const isMobile = useMediaQuery(theme => theme.breakpoints.down('md'));
+  render() {
+    if (this.state.failed) {
+      return (
+        <Box
+          role='alert'
+          sx={{ display: 'grid', placeItems: 'center', height: '100%', color: '#666' }}
+        >
+          模型加载失败，请检查 GLB 文件路径
+        </Box>
+      );
+    }
+    return this.props.children;
+  }
+}
 
+const ModelRenderer = ({ src, height = 480, background = '#f1f3f5' }: ModelRendererProps) => {
   return (
     <Box sx={{ width: '100%', height, background, borderRadius: 3, overflow: 'hidden' }}>
-      <Canvas camera={{ position: [0, 0, 5], fov: 45 }} dpr={isMobile ? [1, 1.5] : [1, 2]}>
-        <ambientLight intensity={0.8} />
-        <directionalLight position={[10, 12, 8]} intensity={1.5} />
-        <directionalLight position={[-8, 6, -10]} intensity={0.7} />
-        <Suspense fallback={<Loader />}>
-          <Bounds fit clip observe margin={1.2}>
-            <Center>
-              {mtlSrc ? <ObjWithMaterial src={src} mtlSrc={mtlSrc} /> : <ObjPlain src={src} />}
-            </Center>
-          </Bounds>
-        </Suspense>
-        <OrbitControls
-          makeDefault
-          autoRotate={autoRotate}
-          autoRotateSpeed={0.8}
-          enablePan={!isMobile}
-          enableZoom
-        />
-      </Canvas>
+      <ModelErrorBoundary key={src}>
+        <Canvas
+          camera={{ position: [5, 5, 5], fov: 45 }}
+          frameloop='demand'
+          dpr={[1, 2]}
+          style={{ userSelect: 'none', touchAction: 'none', cursor: 'grab' }}
+          fallback={<Box sx={{ p: 2, color: '#666' }}>当前浏览器不支持 WebGL</Box>}
+        >
+          <ambientLight intensity={1.5} />
+          <directionalLight position={[10, 20, 10]} intensity={2.5} />
+          <Suspense
+            fallback={
+              <Html center>
+                <span style={{ fontSize: 14, color: '#666', whiteSpace: 'nowrap' }}>
+                  模型加载中…
+                </span>
+              </Html>
+            }
+          >
+            <Bounds fit clip observe margin={1.2}>
+              <Center>
+                <Model src={src} />
+              </Center>
+            </Bounds>
+          </Suspense>
+          <OrbitControls makeDefault />
+        </Canvas>
+      </ModelErrorBoundary>
     </Box>
   );
 };
