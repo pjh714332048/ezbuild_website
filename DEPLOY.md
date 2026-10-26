@@ -14,7 +14,26 @@
 - 镜像：`ezbuild-images.tencentcloudcr.com/ezbuild/ezbuild:website-<Version>`，默认版本为本机时间。
 - 脚本构建并推送镜像，将固定摘要写回 `k8s/deployment.yaml`，应用配置并等待滚动更新完成。
 - NodePort：`30081`（`30080` 已用于参考项目）。节点安全组需允许入口访问；如该端口已被其他 Service 使用，请先修改 `k8s/service.yaml`。
-- `-BaseUrl` 可选，指定后检查首页。请使用实际指向本次 TKE 部署的节点地址或域名。
+- `-BaseUrl` 可选，指定后检查首页及模型签名 API。请使用实际指向本次 TKE 部署的节点地址或域名。
+
+## 模型 API 与 COS
+
+官网 `/api/` 由 Nginx 转发至 `django-app.ezbuild.svc.cluster.local:80`，保留原始路径。
+生产使用挂载的 `k8s/configmap.yaml`，镜像内的 `nginx.conf` 保持相同配置。
+同集群后端需已部署 `/api/v1/website/models/resource/` 接口。
+Vite 的 `server.proxy` 只用于本地开发，不能替代生产 Nginx 代理。
+
+仅修改 Nginx 配置无需重新推镜像，执行：
+
+```powershell
+kubectl apply -f k8s/configmap.yaml
+kubectl rollout restart deployment/ezbuild-website -n ezbuild
+kubectl rollout status deployment/ezbuild-website -n ezbuild
+```
+
+COS CORS 来源需包含浏览器的完整 Origin（协议、主机、端口），例如
+`http://129.211.221.213:30081`，上线域名另行添加；允许 `GET`、`HEAD` 及所需请求头。
+签名接口必须返回 JSON；返回首页 HTML 表示 `/api/` 错误落入 SPA fallback。
 
 ## 首次准备
 

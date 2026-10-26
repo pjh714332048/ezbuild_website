@@ -19,7 +19,7 @@ spec:
         - name: tcr-secret
       containers:
         - name: ezbuild-website
-          image: ezbuild-images.tencentcloudcr.com/ezbuild/ezbuild:website-20261021-165533@sha256:e414705f0a2b1fd2446aea3f44c3c0aad47fe9632f18e13021775614b3de2b14
+          image: ezbuild-images.tencentcloudcr.com/ezbuild/ezbuild:website-20261023-175807@sha256:37e26c75a951742eb428ba1af7041357824a02dec136232cee1ac788af277def
           ports:
             - containerPort: 80
           resources:

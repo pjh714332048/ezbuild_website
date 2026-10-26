@@ -1,16 +1,14 @@
-import { Suspense, lazy, useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
-import CircularProgress from '@mui/material/CircularProgress';
 import Grid from '@mui/material/Grid';
 import ContentContainer from 'components/ContentContainer';
 import { useTranslation } from 'providers/useTranslation';
 
+import CosModelPreview from './CosModelPreview';
 import IntelligentDesignTitle from './IntelligentDesignTitle';
 import QuestionSelector from './QuestionSelector';
-
-const ModelRenderer = lazy(() => import('components/ModelRenderer'));
 
 const designBgSrc = '/intelligent_design/p68.webp';
 
@@ -138,22 +136,7 @@ const IntelligentDesign: React.FC = () => {
               >
                 <Grid size={12} sx={{ height: '100%', minHeight: 0 }}>
                   {renderedModelSrc ? (
-                    <Suspense
-                      fallback={
-                        <Box
-                          sx={{
-                            display: 'grid',
-                            placeItems: 'center',
-                            width: '100%',
-                            height: '100%',
-                          }}
-                        >
-                          <CircularProgress aria-label='Loading model' />
-                        </Box>
-                      }
-                    >
-                      <ModelRenderer key={renderedModelSrc} src={renderedModelSrc} height='100%' />
-                    </Suspense>
+                    <CosModelPreview key={renderedModelSrc} modelKey={renderedModelSrc} />
                   ) : (
                     <Box
                       sx={{

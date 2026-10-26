@@ -85,5 +85,10 @@ if ($BaseUrl) {
     }
     if (-not $healthy) { throw 'Pod 已更新，但外部检查失败。请检查访问地址、安全组 TCP 30081 及域名入口配置。' }
     Write-Host "==> 首页检查通过: $BaseUrl/" -ForegroundColor Green
+    $resource = Invoke-RestMethod -Uri "$BaseUrl/api/v1/website/models/resource/?key=club%2FA.glb" -TimeoutSec 30
+    if ($resource.status -ne 200 -or $resource.data.key -ne 'club/A.glb' -or -not $resource.data.url) {
+        throw '模型签名 API 检查失败，请检查 Nginx /api/ 代理和 Django 接口部署。'
+    }
+    Write-Host '==> 模型签名 API 检查通过' -ForegroundColor Green
 }
 Write-Host '==> ezbuild-website 生产部署完成' -ForegroundColor Green
